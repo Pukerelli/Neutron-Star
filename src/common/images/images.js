@@ -1,0 +1,1 @@
+export const myPhoto = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fauto.vercity.ru%2Fgallery%2Fautomobiles%2Fnissan%2F2020%2Fnissan_370z_nismo_by_tvw_car_design%2F&psig=AOvVaw1Zqg8Xbdx6iVJCCqFRQPVp&ust=1621952559904000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCPjv27DC4vACFQAAAAAdAAAAABAD'
