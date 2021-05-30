@@ -1,0 +1,34 @@
+/* styles for all components */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  font-family: 'Odibee Sans', cursive;
+}
+*:visited{
+  color: inherit;
+}
+
+
+header {
+  grid-area: header;
+
+}
+
+main {
+  background-color: #FCFEF5;
+  grid-area: content;
+  align-self: center;
+}
+
+footer {
+  grid-area: footer;
+}
+
+
+
+

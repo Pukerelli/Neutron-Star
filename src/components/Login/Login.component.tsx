@@ -5,12 +5,12 @@ import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
-import {useStyles} from '../../styles/Login.styles';
+import {useLoginStyles} from '../../styles/Login.styles';
 import {LoginForm} from "./Login-form.component";
 
 
 export const Login: React.FC = () => {
-    const classes = useStyles()
+    const classes = useLoginStyles()
 
     return (
         <Container component="main" maxWidth="xs">
