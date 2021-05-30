@@ -16,13 +16,13 @@ export const Header: React.FC = () => {
                     <NavLink to='/profile'>Profile</NavLink>
                 </HeaderItem>
                 <HeaderItem>
-                    <NavLink to='/profile'>Cars</NavLink>
+                    <NavLink to='/cars'>Cars</NavLink>
                 </HeaderItem>
                 <HeaderItem>
-                    <NavLink to='/profile'>Shop</NavLink>
+                    <NavLink to='/shop'>Shop</NavLink>
                 </HeaderItem>
                 <HeaderItem>
-                    <NavLink to='/profile'>Services</NavLink>
+                    <NavLink to='/services'>Services</NavLink>
                 </HeaderItem>
                 <HeaderItem>
                     <span><AccountBoxIcon/></span>

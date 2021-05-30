@@ -9,7 +9,7 @@ import {ClassNameMap} from "@material-ui/core/styles/withStyles";
 import {authMe} from "../../fake-api/login-api";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchAuth} from "../../store/reducers/auth-reducer/auth.slice";
-import {AuthUserSelector} from "../../selectors/auth/auth.selector";
+import {selectAuthUser} from "../../selectors/auth/auth.selector";
 import { useHistory } from "react-router-dom";
 
 interface IProps {
@@ -18,7 +18,7 @@ interface IProps {
 
 export const LoginForm: React.FC<IProps> = ({classes}) => {
     const history = useHistory()
-    const user = useSelector(AuthUserSelector)
+    const user = useSelector(selectAuthUser)
 
     const dispatch = useDispatch()
     const  handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
