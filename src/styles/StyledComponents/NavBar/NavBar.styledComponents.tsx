@@ -2,15 +2,13 @@ import styled from "styled-components";
 import React from "react";
 
 interface IProps{
-    display: boolean
+    show?: boolean
 }
 
 export const NavLinkStyled = styled.div`
   font-size: 24px;
   padding: 0.3rem;
   &:hover {
-    background-color: rgba(255,70,79,0.35);
-    border-radius: 4px;
     color: white;
   }
   transition: .4ms linear;
@@ -26,7 +24,7 @@ export const NavDisplayBtn = styled.button<IProps>`
   align-items: center;
   justify-content: center;
   border-radius: 0 6px 6px 0;
-  transform: ${props => (props.display ? 'translateX(-5vw)' : 'translateX(0)' )} translateY(150%);
+  transform: ${props => (props.show ? 'translateX(-5vw)' : 'translateX(0)' )} translateY(150%);
   transition: 0.5s linear;
   outline: none;
   border: none;

@@ -1,6 +1,6 @@
 import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {IUser} from "../../../common/interfaces/common-interfaces/index.interface";
-import {fetchUser} from "../../../fake-api/user.api";
+
 
 interface initialState {
     user: IUser
@@ -14,7 +14,7 @@ const initialState = {
 } as initialState
 
 
-export const getUserData = createAsyncThunk<
+/*export const getUserData = createAsyncThunk<
     // Return type of the payload creator
     IUser,
     // First argument to the payload creator
@@ -30,7 +30,7 @@ export const getUserData = createAsyncThunk<
         return thunkApi.rejectWithValue(response as string)
     }
     return response as IUser
-})
+})*/
 
 
 
@@ -43,7 +43,7 @@ const userSlice = createSlice({
         }
     },
     extraReducers: (builder) => {
-        builder.addCase(getUserData.fulfilled, (state, { payload }) => {
+       /* builder.addCase(getUserData.fulfilled, (state, { payload }) => {
             state.user = payload
             state.isFetching = false
         })
@@ -57,7 +57,7 @@ const userSlice = createSlice({
         })
         builder.addCase(getUserData.pending, (state) => {
             state.isFetching = true
-        })
+        })*/
     },
 })
 

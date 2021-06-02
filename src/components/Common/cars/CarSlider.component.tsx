@@ -59,7 +59,7 @@ export const CarSlider: React.FC<IProps> = ({height, width}) => {
                 <ArrowBackIosIcon/>
             </TrnsprntBtn>
             <TrnsprntBtn width='3.3rem' height='1.2rem' color='#EB3649' top='10%' right='50%'
-            onClick={onInfoButtonClick}>{carInfo === 'none'? 'SHOW': 'HIDE'}</TrnsprntBtn>
+                         onClick={onInfoButtonClick}>{carInfo === '0' ? 'SHOW' : 'HIDE'}</TrnsprntBtn>
 
             <Card boxShadow={true} position='absolute' width='60%' height='40%' textAlign='center'
                   top='25%' right='50%' cords='50%, 0' padding='2rem' opacity={carInfo} transition='0.7s'>

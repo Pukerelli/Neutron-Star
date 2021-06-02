@@ -4,16 +4,13 @@ import {NavBar} from "../../Common/NavBar/NavBar.component";
 import {UserCard} from "./UserCard.component";
 
 export const UserProfile = () => {
-    const navBar = ['profile', 'messages', 'album', 'Link', 'Link', 'Link']
-
+    const navBar = ['profile', 'messages', 'album', 'following', 'bookmarks']
     return (
         <Layout>
             <NavBar navBar={navBar}/>
             <ContentLayout gridColumn='1fr'>
                 <UserCard/>
             </ContentLayout>
-
-
         </Layout>
     );
 };

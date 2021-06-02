@@ -16,13 +16,13 @@ export const NavBar: React.FC<IProps> = ({navBar}) => {
     }
     return (
         <div>
-            <NavBarLayout display={displayBar}>
+            <NavBarLayout show={displayBar}>
                 <NavBarMenu links={navBar}/>
                 <NavHideBtn onClick={navBarHandler}>
                     <ArrowForwardIosIcon/>
                 </NavHideBtn>
             </NavBarLayout>
-            <NavButtonShow handler={navBarHandler} display={displayBar}/>
+            <NavButtonShow handler={navBarHandler} show={displayBar}/>
         </div>
     );
 };

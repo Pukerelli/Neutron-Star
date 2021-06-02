@@ -1,12 +1,14 @@
 import styled from 'styled-components'
 
 interface IProps {
-    display: boolean
+    show: boolean
 }
 interface IContent{
     gridColumn?: string
     gridRows?: string
     padding?: string
+    width?: string
+    height?: string
 }
 
 export const Layout = styled.div`
@@ -21,13 +23,12 @@ export const Layout = styled.div`
 export const NavBarLayout = styled.div<IProps>`
   background-color: #EB3649;
   position: absolute;
-  min-height: 43vh;
+  min-height: 35vh;
   width: 8rem;
   padding: 1rem;
-  transform: ${props => (props.display ? 'translateX(0)' : 'translateX(-30vw)')};
+  transform: ${props => (props.show ? 'translateX(0)' : 'translateX(-30vw)')};
   transition-duration: 0.7s;
   border-radius: 0 6px 6px 0;
-    /*display: ${props => (props.display ? 'inherit' : 'none')};*/
   z-index: 100;
   
 `
@@ -38,13 +39,14 @@ export const ContentLayout = styled.div<IContent>`
   box-shadow: 0 0 4px 0 rgba(34, 60, 80, 0.2);
   grid-column: 2;
   min-height: 43vh;
+  height: ${props => props.height? props.height : '70vh'};
   display: grid;
   align-items: revert;
   grid-template-columns: ${props => (props.gridColumn? props.gridColumn : 'none')};
   grid-template-rows: ${props => (props.gridRows? props.gridRows : 'none')};
   padding: ${props => (props.padding ? props.padding : '1rem')};
   @media (max-height: 600px) {
-    min-height: 250px;
+    min-height: 400px;
   }
 `
 

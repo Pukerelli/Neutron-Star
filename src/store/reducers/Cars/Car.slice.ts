@@ -1,6 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {srcFromServer} from "../../../fake-server/Server";
 
+const srcFromServer = ['', '']
 interface initialState{
     src: Array<string>
     count: number | null

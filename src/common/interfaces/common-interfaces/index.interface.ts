@@ -1,19 +1,22 @@
 
 
+
 export interface IUser {
-    id: number
+    _id: number
     username: string
     fullName?: {
         firstName: string
         LastName: string
     }
-    email?: string
+    email: string
     password: string
     nickname?: string
     photo?: IUserPhoto
     car?: Array<ICar>
     city: ICity
     age?: number
+    token: string,
+    __v: number | undefined | null
 }
 
 export interface IUserPhoto {

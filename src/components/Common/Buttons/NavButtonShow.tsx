@@ -4,12 +4,12 @@ import {NavDisplayBtn} from "../../../styles/StyledComponents/NavBar/NavBar.styl
 
 
 interface IProps {
-    display: boolean
+    show: boolean
     handler: () => void
 }
-export const NavButtonShow: React.FC<IProps> = ({display, handler}) => {
+export const NavButtonShow: React.FC<IProps> = ({show, handler}) => {
     return (
-        <NavDisplayBtn onClick={handler} display={display}>
+        <NavDisplayBtn onClick={handler} show={show}>
             <ArrowForwardIosIcon/>
         </NavDisplayBtn>
 

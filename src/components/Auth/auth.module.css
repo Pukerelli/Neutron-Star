@@ -1,0 +1,77 @@
+
+
+.form {
+    display: flex;
+    flex-direction: column;
+    padding: 1.8rem;
+    height: 100%;
+    width: 70%;
+    margin: 0 auto;
+    position: relative;
+    background-color: inherit;
+    color: white;
+
+}
+
+.title {
+    justify-content: center;
+    width: 100%;
+    display: flex;
+    font-size: 24px;
+    margin-bottom: 2rem;
+}
+
+.label{
+    text-align: center;
+}
+
+.username, .password, .email {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.field {
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 16px;
+    padding: 0.3rem 0;
+    background-color: inherit;
+    border-bottom: 2px solid white;
+    transition: 0.5s linear;
+    text-transform: none;
+}
+.field:focus {
+    transform: scale(1.1, 1.3);
+
+}
+.field:hover {
+    transform: scale(1.1, 1.3);
+
+}
+
+.field::placeholder{
+    color: white;
+    opacity: 0.85;
+    font-size: 13px;
+}
+
+.button, .regBtn {
+    margin-top: 1rem;
+    outline: none;
+    border: none;
+    height: 1.8rem;
+    border-radius: 6px;
+    transition: 0.3s linear;
+}
+.regBtn{
+    height: 1.2rem
+}
+.button:hover, .regBtn:hover{
+    transform: scale(1.1);
+}
+.button:active, .regBtn:active{
+
+    transform: translate(1px, 1px);
+}
