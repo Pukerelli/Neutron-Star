@@ -10,6 +10,7 @@ interface IProps{
     color?: string
     top?: string
     right?: string
+    textColor?: string
 }
 
 export const TrnsprntBtn = styled.button<IProps>`
@@ -22,7 +23,7 @@ export const TrnsprntBtn = styled.button<IProps>`
   transform: translate(${props => props.cords? props.cords : '50%, 50%'});
   top: ${props => props.top? props.top: '50%'};
   right: ${props => props.right? props.right: '50%'};
-  color: white;
+  color: ${props => props.textColor? props.textColor: 'white'};
   display: flex;
   align-items: center;
   justify-content: center;

@@ -14,7 +14,7 @@ interface ILogin {
 }
 
 
-export const fetchLogin = createAsyncThunk<IUser,
+export const fetchLogin = createAsyncThunk<string,
     ILogin,
     {
         rejectValue: string
@@ -25,7 +25,7 @@ export const fetchLogin = createAsyncThunk<IUser,
         return thunkApi.rejectWithValue(response.message)
     }
 
-    return response.user
+    return response.user.username
 })
 export const fetchRegistration = createAsyncThunk<void, IReg, {
     rejectValue: string
@@ -41,7 +41,7 @@ export const fetchRegistration = createAsyncThunk<void, IReg, {
     }
 })
 
-export const fetchAuth = createAsyncThunk<IUser,
+export const fetchAuth = createAsyncThunk<string,
     null,
     {
         rejectValue: string
@@ -49,20 +49,20 @@ export const fetchAuth = createAsyncThunk<IUser,
     const response = await AuthAPI.auth()
     if (!(response.code === 2)) {
         return thunkApi.rejectWithValue(response.message)
+    }else{
+        thunkApi.dispatch({type: 'user/setUser', payload: response.user})
     }
-    return response.user
+    return response.user.username
 })
 
 
 interface IInitialState {
-    user: IUser | undefined,
     loading: 'idle' | 'pending' | 'succeeded' | 'failed',
     error: string | SerializedError | null
     isAuth: null | string
 }
 
 const initialState = {
-    user: {},
     loading: 'idle',
     error: null,
     isAuth: null
@@ -73,14 +73,13 @@ const authSlice = createSlice({
     initialState,
     reducers: {
         logout: (state) => {
-            state.user = initialState.user
-            state.isAuth = null
+            state.isAuth = 'unauthorized'
+            localStorage.clear()
         }
     },
     extraReducers: (builder) => {
         builder.addCase(fetchLogin.fulfilled, (state, {payload}) => {
-            state.user = payload
-            state.isAuth = payload.username
+            state.isAuth = payload
             state.loading = 'succeeded'
         })
             .addCase(fetchLogin.rejected, (state, action) => {
@@ -95,12 +94,12 @@ const authSlice = createSlice({
                 state.loading = 'pending'
             })
             .addCase(fetchAuth.fulfilled, (state, {payload}) => {
-                state.user = payload
-                state.isAuth = payload.username
+                state.isAuth = payload
                 state.loading = 'succeeded'
             })
             .addCase(fetchAuth.rejected, (state, action) => {
                 state.loading = 'failed'
+                state.isAuth = 'unauthorized'
                 if (action.payload) {
                     state.error = action.payload
                 } else {

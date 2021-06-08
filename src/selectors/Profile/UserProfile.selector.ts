@@ -7,3 +7,6 @@ export const selectUserProfile = (state: RootState) => {
 export  const selectIsFetchingUserData = (state: RootState) => {
     return state.user.isFetching
 }
+export const selectUserFetchErrors = (state: RootState) => {
+    return state.user.error
+}

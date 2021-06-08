@@ -1,37 +1,58 @@
 import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {IUser} from "../../../common/interfaces/common-interfaces/index.interface";
+import {IUpdateData, UserAPI, IPayload} from "../../../API/user.api";
 
 
-interface initialState {
+interface IInitialState {
     user: IUser
-    error: string | null
+    error: string
     isFetching: boolean
 }
+
 const initialState = {
     user: {},
-    error: null,
-    isFetching: true
-} as initialState
+    error: '',
+    isFetching: false
+} as IInitialState
 
-
-/*export const getUserData = createAsyncThunk<
-    // Return type of the payload creator
-    IUser,
-    // First argument to the payload creator
-    number,
-    // Types for ThunkAPI
-    {
-        rejectValue: string
+export const fetchUser = createAsyncThunk<void, string>('/fetchUser',
+    async (username, thunkApi) => {
+        try {
+            thunkApi.dispatch({type: 'user/toggleIsFetching'})
+            const response = await UserAPI.get(username)
+            if (response.code === 2) {
+                thunkApi.dispatch({type: 'user/setUser', payload: response.data})
+                thunkApi.dispatch({type: 'user/toggleIsFetching'})
+            }
+        } catch (e) {
+            thunkApi.dispatch({type: 'user/setError', payload: e.message})
+        }
     }
-    >('users/update', async (id, thunkApi) => {
-    const response = await fetchUser(id)
-    if (response == 'error') {
-        // Return the known error for future handling
-        return thunkApi.rejectWithValue(response as string)
-    }
-    return response as IUser
-})*/
+)
 
+export const UpdateUser = createAsyncThunk<void, IUpdateData>('/updateUser',
+    async (data, thunkApi) => {
+        try {
+            const response = await UserAPI.update(data)
+            if (response.code === 2) {
+                thunkApi.dispatch({type: 'user/setUser', payload: response.data})
+            }
+        } catch (e) {
+            thunkApi.dispatch({type: 'user/setError', payload: e.message})
+        }
+    })
+
+export const UpdateUserPhoto = createAsyncThunk<void, IPayload<string>>('/updateUser',
+    async(payload, thunkApi) => {
+    try{
+        const response = await UserAPI.updatePhoto(payload)
+        if(response.code === 2){
+            thunkApi.dispatch({type: 'user/setUser', payload: response.data})
+        }
+    }catch (e) {
+        thunkApi.dispatch({type: 'user/setError', payload: e.message})
+    }
+    })
 
 
 const userSlice = createSlice({
@@ -40,27 +61,19 @@ const userSlice = createSlice({
     reducers: {
         setUser: (state, action: PayloadAction<IUser>) => {
             state.user = action.payload
+            state.error = ''
+        },
+        setError: (state, action: PayloadAction<string>) => {
+            state.error = action.payload
+        },
+        toggleIsFetching: (state) => {
+            state.isFetching = !state.isFetching
         }
-    },
-    extraReducers: (builder) => {
-       /* builder.addCase(getUserData.fulfilled, (state, { payload }) => {
-            state.user = payload
-            state.isFetching = false
-        })
-        builder.addCase(getUserData.rejected, (state, action) => {
-            if (action.payload) {
-                // Since we passed in `MyKnownError` to `rejectValue` in `updateUser`, the type information will be available here.
-                state.error = action.payload
-            } else{
-                state.error = 'something went wrong'
-            }
-        })
-        builder.addCase(getUserData.pending, (state) => {
-            state.isFetching = true
-        })*/
-    },
+    }
 })
 
 
-
 export default userSlice.reducer
+
+
+

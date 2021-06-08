@@ -10,13 +10,19 @@ import {AppWrapper} from "./styles/StyledComponents/App/AppWrapper.StyledCompone
 import {useAppDispatch} from "./store";
 import {fetchAuth} from "./store/reducers/auth-reducer/auth.slice";
 import { Auth } from './components/Auth/Auth.component';
+import {useSelector} from "react-redux";
+import {selectAuthUser} from "./selectors/auth/auth.selector";
 
 
 const App: React.FC = () => {
     const dispatch = useAppDispatch()
+    const isAuth = useSelector(selectAuthUser)
     useEffect(()=> {
         dispatch(fetchAuth(null))
     },[])
+    if(!isAuth){
+       return <div><h1>LOADING</h1></div>
+    }
     return (
         <Router>
             <AppWrapper>
@@ -26,12 +32,10 @@ const App: React.FC = () => {
                         <Route exact path='/'>
                             <Home/>
                         </Route>
-
                         <Route path='/auth'>
                             <Auth/>
                         </Route>
-
-                        <Route exact path='/profile'>
+                        <Route  path={['/profile/:username', '/profile']}>
                             <UserProfile/>
                         </Route>
                     </Switch>

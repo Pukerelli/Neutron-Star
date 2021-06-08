@@ -1,9 +1,15 @@
 import styled from "styled-components";
 
-export const ImgSimple = styled.img`
+interface IProps{
+    height?: string
+    margin?: string
+}
+
+export const ImgSimple = styled.img<IProps>`
   width: 100%;
-  height: inherit;
+  height: ${props => props.height? props.height : 'inherit'};
   overflow: hidden;
+  margin: ${props => props.margin? props.margin : 0};
   object-fit: cover;
   @media (max-height: 600px) {
     min-height: 200px;

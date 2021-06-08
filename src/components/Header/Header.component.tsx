@@ -9,7 +9,7 @@ import {useAppDispatch} from "../../store";
 
 
 export const Header: React.FC = () => {
-    const isAuth = useSelector(selectAuthUser)
+    const auth = useSelector(selectAuthUser)
     const dispatch = useAppDispatch()
     const onClick = () => {
         dispatch({type: 'auth/logout'})
@@ -23,7 +23,7 @@ export const Header: React.FC = () => {
                     <NavLink to='/'>Home</NavLink>
                 </HeaderItem>
                 <HeaderItem>
-                    <NavLink to='/profile'>Profile</NavLink>
+                    <NavLink to={`/profile/${auth}`}>Profile</NavLink>
                 </HeaderItem>
                 <HeaderItem>
                     <NavLink to='/cars'>Cars</NavLink>
@@ -34,13 +34,13 @@ export const Header: React.FC = () => {
                 <HeaderItem>
                     <NavLink to='/services'>Services</NavLink>
                 </HeaderItem><HeaderItem>
-                    <NavLink to='/search'>Search</NavLink>
-                </HeaderItem>
+                <NavLink to='/search'>Search</NavLink>
+            </HeaderItem>
                 <HeaderItem onClick={onClick} style={{cursor: 'pointer'}}>
                     <span><AccountBoxIcon/></span>
                     {
-                        isAuth? <span >Logout</span>
-                        :<NavLink exact to='/auth/login'>Log in</NavLink>
+                        auth && auth != 'unauthorized' ? <span>Logout</span>
+                            : <NavLink exact to='/auth/login'>Log in</NavLink>
                     }
 
                 </HeaderItem>

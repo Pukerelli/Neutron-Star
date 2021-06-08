@@ -8,7 +8,6 @@ import {fetchLogin} from "../../../store/reducers/auth-reducer/auth.slice";
 import {useSelector} from "react-redux";
 import {selectAuthUser, selectLoading} from "../../../selectors/auth/auth.selector";
 import { useHistory } from 'react-router-dom';
-import auth from '../../../store/reducers/auth-reducer/auth.slice'
 
 interface IValues {
     username: string
@@ -23,7 +22,7 @@ export const LoginForm: React.FC = () => {
     const isLoading = useSelector(selectLoading)
     const isAuth = useSelector(selectAuthUser)
     useEffect(()=> {
-        if(isAuth)
+        if(isAuth && isAuth != 'unauthorized')
         history.push('/profile')
     },[isAuth])
 

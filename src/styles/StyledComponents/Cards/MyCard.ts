@@ -21,7 +21,7 @@ export interface ICard{
     alignSelf?: string
 }
 
-export const Card = styled.div<ICard>`
+export const MyCard = styled.div<ICard>`
   width: ${props => props.width? props.width : '20vw'};
   height: ${props => props.height? props.height :'45vh'};
   grid-column: ${props => props.gridColumn? props.gridColumn : ''};
@@ -35,8 +35,9 @@ export const Card = styled.div<ICard>`
   align-self: ${props => props.alignSelf? props.alignSelf : 'normal'};
   padding: ${props => props.padding? props.padding : 0};
   @media (max-height: 600px) {
-    min-height: 200px;
+    min-height: 270px;
   }
+  
   transition: ${props => props.transition? props.transition : '0s'};
   opacity: ${props => props.opacity? props.opacity : '1'};
   display: ${props => props.display? props.display : 'block'};

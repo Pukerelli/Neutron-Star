@@ -9,7 +9,7 @@ export const store = configureStore({
     reducer: {
         auth: authSlice,
         user: userSlice,
-        carSlider: carSliderSlice
+        car: carSliderSlice
     },
 })
 
