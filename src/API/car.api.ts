@@ -54,6 +54,9 @@ export const CarAPI ={
     },
     getCars(username: string){
         return instance.get<IGetCars>(`${this.api}/get/${username}`).then(response => response.data)
+    },
+    getCurrent(data: string){
+        return instance.get<IResponse<ICar>>(`${this.api}/get/current/${data}`).then(response => response.data)
     }
 }
 

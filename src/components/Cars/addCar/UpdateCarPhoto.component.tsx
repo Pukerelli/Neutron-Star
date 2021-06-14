@@ -1,10 +1,11 @@
-import React, {ImgHTMLAttributes, SyntheticEvent, useState} from 'react';
+import React, {useState} from 'react';
 import {MyCard} from "../../../styles/StyledComponents/Cards/MyCard";
 import {ImgSimple} from "../../../styles/StyledComponents/Images/ImgSimple.styledComponent";
 import {TrnsprntBtn} from "../../../styles/StyledComponents/Buttons/transparentButton.styledComponent";
 import {useAppDispatch} from "../../../store";
+
+import {defaultImage} from '../../../common/images/images';
 import {uploadPhoto} from "../../../store/reducers/Cars/Car.slice";
-import { defaultImage } from '../../../common/images/images';
 
 interface IProps{
     carName: string

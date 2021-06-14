@@ -10,3 +10,10 @@ export const selectCarName = (state: RootState) => {
 export const selectCurrentCar = (state: RootState) => {
     return state.car.currentCar
 }
+export const selectCurrentCarPhoto = (state: RootState) => {
+    return state.car.currentCar.photo
+}
+
+export const selectCarIsFetching = (state: RootState) => {
+    return state.car.isFetching
+}

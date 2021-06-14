@@ -1,4 +1,4 @@
-import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {createAction, createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {IUser} from "../../../common/interfaces/common-interfaces/index.interface";
 import {IUpdateData, UserAPI, IPayload} from "../../../API/user.api";
 
@@ -41,8 +41,8 @@ export const UpdateUser = createAsyncThunk<void, IUpdateData>('/updateUser',
             thunkApi.dispatch({type: 'user/setError', payload: e.message})
         }
     })
-
-export const UpdateUserPhoto = createAsyncThunk<void, IPayload<string>>('/updateUser',
+export const updateUserPhotoAction = createAction<string>('user/updateUser')
+const UpdateUserPhoto = createAsyncThunk<void, IPayload<string>>('/updateUser',
     async(payload, thunkApi) => {
     try{
         const response = await UserAPI.updatePhoto(payload)

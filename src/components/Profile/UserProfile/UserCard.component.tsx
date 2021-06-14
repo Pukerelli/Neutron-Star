@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {GridLayout} from '../../../styles/StyledComponents/Layout/GridLayout.styledComponent';
-import {UserAvatar} from "../../Common/Avatar/UserAvatar";
+import {UserAvatar} from "../../Common/Avatar/UserAvatar.component";
 import {UserInfo} from "./UserInfo/UserInfo";
 import {CarSlider} from "../../Common/cars/CarSlider.component";
 import {ICar, IUser} from "../../../common/interfaces/common-interfaces/index.interface";
@@ -19,26 +19,25 @@ export const UserCard: React.FC<IProps> = ({user, cars}) => {
         setAddCar(!addCar)
     }
     return (
+
         <GridLayout width='100%' gridColumns='1fr 1fr 1fr' gridGap='1rem'>
             <TrnsprntBtn height='2rem' width='10%' top='0' color='#EB3649' onClick={onClick}>
                 {addCar ? 'cancel' : 'add car'}
             </TrnsprntBtn>
-            {addCar ?
-                <AddCar/>
-                :
-                <>
+            {
+                addCar
+                ? <AddCar/>
+                : <>
                     <UserAvatar user={user}/>
                     <UserInfo user={user}/>
-                    {cars.length ?
-                        <CarSlider height='50vh' width='inherit'/>
-                        :
-                        <>
+                    {cars.length
+                        ? <CarSlider height='50vh' width='inherit'/>
+                        : <>
                             <MyCard boxShadow={true}>
                                 <h1>mda</h1>
                             </MyCard>
-                        </>}
-
-
+                        </>
+                    }
                 </>
             }
         </GridLayout>

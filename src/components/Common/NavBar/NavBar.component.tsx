@@ -7,9 +7,10 @@ import {NavHideBtn} from "../../../styles/StyledComponents/NavBar/NavBar.styledC
 
 interface IProps{
     navBar: Array<string>
+    address: string
 }
 
-export const NavBar: React.FC<IProps> = ({navBar}) => {
+export const NavBar: React.FC<IProps> = ({navBar, address}) => {
     const [displayBar, setDisplayBar] = useState(true)
     const navBarHandler = () => {
         setDisplayBar(!displayBar)
@@ -17,7 +18,7 @@ export const NavBar: React.FC<IProps> = ({navBar}) => {
     return (
         <div>
             <NavBarLayout show={displayBar}>
-                <NavBarMenu links={navBar}/>
+                <NavBarMenu links={navBar} address={address}/>
                 <NavHideBtn onClick={navBarHandler}>
                     <ArrowForwardIosIcon/>
                 </NavHideBtn>

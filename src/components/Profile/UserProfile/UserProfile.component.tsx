@@ -42,7 +42,7 @@ export const UserProfile = () => {
 
     return (
         <Layout>
-            <NavBar navBar={navBar}/>
+            <NavBar navBar={navBar} address={''}/>
             <ContentLayout gridColumn='1fr' >
                 <UserCard  cars={cars} user={user}/>
             </ContentLayout>

@@ -19,6 +19,7 @@ export interface ICard{
     gridRow?: string
     margin?: string
     alignSelf?: string
+    minHeight?: string
 }
 
 export const MyCard = styled.div<ICard>`
@@ -29,13 +30,13 @@ export const MyCard = styled.div<ICard>`
   box-shadow: ${props => props.boxShadow? '0 0 4px 0 rgba(34, 60, 80, 0.2)' : 'none'};
   background-color: ${props => props.color? props.color :'#fff'};
   border-radius: 6px;
-  color: ${props => props.color? props.color: '#000'};
+  color: ${props => props.colorText? props.colorText: 'white'};
   text-align: ${props => props.textAlign? props.textAlign : 'inherit'};
   overflow: hidden;
   align-self: ${props => props.alignSelf? props.alignSelf : 'normal'};
   padding: ${props => props.padding? props.padding : 0};
   @media (max-height: 600px) {
-    min-height: 270px;
+    min-height: ${props => props.minHeight? props.minHeight : '270px'};
   }
   
   transition: ${props => props.transition? props.transition : '0s'};

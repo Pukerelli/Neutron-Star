@@ -48,11 +48,9 @@ export const UpdateCarInfo: React.FC<IProps> = ({carName, car}) => {
 
     }
     const dispatch = useAppDispatch()
-    const history = useHistory()
     const onSubmit = async (values: typeof initialValues) => {
         debugger
         await dispatch(updateCar({...values, carName}))
-        history.push('/profile')
     }
 
     return (

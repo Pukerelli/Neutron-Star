@@ -9,6 +9,7 @@ interface IContent{
     padding?: string
     width?: string
     height?: string
+    overflow?: string
 }
 
 export const Layout = styled.div`
@@ -38,8 +39,10 @@ export const ContentLayout = styled.div<IContent>`
   border-radius: 6px;
   box-shadow: 0 0 4px 0 rgba(34, 60, 80, 0.2);
   grid-column: 2;
+  overflow: ${props => props.overflow? props.overflow: 'none'};
+  margin-top: 1rem;
   min-height: 43vh;
-  height: ${props => props.height? props.height : '70vh'};
+  height: ${props => props.height? props.height : '75vh'};
   display: grid;
   align-items: revert;
   grid-template-columns: ${props => (props.gridColumn? props.gridColumn : 'none')};

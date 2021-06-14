@@ -12,6 +12,7 @@ import {fetchAuth} from "./store/reducers/auth-reducer/auth.slice";
 import { Auth } from './components/Auth/Auth.component';
 import {useSelector} from "react-redux";
 import {selectAuthUser} from "./selectors/auth/auth.selector";
+import {Car} from "./components/Cars/Car.component";
 
 
 const App: React.FC = () => {
@@ -37,6 +38,9 @@ const App: React.FC = () => {
                         </Route>
                         <Route  path={['/profile/:username', '/profile']}>
                             <UserProfile/>
+                        </Route>
+                        <Route  path={'/cars'}>
+                            <Car/>
                         </Route>
                     </Switch>
                 </main>

@@ -1,3 +1,6 @@
+
+
+
 export const stockPhotos = [
     'https://images.drive.ru/i/0/5f5a4300ec05c4db05000003',
     'https://i.pinimg.com/originals/56/56/c0/5656c0666c3f8795d0031d704a9476d6.jpg',

@@ -28,8 +28,9 @@ export const TrnsprntBtn = styled.button<IProps>`
   align-items: center;
   justify-content: center;
   transition: 0.7s;
+  cursor: pointer;
   &:hover{
-    background: ${props => props.onColor? props.onColor : 'rgba(64,64,64,0.65)'};
+    background: ${props => props.onColor? props.onColor : 'rgba(235,54,73, 0.8)'};
   }
   
     
