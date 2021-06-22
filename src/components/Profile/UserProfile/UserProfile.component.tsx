@@ -44,7 +44,7 @@ export const UserProfile = () => {
         <Layout>
             <NavBar navBar={navBar} address={''}/>
             <ContentLayout gridColumn='1fr' >
-                <UserCard  cars={cars} user={user}/>
+                <UserCard  cars={cars} user={user} auth={auth}/>
             </ContentLayout>
         </Layout>
     );

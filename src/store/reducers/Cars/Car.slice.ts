@@ -4,6 +4,35 @@ import {CarAPI, INewCar, IUpdateCar, IUploadPhoto} from "../../../API/car.api";
 import {Car} from "../../../components/Cars/Car.component";
 
 
+export const carList = createAsyncThunk<void, string>('/list',
+    async (search, thunkApi) => {
+        thunkApi.dispatch({type: 'car/setFetching', payload: true})
+        try {
+            const response = await CarAPI.getCarList(search)
+            if (response.code === 2) {
+                thunkApi.dispatch({type: 'car/setCars', payload: response.data})
+                thunkApi.dispatch({type: 'car/setFetching', payload: false})
+            }
+        } catch (e) {
+            thunkApi.dispatch({type: 'car/setError', payload: e.message})
+            thunkApi.dispatch({type: 'car/setFetching', payload: false})
+        }
+    })
+export const deleteCar = createAsyncThunk<void, string>('/delete',
+    async (carname, thunkApi) => {
+        thunkApi.dispatch({type: 'car/setFetching', payload: true})
+        try {
+            const response = await CarAPI.deleteCar(carname)
+            if (response.code === 2) {
+                thunkApi.dispatch({type: 'car/setCars', payload: response.data})
+                thunkApi.dispatch({type: 'car/setFetching', payload: false})
+            }
+        } catch (e) {
+            thunkApi.dispatch({type: 'car/setError', payload: e.message})
+            thunkApi.dispatch({type: 'car/setFetching', payload: false})
+        }
+    })
+
 export const addNewCar = createAsyncThunk<void, INewCar>('/add',
     async (data, thunkApi) => {
         thunkApi.dispatch({type: 'car/setFetching', payload: true})
@@ -19,6 +48,55 @@ export const addNewCar = createAsyncThunk<void, INewCar>('/add',
             thunkApi.dispatch({type: 'car/setFetching', payload: false})
         }
     })
+
+export const followCar = createAsyncThunk<void, string>('/follow',
+    async (data, thunkApi) => {
+        thunkApi.dispatch({type: 'car/setFetching', payload: true})
+        try{
+            const response = await CarAPI.postFollow(data)
+            if(response.code === 2){
+                thunkApi.dispatch({type: 'car/setFetching', payload: false})
+                thunkApi.dispatch({type: 'car/setFollowCar', payload: response.data})
+            }
+
+        }catch (e) {
+            thunkApi.dispatch({type: 'car/setError', payload: e.message})
+            thunkApi.dispatch({type: 'car/setFetching', payload: false})
+        }
+    }
+    )
+export const unfollowCar = createAsyncThunk<void, string>('/follow',
+    async (data, thunkApi) => {
+        thunkApi.dispatch({type: 'car/setFetching', payload: true})
+        try{
+            const response = await CarAPI.deleteFollow(data)
+            if(response.code === 2){
+                thunkApi.dispatch({type: 'car/setFollowCar', payload: response.data})
+                thunkApi.dispatch({type: 'car/setFetching', payload: false})
+            }
+
+        }catch (e) {
+            thunkApi.dispatch({type: 'car/setError', payload: e.message})
+            thunkApi.dispatch({type: 'car/setFetching', payload: false})
+        }
+    }
+)
+
+export const getFollowedCars = createAsyncThunk<void, string>('/getFollowed',
+ async (data, thunkApi) => {
+    try{
+        const response = await CarAPI.getFollowedCars(data)
+        if(response.code === 2){
+            thunkApi.dispatch({type: 'car/setCars', payload: response.data})
+            thunkApi.dispatch({type: 'car/setFetching', payload: false})
+        }
+
+
+    }catch (e) {
+        thunkApi.dispatch({type: 'car/setError', payload: e.message})
+        thunkApi.dispatch({type: 'car/setFetching', payload: false})
+    }
+})
 
 export const getCurrentCar = createAsyncThunk<void, string>('/get/current',
     async (data, thunkApi) => {
@@ -101,7 +179,8 @@ const initialState = {
         name: '',
         brand: '',
         model: '',
-        owner: ''
+        owner: '',
+        followedBy: ['']
     },
     isFetching: false,
     error: ''
@@ -127,6 +206,9 @@ const carSlice = createSlice({
         },
         setFetching: (state, action: PayloadAction<boolean>) => {
             state.isFetching = action.payload
+        },
+        setFollowCar: (state, action: PayloadAction<ICar>) => {
+           state.cars[state.cars.findIndex((car) => car.name === action.payload.name)] = action.payload
         }
 
     }

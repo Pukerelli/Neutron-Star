@@ -5,10 +5,10 @@ import garage from '../../../common/images/garage.svg'
 
 export const CarMenu = () => {
     return (
-       <GridLayout width='100%' gridColumns='1fr 1fr 1fr' margin='0 auto'>
+       <GridLayout width='100%' gridColumns='1fr 1fr 1fr' margin='0 auto' >
             <MenuContainer link={'garage'} image={garage} title={'garage'}/>
-            <MenuContainer link={'garage'} image={garage} title={'garage'}/>
-            <MenuContainer link={'garage'} image={garage} title={'garage'}/>
+            <MenuContainer link={'list'} image={garage} title={'list'}/>
+            <MenuContainer link={'followed'} image={garage} title={'followed'}/>
        </GridLayout>
     );
 };

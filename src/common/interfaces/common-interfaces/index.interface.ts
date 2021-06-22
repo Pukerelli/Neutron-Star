@@ -45,6 +45,7 @@ export interface ICar {
     rims?: string
     ownTime?: string
     photo?: string
+    followedBy: Array<string>
 }
 
 

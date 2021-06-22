@@ -6,14 +6,16 @@ import {Garage} from './Garage/Garage.component';
 import style from '../../styles/common.module.css'
 import {CarMenu} from "./CarMenu/CarMenu.component";
 import {AboutCar} from "./AboutCar/AboutCar.component";
+import {FollowedCars} from "./FollowedCar/FollowedCars.component";
+import { CarList } from './CarList/CarList.component';
 
 export const Car: React.FC = React.memo(() => {
-    const navBar = ['garage', 'list', 'followed', 'link']
+    const navBar = ['home', 'garage', 'list', 'followed']
 
     return (
         <Layout>
             <NavBar navBar={navBar} address={'cars'}/>
-            <ContentLayout gridColumn='1fr' overflow='scroll' className={style.scroll}>
+            <ContentLayout gridColumn='1fr' gridRows='10fr 90fr'  overflow='scroll' className={style.scroll}>
                 <Switch>
                     <Route  path={'/cars/garage/:username?'}>
                         <Garage/>
@@ -22,10 +24,10 @@ export const Car: React.FC = React.memo(() => {
                         <AboutCar/>
                     </Route>
                     <Route  path='/cars/list'>
-                        <div><h1>loading</h1></div>
+                        <CarList/>
                     </Route>
                     <Route  path='/cars/followed'>
-
+                        <FollowedCars/>
                     </Route>
                     <Route  path='/cars'>
                         <CarMenu/>

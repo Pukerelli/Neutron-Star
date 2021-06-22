@@ -10,6 +10,7 @@ interface IProps {
     margin?: string
     overflow?: string
     position?: string
+    align?: string
 }
 
 export const GridLayout = styled.div<IProps>`
@@ -20,6 +21,6 @@ export const GridLayout = styled.div<IProps>`
   grid-template-columns: ${props => props.gridColumns ? props.gridColumns : '1fr'};
   grid-template-rows: ${props => props.gridRows ? props.gridRows : '1fr'};
   grid-gap: ${props => props.gridGap ? props.gridGap : '0px'};
-  align-self: center;
+  align-self: ${props => props.align ? props.align : 'center'};
   margin: ${props => props.margin ? props.margin : 0}
 `
