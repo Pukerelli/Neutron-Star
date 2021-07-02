@@ -1,6 +1,6 @@
 import {createAsyncThunk, createSlice, SerializedError} from "@reduxjs/toolkit";
+import {Auth} from "../../../API/auth-api";
 import {IUser} from "../../../common/interfaces/common-interfaces/index.interface";
-import {AuthAPI} from "../../../API/auth-api";
 
 interface IReg {
     username: string
@@ -14,31 +14,39 @@ interface ILogin {
 }
 
 
-export const fetchLogin = createAsyncThunk<string,
+export const fetchLogin = createAsyncThunk<IUser,
     ILogin,
     {
         rejectValue: string
-    }>('auth/login', async ({username, password}, thunkApi) => {
-    const response = await AuthAPI.login(username, password)
-    if (response.code !== 2) {
+    }>('auth/login', async (data, thunkApi) => {
+    const response = await Auth.postLogin(data)
+    if (response.code === 2) {
+        if (response.token)
+            localStorage.setItem('token', response.token)
+        thunkApi.dispatch({type: 'user/setUser', payload: response.data})
 
+    } else {
         return thunkApi.rejectWithValue(response.message)
     }
 
-    return response.user.username
+    return response.data
 })
 export const fetchRegistration = createAsyncThunk<void, IReg, {
     rejectValue: string
-}>('auth/registration', async ({email, username, password}, thunkApi) => {
-    const response = await AuthAPI.registration(email, username, password)
+}>('auth/registration', async (data, thunkApi) => {
+    const response = await Auth.postRegistration(data)
     if (response.code !== 2) {
         return thunkApi.rejectWithValue(response.message)
     }
     if (response.code === 2) {
-        localStorage.setItem('token', response.token)
-        console.log(response.token)
+        if (response.token)
+            localStorage.setItem('token', response.token)
+
+
         thunkApi.dispatch(fetchAuth(null))
     }
+
+
 })
 
 export const fetchAuth = createAsyncThunk<string,
@@ -46,26 +54,30 @@ export const fetchAuth = createAsyncThunk<string,
     {
         rejectValue: string
     }>('auth/auth', async (arg, thunkApi) => {
-    const response = await AuthAPI.auth()
-    if (!(response.code === 2)) {
-        return thunkApi.rejectWithValue(response.message)
-    }else{
-        thunkApi.dispatch({type: 'user/setUser', payload: response.user})
+    const response = await Auth.getAuth()
+    if (response.token) {
+        localStorage.setItem('token', response.token)
     }
-    return response.user.username
+
+    if (response.code !== 2)
+        return thunkApi.rejectWithValue(response.message)
+
+    thunkApi.dispatch({type: 'user/setUser', payload: response.data})
+
+    return response.data.username
 })
 
 
 interface IInitialState {
     loading: 'idle' | 'pending' | 'succeeded' | 'failed',
     error: string | SerializedError | null
-    isAuth: null | string
+    isAuth: string
 }
 
 const initialState = {
     loading: 'idle',
     error: null,
-    isAuth: null
+    isAuth: 'loading'
 } as IInitialState
 
 const authSlice = createSlice({
@@ -79,7 +91,7 @@ const authSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(fetchLogin.fulfilled, (state, {payload}) => {
-            state.isAuth = payload
+            state.isAuth = payload.username
             state.loading = 'succeeded'
         })
             .addCase(fetchLogin.rejected, (state, action) => {
@@ -117,11 +129,12 @@ const authSlice = createSlice({
                     state.error = action.error
                 }
             })
-            .addCase(fetchRegistration.pending, (state, action) => {
+            .addCase(fetchRegistration.pending, (state) => {
                 state.loading = 'pending'
             })
     }
 })
+
 
 export const {} = authSlice.actions
 export default authSlice.reducer

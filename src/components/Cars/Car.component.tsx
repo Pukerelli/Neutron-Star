@@ -10,12 +10,12 @@ import {FollowedCars} from "./FollowedCar/FollowedCars.component";
 import { CarList } from './CarList/CarList.component';
 
 export const Car: React.FC = React.memo(() => {
-    const navBar = ['home', 'garage', 'list', 'followed']
+    const navBar = ['home', 'garage', 'search', 'followed']
 
     return (
         <Layout>
             <NavBar navBar={navBar} address={'cars'}/>
-            <ContentLayout gridColumn='1fr' gridRows='10fr 90fr'  overflow='scroll' className={style.scroll}>
+            <ContentLayout gridColumn='1fr' overflow='scroll' className={style.scroll}>
                 <Switch>
                     <Route  path={'/cars/garage/:username?'}>
                         <Garage/>
@@ -23,7 +23,7 @@ export const Car: React.FC = React.memo(() => {
                     <Route path='/cars/about/:carname'>
                         <AboutCar/>
                     </Route>
-                    <Route  path='/cars/list'>
+                    <Route  path='/cars/search'>
                         <CarList/>
                     </Route>
                     <Route  path='/cars/followed'>

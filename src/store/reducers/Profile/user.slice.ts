@@ -1,28 +1,26 @@
-import {createAction, createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {IUser} from "../../../common/interfaces/common-interfaces/index.interface";
-import {IUpdateData, UserAPI, IPayload} from "../../../API/user.api";
+import {IUpdateData, Profile} from "../../../API/user.api";
 
 
 interface IInitialState {
     user: IUser
+    users: Array<IUser>
     error: string
     isFetching: boolean
 }
 
-const initialState = {
-    user: {},
-    error: '',
-    isFetching: false
-} as IInitialState
+
 
 export const fetchUser = createAsyncThunk<void, string>('/fetchUser',
     async (username, thunkApi) => {
         try {
             thunkApi.dispatch({type: 'user/toggleIsFetching'})
-            const response = await UserAPI.get(username)
+            const response = await Profile.getUser(username)
             if (response.code === 2) {
                 thunkApi.dispatch({type: 'user/setUser', payload: response.data})
                 thunkApi.dispatch({type: 'user/toggleIsFetching'})
+                thunkApi.dispatch({type: 'user/clearErrors'})
             }
         } catch (e) {
             thunkApi.dispatch({type: 'user/setError', payload: e.message})
@@ -33,7 +31,7 @@ export const fetchUser = createAsyncThunk<void, string>('/fetchUser',
 export const UpdateUser = createAsyncThunk<void, IUpdateData>('/updateUser',
     async (data, thunkApi) => {
         try {
-            const response = await UserAPI.update(data)
+            const response = await Profile.postUpdateUser(data)
             if (response.code === 2) {
                 thunkApi.dispatch({type: 'user/setUser', payload: response.data})
             }
@@ -41,11 +39,10 @@ export const UpdateUser = createAsyncThunk<void, IUpdateData>('/updateUser',
             thunkApi.dispatch({type: 'user/setError', payload: e.message})
         }
     })
-export const updateUserPhotoAction = createAction<string>('user/updateUser')
-const UpdateUserPhoto = createAsyncThunk<void, IPayload<string>>('/updateUser',
-    async(payload, thunkApi) => {
+export const UpdateUserPhoto = createAsyncThunk<void, {data: string}>('/updateUser',
+    async(data, thunkApi) => {
     try{
-        const response = await UserAPI.updatePhoto(payload)
+        const response = await Profile.postUpdatePhoto(data)
         if(response.code === 2){
             thunkApi.dispatch({type: 'user/setUser', payload: response.data})
         }
@@ -54,6 +51,12 @@ const UpdateUserPhoto = createAsyncThunk<void, IPayload<string>>('/updateUser',
     }
     })
 
+const initialState = {
+    users: [{}],
+    user: {},
+    error: '',
+    isFetching: false
+} as IInitialState
 
 const userSlice = createSlice({
     name: 'user',
@@ -68,7 +71,18 @@ const userSlice = createSlice({
         },
         toggleIsFetching: (state) => {
             state.isFetching = !state.isFetching
-        }
+        },
+        clearErrors: (state) => {
+            state.error = ''
+        },
+        setUsers: (state, action: PayloadAction<Array<IUser>>) => {
+            state.users = action.payload
+        },
+        pushUsers: (state, action: PayloadAction<string>) => {
+            state.users = state.users.filter((user) => user.username !== action.payload)
+        },
+
+
     }
 })
 

@@ -6,13 +6,16 @@ interface IProps{
 }
 
 export const NavLinkStyled = styled.div`
+  color: white;
   font-size: 24px;
-  padding: 0.3rem;
+  padding: 0.2rem;
+
   &:hover {
-    color: white;
+    background-color: rgb(205, 53, 68);
   }
   transition: .4ms linear;
   cursor: pointer;
+  margin-bottom: 0.2rem;
 `
 
 export const NavDisplayBtn = styled.button<IProps>`
@@ -23,9 +26,12 @@ export const NavDisplayBtn = styled.button<IProps>`
   position: absolute;
   align-items: center;
   justify-content: center;
+  left: 100%;
+  top: 50%;
+  opacity: ${props => (props.show ? 0 : 1)};
   border-radius: 0 6px 6px 0;
-  transform: ${props => (props.show ? 'translateX(-5vw)' : 'translateX(0)' )} translateY(150%);
-  transition: 0.5s linear;
+  transform: translateY(-50%);
+  transition: 0.2s linear;
   outline: none;
   border: none;
   
@@ -33,7 +39,7 @@ export const NavDisplayBtn = styled.button<IProps>`
 export const NavHideBtn = styled.button`
   background-color: #EB3649;
   height: 40px;
-  width: 12px;
+  width: 16px;
   display: flex;
   position: absolute;
   align-items: center;
@@ -41,7 +47,9 @@ export const NavHideBtn = styled.button`
   border-radius: 6px 0 0 6px;
   transition: 0.5s linear;
   z-index: 0;
+  left: 100%;
+  top: 50%;
   outline: none;
   border: none;
-  transform: translate(930%, -370%) scaleX(-1);
+  transform: translateY(-50%) scaleX(-1);
 `

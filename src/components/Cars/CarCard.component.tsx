@@ -7,6 +7,7 @@ import {CommonBtn} from "../../styles/StyledComponents/Buttons/CommonButton.styl
 import {useSelector} from "react-redux";
 import {selectAuthUser} from "../../selectors/auth/auth.selector";
 import {UpdateCarInfo} from "./addCar/UpdateCarInfo.component";
+import {FollowBtn} from "../Common/Buttons/FollowBtn.component";
 
 interface IProps{
     isFetching: boolean
@@ -16,7 +17,6 @@ interface IProps{
 export const CarCard: React.FC<IProps> = ({car, isFetching}) => {
     const [edit, toggleEdit] = useState(false)
     const auth = useSelector(selectAuthUser)
-
     const onEditHandler = () => {
         toggleEdit(!edit)
     }
@@ -36,7 +36,7 @@ export const CarCard: React.FC<IProps> = ({car, isFetching}) => {
                 auth === car.owner
                     ? <CommonBtn width='10vw' height='3rem' top='95%' color='#EB3649'
                                  onClick={onEditHandler}>{edit? 'cancel': 'edit'}</CommonBtn>
-                    : <CommonBtn width='10vw' height='3rem' top='95%' color='#EB3649'>follow</CommonBtn>
+                    : <FollowBtn btnStyle={{width: '10vw', height: '3rem', top: '95%', color: '#EB3649'}} carname={car.name} followedBy={car.followedBy}/>
             }
         </GridLayout>
     );

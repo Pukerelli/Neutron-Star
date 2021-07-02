@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavLink} from "react-router-dom";
+import {NavLink, useHistory} from "react-router-dom";
 import {HeaderWrapper} from "../../styles/StyledComponents/Header/Header.StyledComponent";
 import {HeaderItem} from '../../styles/StyledComponents/Header/HeaderItem.styledComponent';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
@@ -11,10 +11,12 @@ import {useAppDispatch} from "../../store";
 export const Header: React.FC = () => {
     const auth = useSelector(selectAuthUser)
     const dispatch = useAppDispatch()
+    const history = useHistory()
     const onClick = () => {
-        dispatch({type: 'auth/logout'})
+        if (auth && auth !== 'unauthorized')
+            return dispatch({type: 'auth/logout'})
+        history.push('/auth/login')
     }
-
 
     return (
         <header>
@@ -23,7 +25,7 @@ export const Header: React.FC = () => {
                     <NavLink to='/'>Home</NavLink>
                 </HeaderItem>
                 <HeaderItem>
-                    <NavLink to={`/profile/${auth}`}>Profile</NavLink>
+                    <NavLink to={`/profile/user/${auth}`}>Profile</NavLink>
                 </HeaderItem>
                 <HeaderItem>
                     <NavLink to='/cars'>Cars</NavLink>
@@ -38,11 +40,7 @@ export const Header: React.FC = () => {
             </HeaderItem>
                 <HeaderItem onClick={onClick} style={{cursor: 'pointer'}}>
                     <span><AccountBoxIcon/></span>
-                    {
-                        auth && auth != 'unauthorized' ? <span>Logout</span>
-                            : <NavLink exact to='/auth/login'>Log in</NavLink>
-                    }
-
+                    <span>{auth && auth !== 'unauthorized' ? 'logout' : 'login'}</span>
                 </HeaderItem>
             </HeaderWrapper>
         </header>

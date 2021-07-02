@@ -16,15 +16,17 @@ export const NavBar: React.FC<IProps> = ({navBar, address}) => {
         setDisplayBar(!displayBar)
     }
     return (
-        <div>
+        <>
             <NavBarLayout show={displayBar}>
                 <NavBarMenu links={navBar} address={address}/>
                 <NavHideBtn onClick={navBarHandler}>
                     <ArrowForwardIosIcon/>
                 </NavHideBtn>
+                <NavButtonShow handler={navBarHandler} show={displayBar}/>
             </NavBarLayout>
-            <NavButtonShow handler={navBarHandler} show={displayBar}/>
-        </div>
+
+
+        </>
     );
 };
 

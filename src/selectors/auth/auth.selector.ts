@@ -7,3 +7,4 @@ export const selectAuthUser = (state: RootState) => {
 export const selectLoading = (state: RootState) => {
     return state.auth.loading
 }
+

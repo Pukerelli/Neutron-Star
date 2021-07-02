@@ -7,7 +7,6 @@ import {useHistory, useParams} from "react-router-dom";
 import {getCurrentCar} from "../../../store/reducers/Cars/Car.slice";
 
 export const AboutCar = () => {
-    const history = useHistory()
     const dispatch = useAppDispatch()
     const car = useSelector(selectCurrentCar)
     const {carname} = useParams<{carname: string}>()
@@ -20,5 +19,6 @@ export const AboutCar = () => {
 
     return (
        <CarCard isFetching={isFetching} car={car}/>
+
     );
 };

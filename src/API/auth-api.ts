@@ -1,55 +1,19 @@
-import axios from 'axios'
 import {IUser} from "../common/interfaces/common-interfaces/index.interface";
+import {Requests} from './API';
 
-const instance = axios.create({
-    baseURL: 'http://localhost:5000/api',
-
-});
-
-interface IReg {
-    token: string
-    message: string
-    code: number
-
-}
-
-interface ILogin {
-    token: string
-    code: number
-    user: IUser
-    message: string
-    status: number
-}
-
-export const AuthAPI = {
-    api: '/auth',
-    login(username: string, password: string) {
-        return instance.post<ILogin>(`${this.api}/login`, {
-            username,
-            password
-        }).then(response => {
-            localStorage.setItem('token', response.data.token)
-            return response.data
-        })
-    },
-    auth() {
-        return instance.get<ILogin>(`${this.api}/auth`, {
-            headers: {
-                authorization: `Bearer ${localStorage.getItem('token')}`
-            }
-        }).then(response => {
-            localStorage.setItem('token', response.data.token)
-            return response.data
-        })
-    },
-
-    registration(email: string, username: string, password: string) {
-        return instance.post<IReg>(`${this.api}/registration`,
-            {email, username, password})
-            .then(response => {
-                    localStorage.setItem('token', response.data.token)
-                    return response.data
-                })
-    }
+const requests = new Requests('auth')
+export const Auth = {
+    ///// POST
+    postLogin: (data: { username: string, password: string }) =>
+        requests.post<IUser, typeof data>('login', data),
+    postRegistration: (data: {email: string, username: string, password: string}) =>
+        requests.post<undefined, typeof data>('registration', data),
+    ///// GET
+    getAuth: () => requests.get<IUser>('auth')
 
 }
+
+
+
+
+

@@ -3,18 +3,21 @@ import {GridLayout} from '../../../styles/StyledComponents/Layout/GridLayout.sty
 import {UserAvatar} from "../../Common/Avatar/UserAvatar.component";
 import {UserInfo} from "./UserInfo/UserInfo";
 import {CarSlider} from "../../Common/cars/CarSlider.component";
-import {ICar, IUser} from "../../../common/interfaces/common-interfaces/index.interface";
 import {CommonBtn} from '../../../styles/StyledComponents/Buttons/CommonButton.styledComponent';
 import {AddCar} from "../../Cars/addCar/AddCar.component";
 import {MyCard} from "../../../styles/StyledComponents/Cards/MyCard";
+import {useSelector} from "react-redux";
+import {selectUserProfile} from "../../../selectors/Profile/UserProfile.selector";
+import {selectCars} from "../../../selectors/Cars/Car.selector";
 
 interface IProps {
-    user: IUser
-    cars: Array<ICar>
     auth: string | null
 }
 
-export const UserCard: React.FC<IProps> = ({user, cars, auth}) => {
+export const UserCard: React.FC<IProps> = ({auth}) => {
+    const user = useSelector(selectUserProfile)
+    const cars = useSelector(selectCars)
+
     const [addCar, setAddCar] = useState(false)
     const onClick = () => {
         setAddCar(!addCar)
@@ -25,7 +28,6 @@ export const UserCard: React.FC<IProps> = ({user, cars, auth}) => {
             {auth === user.username ? <CommonBtn height='2rem' width='10%' top='5%' color='#EB3649' onClick={onClick}>
                 {addCar ? 'cancel' : 'add car'}
             </CommonBtn> : null}
-
             {
                 addCar
                     ? <AddCar/>

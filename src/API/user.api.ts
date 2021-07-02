@@ -1,12 +1,17 @@
-import axios from "axios";
-import {IResponse, IUser} from "../common/interfaces/common-interfaces/index.interface";
+import {IUser} from "../common/interfaces/common-interfaces/index.interface";
+import {Requests} from "./API";
 
+const requests = new Requests('profile')
+export const Profile = {
+    ///// POST
+    postUpdatePhoto: (data: {data: string}) => requests.post<IUser, {data: string}>('user/update/photo', data),
+    ///// PUT
+    postUpdateUser: (data: IUpdateData) => requests.put<IUser, IUpdateData>('user/update', data),
+    ///// GET
+    getUser: (data: string) => requests.get<IUser, string>('user', data),
+}
 
-const instance = axios.create({
-    baseURL: 'http://localhost:5000/api',
-
-});
-
+///// TYPES
 export interface IUpdateData {
     fullName?: string,
     age?: string,
@@ -15,37 +20,3 @@ export interface IUpdateData {
     country?: string,
     city?: string
 }
-
-export interface IPayload<D> {
-    payload: D
-}
-
-
-export const UserAPI = {
-    api: '/profile',
-    update(data: IUpdateData) {
-        return instance.put<IResponse<IUser>>(`${this.api}/user/update`,
-            {...data},
-            {
-                headers: {
-                    authorization: `Bearer ${localStorage.getItem('token')}`
-                }
-            }).then(response => response.data)
-    },
-    get(username: string) {
-        return instance.get<IResponse<IUser>>(`${this.api}/user/${username}`)
-            .then(response => response.data)
-    },
-    updatePhoto(data: IPayload<string>) {
-        return instance.post<IResponse<IUser>>(`${this.api}/user/update/photo`, {...data},
-            {
-                headers: {
-                    authorization: `Bearer ${localStorage.getItem('token')}`
-                }
-            }).then(response => response.data)
-    }
-}
-
-
-
-

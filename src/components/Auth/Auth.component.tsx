@@ -1,19 +1,18 @@
 import React from 'react';
-import {Route, Switch } from 'react-router-dom';
-import { Login } from './Login/Login.component';
-import { Registration } from './Registration/Registration.component';
+import {LoginForm} from "./Login/LoginForm.component";
+import {RegistrationForm} from "./Registration/RegistrationForm.component";
+import {Route, Switch} from "react-router-dom";
 
-export const Auth = () => {
+
+export const Auth= () => {
     return (
-        <Switch>
-            <Route exact path='/auth/login'>
-                <Login/>
-            </Route>
-            <Route exact path='/auth/registration'>
-                <Registration/>
-            </Route>
-
-        </Switch>
+            <Switch>
+                <Route path='/auth/login'>
+                    <LoginForm/>
+                </Route>
+                <Route path='/auth/registration'>
+                    <RegistrationForm/>
+                </Route>
+            </Switch>
     );
 };
-

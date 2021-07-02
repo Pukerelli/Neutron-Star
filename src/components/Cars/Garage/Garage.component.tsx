@@ -12,56 +12,56 @@ import {AddCar} from '../addCar/AddCar.component';
 
 
 export const Garage: React.FC = () => {
-    const [addCar, setAddCar] = useState(false)
+        const [addCar, setAddCar] = useState(false)
+        const dispatch = useAppDispatch()
+        const allCars = useSelector(selectCars)
+        const isFetching = useSelector(selectCarIsFetching)
+        const {username} = useParams<{ username: string }>()
+        const auth = useSelector(selectAuthUser)
 
-    const dispatch = useAppDispatch()
-    const allCars = useSelector(selectCars)
-    const isFetching = useSelector(selectCarIsFetching)
-    const {username} = useParams<{ username: string }>()
-    const auth = useSelector(selectAuthUser)
-
-    const onClick = () => {
-        setAddCar(!addCar)
-    }
-
-    useEffect(() => {
-        if (username)
-            dispatch(getCars(username))
-        if (!username && auth) {
-            dispatch(getCars(auth))
+        const onClick = () => {
+            setAddCar(!addCar)
         }
-    }, [username, auth])
 
-    if (addCar) {
-        return (
-            <GridLayout width='100%' gridColumns='1fr 1fr 1fr' gridGap='1rem'>
-                <AddCar/>
-                <CommonBtn height='2rem' width='10%' top='85%' color='#EB3649' onClick={onClick}>
-                    {addCar ? 'cancel' : 'add car'}
-                </CommonBtn>
-            </GridLayout>
-        )
-    }
-    return (
-        <>
-            <div style={{marginBottom: '1rem', height: '2rem'}}>
-            {
-                auth === username ? null
-                :
-                <CommonBtn height='2rem' width='10%' cords='0, 0' margin='0 auto' position='static' top='0'  color='#EB3649' onClick={onClick}>
-                    {addCar ? 'cancel' : 'add car'}
-                </CommonBtn>
+        useEffect(() => {
+            if (username) {
+                dispatch(getCars(username))
+                return
             }
-            </div>
+            if (!username && auth !== 'unauthorized') {
+                dispatch(getCars(auth!))
+                return
+            }
+        }, [username, auth])
 
 
-            <GridLayout width='80%' margin='0 auto' align='start'>
-                {allCars.map((car, index) => <CarMiniCard key={index} car={car} isFetching={isFetching}/>)}
-            </GridLayout>
-        </>
-
-
-    )
-        ;
-};
+        if (addCar) {
+            return (
+                <GridLayout width='100%' gridColumns='1fr 1fr 1fr' gridGap='1rem'>
+                    <AddCar/>
+                    <CommonBtn height='2rem' width='10%' top='85%' color='#EB3649' onClick={onClick}>
+                        {addCar ? 'cancel' : 'add car'}
+                    </CommonBtn>
+                </GridLayout>
+            )
+        }
+        return (
+            <>
+                <div style={{marginBottom: '1rem', height: '2rem'}}>
+                    {
+                        auth === username
+                            ? <CommonBtn height='2rem' width='10%' cords='0, 0' margin='0 auto' position='static' top='0'
+                                         color='#EB3649' onClick={onClick}>
+                                {addCar ? 'cancel' : 'add car'}
+                            </CommonBtn>
+                            : null
+                    }
+                </div>
+                <GridLayout width='80%' margin='0 auto' align='start'>
+                    {allCars.map((car, index) => <CarMiniCard key={index} car={car} isFetching={isFetching}/>)}
+                </GridLayout>
+            </>
+        );
+    }
+;
 

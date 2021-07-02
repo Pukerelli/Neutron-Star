@@ -34,7 +34,7 @@ export const CarMiniCard: React.FC<IProps> = ({car, isFetching}) => {
         <div style={{position: 'relative'}}>
             {auth === car.owner?
                 <CommonBtn height='2rem' width='4rem' top='10%' right='105%' onClick={onDeleteClick}>delete</CommonBtn>
-                : <FollowBtn followedBy={car.followedBy} carname={car.name}/>}
+                : <FollowBtn btnStyle={{height: '2rem', width: '4rem', top: '10%', right: '105%'}} followedBy={car.followedBy} carname={car.name}/>}
             <GridLayout width='100%' gridColumns='8fr 2fr' height='5rem'
                         margin='0 0 1rem 0' onClick={onClick}>
                 <CarMiniInfo car={car}/>

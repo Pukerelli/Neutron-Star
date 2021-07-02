@@ -5,16 +5,25 @@ import {selectCarIsFetching, selectCars} from "../../../selectors/Cars/Car.selec
 import {useAppDispatch} from "../../../store";
 import {getFollowedCars} from "../../../store/reducers/Cars/Car.slice";
 import {selectAuthUser} from "../../../selectors/auth/auth.selector";
+import {useHistory} from "react-router-dom";
 
 export const FollowedCars = () => {
+    const history = useHistory()
     const auth = useSelector(selectAuthUser)
     const allCars = useSelector(selectCars)
     const isFetching = useSelector(selectCarIsFetching)
     const dispatch = useAppDispatch()
 
     useEffect(() => {
-        dispatch(getFollowedCars(auth!))
-    }, [])
+        if (auth !== 'unauthorized') {
+            dispatch(getFollowedCars(auth))
+            return
+        }
+        if (auth === 'unauthorized') {
+            history.push('/auth/login')
+            return
+        }
+    }, [auth])
 
     return (
         <div style={{width: '80%', margin: '0 auto'}}>

@@ -14,21 +14,10 @@ export interface IUser {
     nickname?: string
     photo?: string
     car?: Array<ICar>
-    address?: ICity
+    address?: { country?: string, city?: string }
     age?: string
     interests?: string
     about?: string
-    token: string,
-    __v: number | undefined | null
-}
-export interface ICity {
-    country?: string
-    city?: string
-}
-
-export interface IUserPhoto {
-    small: string | null,
-    large: string | null
 }
 
 export interface ICar {
@@ -47,5 +36,8 @@ export interface ICar {
     photo?: string
     followedBy: Array<string>
 }
+
+
+
 
 

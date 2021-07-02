@@ -1,14 +1,13 @@
-import {createAction, createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {ICar} from "../../../common/interfaces/common-interfaces/index.interface";
-import {CarAPI, INewCar, IUpdateCar, IUploadPhoto} from "../../../API/car.api";
-import {Car} from "../../../components/Cars/Car.component";
+import {Car, INewCar, IUpdateCar, IUploadPhoto} from "../../../API/car.api";
 
 
 export const carList = createAsyncThunk<void, string>('/list',
     async (search, thunkApi) => {
         thunkApi.dispatch({type: 'car/setFetching', payload: true})
         try {
-            const response = await CarAPI.getCarList(search)
+            const response = await Car.getCarSearch(search)
             if (response.code === 2) {
                 thunkApi.dispatch({type: 'car/setCars', payload: response.data})
                 thunkApi.dispatch({type: 'car/setFetching', payload: false})
@@ -22,7 +21,7 @@ export const deleteCar = createAsyncThunk<void, string>('/delete',
     async (carname, thunkApi) => {
         thunkApi.dispatch({type: 'car/setFetching', payload: true})
         try {
-            const response = await CarAPI.deleteCar(carname)
+            const response = await Car.deleteCar(carname)
             if (response.code === 2) {
                 thunkApi.dispatch({type: 'car/setCars', payload: response.data})
                 thunkApi.dispatch({type: 'car/setFetching', payload: false})
@@ -37,7 +36,7 @@ export const addNewCar = createAsyncThunk<void, INewCar>('/add',
     async (data, thunkApi) => {
         thunkApi.dispatch({type: 'car/setFetching', payload: true})
         try {
-            const response = await CarAPI.add(data)
+            const response = await Car.postAddCar(data)
             if (response.code === 2) {
                 thunkApi.dispatch({type: 'car/setCar', payload: response.data})
                 thunkApi.dispatch({type: 'car/setCurrentCar', payload: response.data})
@@ -49,11 +48,11 @@ export const addNewCar = createAsyncThunk<void, INewCar>('/add',
         }
     })
 
-export const followCar = createAsyncThunk<void, string>('/follow',
-    async (data, thunkApi) => {
+export const followCar = createAsyncThunk<void, {carname: string}>('/follow',
+    async (carname, thunkApi) => {
         thunkApi.dispatch({type: 'car/setFetching', payload: true})
         try{
-            const response = await CarAPI.postFollow(data)
+            const response = await Car.postFollowCar(carname)
             if(response.code === 2){
                 thunkApi.dispatch({type: 'car/setFetching', payload: false})
                 thunkApi.dispatch({type: 'car/setFollowCar', payload: response.data})
@@ -69,7 +68,7 @@ export const unfollowCar = createAsyncThunk<void, string>('/follow',
     async (data, thunkApi) => {
         thunkApi.dispatch({type: 'car/setFetching', payload: true})
         try{
-            const response = await CarAPI.deleteFollow(data)
+            const response = await Car.deleteFollowCar(data)
             if(response.code === 2){
                 thunkApi.dispatch({type: 'car/setFollowCar', payload: response.data})
                 thunkApi.dispatch({type: 'car/setFetching', payload: false})
@@ -85,7 +84,7 @@ export const unfollowCar = createAsyncThunk<void, string>('/follow',
 export const getFollowedCars = createAsyncThunk<void, string>('/getFollowed',
  async (data, thunkApi) => {
     try{
-        const response = await CarAPI.getFollowedCars(data)
+        const response = await Car.getFollowedCars(data)
         if(response.code === 2){
             thunkApi.dispatch({type: 'car/setCars', payload: response.data})
             thunkApi.dispatch({type: 'car/setFetching', payload: false})
@@ -102,7 +101,7 @@ export const getCurrentCar = createAsyncThunk<void, string>('/get/current',
     async (data, thunkApi) => {
         thunkApi.dispatch({type: 'car/setFetching', payload: true})
     try {
-        const response = await CarAPI.getCurrent(data)
+        const response = await Car.getCurrent(data)
         if(response.code === 2){
             thunkApi.dispatch({type: 'car/setCurrentCar', payload: response.data})
             thunkApi.dispatch({type: 'car/setFetching', payload: false})
@@ -117,7 +116,7 @@ export const getCars = createAsyncThunk<void, string>('/getCars',
     async (data, thunkApi) => {
         thunkApi.dispatch({type: 'car/setFetching', payload: true})
         try {
-            const response = await CarAPI.getCars(data)
+            const response = await Car.getCars(data)
             if (response.code === 2) {
                 thunkApi.dispatch({type: 'car/setCars', payload: response.data})
                 thunkApi.dispatch({type: 'car/setFetching', payload: false})
@@ -134,7 +133,8 @@ export const updateCar = createAsyncThunk<void, IUpdateCar>('/update',
     async (data, thunkApi) => {
         thunkApi.dispatch({type: 'car/setFetching', payload: true})
         try {
-            const response = await CarAPI.updateCar(data)
+            debugger
+            const response = await Car.putUpdateCar(data)
             if (response.code === 2) {
                 thunkApi.dispatch({type: 'car/setCar', payload: response.data})
                 thunkApi.dispatch({type: 'car/setCurrentCar', payload: response.data})
@@ -151,9 +151,9 @@ export const uploadPhoto = createAsyncThunk<void, IUploadPhoto>('car/uploadPhoto
     async (data, thunkApi) => {
         thunkApi.dispatch({type: 'car/setFetching', payload: true})
         try {
-            const response = await CarAPI.uploadPhoto(data)
+            const response = await Car.putUpdatePhoto(data)
             if (response.code === 2) {
-                await thunkApi.dispatch({type: 'car/setCar', payload: response.data})
+                thunkApi.dispatch({type: 'car/setCar', payload: response.data})
                 thunkApi.dispatch({type: 'car/setCurrentCar', payload: response.data})
                 thunkApi.dispatch({type: 'car/setFetching', payload: false})
 
@@ -164,14 +164,6 @@ export const uploadPhoto = createAsyncThunk<void, IUploadPhoto>('car/uploadPhoto
         }
     }
 )
-
-
-interface IInitialState {
-    cars: Array<ICar>
-    error: string
-    currentCar: ICar
-    isFetching: boolean
-}
 
 const initialState = {
     cars: [],
@@ -214,7 +206,15 @@ const carSlice = createSlice({
     }
 })
 
-export const setCurrentCarAction = createAction<ICar>('car/setCurrentCar')
 
 
 export default carSlice.reducer
+
+
+
+interface IInitialState {
+    cars: Array<ICar>
+    error: string
+    currentCar: ICar
+    isFetching: boolean
+}

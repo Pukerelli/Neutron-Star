@@ -23,11 +23,12 @@ export const Layout = styled.div`
 
 export const NavBarLayout = styled.div<IProps>`
   background-color: #EB3649;
-  position: absolute;
-  min-height: 35vh;
+  margin-top: 1rem;
+  position: relative;
+  height: fit-content;
   width: 8rem;
-  padding: 1rem;
-  transform: ${props => (props.show ? 'translateX(0)' : 'translateX(-30vw)')};
+  padding: 0.8rem;
+  transform: ${props => (props.show ? 'translateX(0)' : 'translateX(-8rem)')};
   transition-duration: 0.7s;
   border-radius: 0 6px 6px 0;
   z-index: 100;

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-interface IProps{
+export interface ICommonBtn {
     width: string
     height: string
     onColor?: string
@@ -16,7 +16,7 @@ interface IProps{
     opacity? : string
 }
 
-export const CommonBtn = styled.button<IProps>`
+export const CommonBtn = styled.button<ICommonBtn>`
   position: ${props => props.position? props.position : 'absolute'};
   width: ${props => props.width};
   height: ${props=> props.height};

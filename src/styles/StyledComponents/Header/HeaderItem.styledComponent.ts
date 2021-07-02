@@ -6,7 +6,6 @@ export const HeaderItem = styled.div`
   text-decoration: none;
   margin-right: 1rem;
   border-bottom: 2px solid transparent;
-  text-transform: uppercase;
 
   &:hover {
     color: #fff;

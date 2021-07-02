@@ -20,11 +20,15 @@ export interface ICard{
     margin?: string
     alignSelf?: string
     minHeight?: string
+    justifySelf?: string
+    zIndex?: string
+    minCardHeight?: string
 }
 
 export const MyCard = styled.div<ICard>`
   width: ${props => props.width? props.width : '20vw'};
   height: ${props => props.height? props.height :'45vh'};
+  min-height: ${props => props.minCardHeight? props.minCardHeight :'0'};
   grid-column: ${props => props.gridColumn? props.gridColumn : ''};
   grid-row: ${props => props.gridRow? props.gridRow : ''};
   box-shadow: ${props => props.boxShadow? '0 0 4px 0 rgba(34, 60, 80, 0.2)' : 'none'};
@@ -34,10 +38,12 @@ export const MyCard = styled.div<ICard>`
   text-align: ${props => props.textAlign? props.textAlign : 'inherit'};
   overflow: hidden;
   align-self: ${props => props.alignSelf? props.alignSelf : 'normal'};
+  justify-self: ${props => props.justifySelf? props.justifySelf : 'normal'};
   padding: ${props => props.padding? props.padding : 0};
   @media (max-height: 600px) {
     min-height: ${props => props.minHeight? props.minHeight : '270px'};
   }
+  z-index: ${props => props.zIndex? props.zIndex : '0'};
   
   transition: ${props => props.transition? props.transition : '0s'};
   opacity: ${props => props.opacity? props.opacity : '1'};

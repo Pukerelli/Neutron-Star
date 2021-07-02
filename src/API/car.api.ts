@@ -1,15 +1,32 @@
-import axios from "axios";
-import {ICar, IResponse, IUser} from "../common/interfaces/common-interfaces/index.interface";
+import {ICar} from "../common/interfaces/common-interfaces/index.interface";
+import {Requests} from "./API";
 
-const instance = axios.create({
-    baseURL: 'http://localhost:5000/api',
+const requests = new Requests('cars')
 
-});
+export const Car = {
+    ///// POST
+    postAddCar: (data: INewCar) => requests.post<ICar, INewCar>('add', data),
+    postFollowCar: (carname: {carname: string}) => requests.post<ICar, { carname: string }>('follow', carname),
+    ///// PUT
+    putUpdatePhoto: (data: IUploadPhoto) => requests.put<ICar, IUploadPhoto>('update/photo', data),
+    putUpdateCar: (data: IUpdateCar) => requests.put<ICar, IUpdateCar>('update/car', data),
+    ///// GET
+    getCurrent: (data: string) => requests.get<ICar, string>('current', data),
+    getCars: (data: string) => requests.get<Array<ICar>, string>('cars', data),
+    getFollowedCars: (data: string) => requests.get<Array<ICar>, string>('follow', data),
+    getCarSearch: (data: string) => requests.get<Array<ICar>, string>('search', `?search=${data}`),
+    ///// DELETE
+    deleteFollowCar: (data: string) => requests.delete<ICar, string>('follow', data),
+    deleteCar: (data: string) => requests.delete<Array<ICar>, string>('car', data)
+
+}
+
+
+///// TYPES
 
 export interface IPostFollow{
     username: string
     carname: string
-
 }
 
 export interface INewCar {
@@ -34,54 +51,3 @@ export interface IUpdateCar {
     ownTime?: string
     carName: string
 }
-
-export const CarAPI ={
-    api: '/cars',
-    add(data: INewCar){
-        return instance.post<IResponse<ICar>>(`${this.api}/add`, {...data},
-            {
-                headers: {
-                    authorization: `Bearer ${localStorage.getItem('token')}`
-                }
-            }).then(response => response.data)
-    },
-    uploadPhoto(data: IUploadPhoto) {
-        return instance.put<IResponse<ICar>>(`${this.api}/update/photo`, {...data}).then(response => response.data)
-    },
-    updateCar(data: IUpdateCar){
-        return instance.put<IResponse<ICar>>(`${this.api}/update`, {...data}).then(response => response.data)
-    },
-    getCars(username: string){
-        return instance.get<IResponse<Array<ICar>>>(`${this.api}/get/${username}`).then(response => response.data)
-    },
-    getCurrent(data: string){
-        return instance.get<IResponse<ICar>>(`${this.api}/get/current/${data}`).then(response => response.data)
-    },
-    postFollow(carname: string){
-        return instance.post<IResponse<ICar>>(`${this.api}/post/follow`, {carname},
-            {
-                headers: {
-                    authorization: `Bearer ${localStorage.getItem('token')}`
-                }
-            }).then(response => response.data)
-    },
-    deleteFollow(carname: string){
-        return instance.delete<IResponse<ICar>>(`${this.api}/delete/follow/${carname}`,
-            {
-                headers: {
-                    authorization: `Bearer ${localStorage.getItem('token')}`
-                }
-            }).then(response => response.data)
-    },
-    getFollowedCars(username: string){
-        return instance.get<IResponse<Array<ICar>>>(`${this.api}/get/followed/${username}`)
-            .then(response => response.data)
-    },
-    getCarList(search: string){
-        return instance.get<IResponse<Array<ICar>>>(`${this.api}/list/?search=${search}`).then(response => response.data)
-    },
-    deleteCar(carname: string){
-        return instance.delete<IResponse<Array<ICar>>>(`${this.api}/delete/${carname}`).then(response => response.data)
-    }
-}
-
