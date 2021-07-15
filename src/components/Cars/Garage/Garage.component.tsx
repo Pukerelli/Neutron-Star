@@ -2,13 +2,13 @@ import React, {useEffect, useState} from 'react';
 import {useSelector} from "react-redux";
 import {selectCarIsFetching, selectCars} from "../../../selectors/Cars/Car.selector";
 import {useAppDispatch} from "../../../store";
-import {getCars} from "../../../store/reducers/Cars/Car.slice";
 import {CarMiniCard} from "../CarMiniCard/CarMiniCard.component";
 import {GridLayout} from '../../../styles/StyledComponents/Layout/GridLayout.styledComponent';
 import {useParams} from "react-router-dom";
 import {selectAuthUser} from "../../../selectors/auth/auth.selector";
 import {CommonBtn} from "../../../styles/StyledComponents/Buttons/CommonButton.styledComponent";
 import {AddCar} from '../addCar/AddCar.component';
+import {carGarageAction} from "../../../store/actions/car.action";
 
 
 export const Garage: React.FC = () => {
@@ -25,11 +25,11 @@ export const Garage: React.FC = () => {
 
         useEffect(() => {
             if (username) {
-                dispatch(getCars(username))
+                dispatch(carGarageAction(username))
                 return
             }
             if (!username && auth !== 'unauthorized') {
-                dispatch(getCars(auth!))
+                dispatch(carGarageAction(auth!))
                 return
             }
         }, [username, auth])

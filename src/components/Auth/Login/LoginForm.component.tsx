@@ -4,11 +4,11 @@ import React, {useEffect, useState} from 'react'
 import styles from '../auth.module.css'
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import {useAppDispatch} from "../../../store";
-import {fetchLogin} from "../../../store/reducers/auth-reducer/auth.slice";
 import {useSelector} from "react-redux";
 import {selectAuthUser} from "../../../selectors/auth/auth.selector";
-import {useHistory, useLocation} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 import {MyCard} from '../../../styles/StyledComponents/Cards/MyCard';
+import {authLoginAction} from "../../../store/actions/auth.action";
 
 interface IValues {
     username: string
@@ -31,7 +31,7 @@ export const LoginForm: React.FC = () => {
     }
     const onSubmit = async (values: IValues) => {
         setSubmitting(true)
-        await dispatch(fetchLogin(values))
+        await dispatch(authLoginAction(values))
         setSubmitting(false)
     }
     return (

@@ -3,9 +3,9 @@ import {CarMiniCard} from "../CarMiniCard/CarMiniCard.component";
 import {useSelector} from "react-redux";
 import {selectCarIsFetching, selectCars} from "../../../selectors/Cars/Car.selector";
 import {useAppDispatch} from "../../../store";
-import {carList} from "../../../store/reducers/Cars/Car.slice";
 import {selectAuthUser} from "../../../selectors/auth/auth.selector";
-import { CommonBtn } from '../../../styles/StyledComponents/Buttons/CommonButton.styledComponent';
+import {CommonBtn} from '../../../styles/StyledComponents/Buttons/CommonButton.styledComponent';
+import {carSearchAction} from "../../../store/actions/car.action";
 
 export const CarList = () => {
     const dispatch = useAppDispatch()
@@ -17,11 +17,11 @@ export const CarList = () => {
         setValue(e.currentTarget.value)
     }
     const onSubmit = () => {
-        dispatch(carList(value))
+        dispatch(carSearchAction(value))
     }
 
     useEffect(() => {
-        dispatch(carList(value))
+        dispatch(carSearchAction(value))
     }, [])
 
     return (

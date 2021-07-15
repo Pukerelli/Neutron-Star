@@ -1,7 +1,7 @@
 import React from 'react';
 import {CommonBtn, ICommonBtn} from "../../../styles/StyledComponents/Buttons/CommonButton.styledComponent";
 import {useAppDispatch} from "../../../store";
-import {followCar, unfollowCar} from "../../../store/reducers/Cars/Car.slice";
+import {carFollowAction, carUnfollowAction} from "../../../store/actions/car.action";
 
 interface IProps {
     carname: string
@@ -16,9 +16,9 @@ export const FollowBtn: React.FC<IProps> = ({carname, followedBy, btnStyle}) => 
 
     const followHandler = (follow: boolean) => {
         if (follow) {
-            dispatch(followCar({carname}))
+            dispatch(carFollowAction({carname}))
         } else {
-            dispatch(unfollowCar(carname))
+            dispatch(carUnfollowAction(carname))
         }
     }
     return (

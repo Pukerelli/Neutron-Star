@@ -1,8 +1,11 @@
+import {SerializedError} from "@reduxjs/toolkit";
 
 export interface IResponse<R>{
-    code: number
     message: string
     data: R
+    code?: number
+    token?: string
+    error?: string
 }
 
 export interface IUser {
@@ -21,6 +24,7 @@ export interface IUser {
 }
 
 export interface ICar {
+    _id: number | null
     name: string
     owner: string
     brand: string
@@ -35,9 +39,27 @@ export interface ICar {
     ownTime?: string
     photo?: string
     followedBy: Array<string>
+    notes: Array<INote | null>
 }
 
+export type IAction<T> = (payload: T) => { type: string, payload: T }
 
 
+export interface ILogin {
+    username: string
+    password: string
+}
 
-
+export interface IReg {
+    username: string
+    password: string
+    email: string
+}
+export interface INote{
+    title: string
+    date: string
+    description: string
+    car: string
+    _id: number
+}
+export type IError = string | SerializedError | undefined | null

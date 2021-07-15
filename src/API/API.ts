@@ -22,7 +22,7 @@ export class Requests extends API {
     }
 
     public post<D, R>(url: string, req: R) {
-        return this.instance().post<IResponse<D>>(`/${this.serviceUrl}/post/${url}`, {...req})
+        return this.instance().post<IResponse<D>>(`/${this.serviceUrl}/post/${url}`,{...req})
             .then(response => response.data)
     }
 

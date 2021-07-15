@@ -1,10 +1,10 @@
-import React, {Dispatch, SetStateAction, useState} from 'react';
+import React, {Dispatch, SetStateAction} from 'react';
 import {Field, Form, Formik} from "formik";
 import * as Yup from "yup";
 import styles from '../../Profile/UserProfile/UserInfo/updateUser.module.css'
 import {useAppDispatch} from '../../../store';
-import {addNewCar} from "../../../store/reducers/Cars/Car.slice";
 import {MyCard} from "../../../styles/StyledComponents/Cards/MyCard";
+import {carAddAction} from "../../../store/actions/car.action";
 
 
 const validation = Yup.object({
@@ -35,7 +35,7 @@ export const AddCarForm: React.FC<IProps> = ({setFinished}) => {
     }
     const dispatch = useAppDispatch()
     const onSubmit = async (values: typeof initialValues) => {
-        await dispatch(addNewCar(values))
+        await dispatch(carAddAction(values))
         setFinished(true)
     }
 

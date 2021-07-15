@@ -4,11 +4,11 @@ import {Field, Form, Formik} from 'formik';
 import * as Yup from 'yup';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import {useAppDispatch} from "../../../store";
-import {fetchRegistration} from "../../../store/reducers/auth-reducer/auth.slice";
 import {MyCard} from '../../../styles/StyledComponents/Cards/MyCard';
 import {useHistory} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {selectAuthUser} from "../../../selectors/auth/auth.selector";
+import {authRegAction} from "../../../store/actions/auth.action";
 
 
 interface IValues {
@@ -27,7 +27,7 @@ export const RegistrationForm: React.FC = () => {
         if (isAuth && isAuth !== 'unauthorized')
             history.push(`/profile/user/${isAuth}`)
     }, [isAuth])
-    const onSubmit = async (values: IValues) => await dispatch(fetchRegistration(values))
+    const onSubmit = async (values: IValues) => await dispatch(authRegAction(values))
 
     return (
         <MyCard boxShadow={true} color='#EB3649'

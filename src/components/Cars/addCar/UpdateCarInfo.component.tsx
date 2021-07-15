@@ -3,10 +3,9 @@ import {Field, Form, Formik} from "formik";
 import * as Yup from "yup";
 import styles from './addCarInfo.module.css'
 import {useAppDispatch} from '../../../store';
-import {updateCar} from "../../../store/reducers/Cars/Car.slice";
-import {useHistory} from "react-router-dom";
 import {MyCard} from "../../../styles/StyledComponents/Cards/MyCard"
 import {ICar} from "../../../common/interfaces/common-interfaces/index.interface";
+import {carUpdateAction} from "../../../store/actions/car.action";
 
 interface IProps {
     carName: string
@@ -50,7 +49,7 @@ export const UpdateCarInfo: React.FC<IProps> = ({carName, car}) => {
     const dispatch = useAppDispatch()
     const onSubmit = async (values: typeof initialValues) => {
         debugger
-        await dispatch(updateCar({...values, carName}))
+        await dispatch(carUpdateAction({...values, carName}))
     }
 
     return (

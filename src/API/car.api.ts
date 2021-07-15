@@ -1,4 +1,4 @@
-import {ICar} from "../common/interfaces/common-interfaces/index.interface";
+import {ICar, INote} from "../common/interfaces/common-interfaces/index.interface";
 import {Requests} from "./API";
 
 const requests = new Requests('cars')
@@ -6,10 +6,12 @@ const requests = new Requests('cars')
 export const Car = {
     ///// POST
     postAddCar: (data: INewCar) => requests.post<ICar, INewCar>('add', data),
-    postFollowCar: (carname: {carname: string}) => requests.post<ICar, { carname: string }>('follow', carname),
+    postFollowCar: (data: {carname: string}) => requests.post<ICar, {carname: string }>('follow', data),
+    postNoteCar: (data: INewNote ) => requests.post<INote, INewNote>('note', data),
     ///// PUT
     putUpdatePhoto: (data: IUploadPhoto) => requests.put<ICar, IUploadPhoto>('update/photo', data),
     putUpdateCar: (data: IUpdateCar) => requests.put<ICar, IUpdateCar>('update/car', data),
+    putDeleteNote: (data: {_id: number, car: number} ) => requests.put<string, {_id: number, car: number}>('note', data),
     ///// GET
     getCurrent: (data: string) => requests.get<ICar, string>('current', data),
     getCars: (data: string) => requests.get<Array<ICar>, string>('cars', data),
@@ -17,7 +19,7 @@ export const Car = {
     getCarSearch: (data: string) => requests.get<Array<ICar>, string>('search', `?search=${data}`),
     ///// DELETE
     deleteFollowCar: (data: string) => requests.delete<ICar, string>('follow', data),
-    deleteCar: (data: string) => requests.delete<Array<ICar>, string>('car', data)
+    deleteCar: (data: string) => requests.delete<ICar, string>('car', data)
 
 }
 
@@ -50,4 +52,10 @@ export interface IUpdateCar {
     rims?: string
     ownTime?: string
     carName: string
+}
+
+export interface INewNote {
+    title: string
+    date: string
+    description: string
 }

@@ -3,9 +3,9 @@ import {CarMiniCard} from "../CarMiniCard/CarMiniCard.component";
 import {useSelector} from "react-redux";
 import {selectCarIsFetching, selectCars} from "../../../selectors/Cars/Car.selector";
 import {useAppDispatch} from "../../../store";
-import {getFollowedCars} from "../../../store/reducers/Cars/Car.slice";
 import {selectAuthUser} from "../../../selectors/auth/auth.selector";
 import {useHistory} from "react-router-dom";
+import {carFollowedAction} from "../../../store/actions/car.action";
 
 export const FollowedCars = () => {
     const history = useHistory()
@@ -16,7 +16,7 @@ export const FollowedCars = () => {
 
     useEffect(() => {
         if (auth !== 'unauthorized') {
-            dispatch(getFollowedCars(auth))
+            dispatch(carFollowedAction(auth))
             return
         }
         if (auth === 'unauthorized') {

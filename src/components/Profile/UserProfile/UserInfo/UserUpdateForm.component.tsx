@@ -3,10 +3,8 @@ import {Field, Form, Formik} from "formik";
 import * as Yup from "yup";
 import styles from './updateUser.module.css'
 import {useAppDispatch} from "../../../../store";
-import {UpdateUser} from "../../../../store/reducers/Profile/user.slice";
 import {IUser} from "../../../../common/interfaces/common-interfaces/index.interface";
-
-
+import {profileUpdateAction} from "../../../../store/actions/profile.action";
 
 
 const validation = Yup.object({
@@ -22,7 +20,7 @@ const validation = Yup.object({
     City: Yup.string()
         .min(2, 'enter existing or not city')
         .max(15, 'are you sure?'),
-    interest: Yup.string()
+    interests: Yup.string()
         .min(2, 'i dont think so')
         .max(50, 'sorry, but you have so many interest'),
     about: Yup.string()
@@ -47,7 +45,7 @@ export const UserUpdateForm: React.FC<IProps> = ({toggleEdit, user}) => {
     }
     const dispatch = useAppDispatch()
     const onSubmit = async (values: typeof initialValues) => {
-       await dispatch(UpdateUser(values))
+       await dispatch(profileUpdateAction(values))
         toggleEdit()
     }
 
@@ -75,8 +73,8 @@ export const UserUpdateForm: React.FC<IProps> = ({toggleEdit, user}) => {
                     <Field name="city" type="text" className={styles.field} placeHolder='enter your city'/>
                 </div>
                 <div className={styles.div}>
-                    <label htmlFor="interest" className={styles.label}>interests</label>
-                    <Field name="interest" type="text" className={styles.field} placeHolder='enter your interests'/>
+                    <label htmlFor="interests" className={styles.label}>interests</label>
+                    <Field name="interests" type="text" className={styles.field} placeHolder='enter your interests'/>
                 </div>
                 <div className={styles.div}>
                     <label htmlFor="about" className={styles.label}>about</label>

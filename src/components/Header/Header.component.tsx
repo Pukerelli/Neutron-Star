@@ -6,6 +6,7 @@ import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import {useSelector} from "react-redux";
 import {selectAuthUser} from "../../selectors/auth/auth.selector";
 import {useAppDispatch} from "../../store";
+import {authLogoutAction} from "../../store/actions/auth.action";
 
 
 export const Header: React.FC = () => {
@@ -14,7 +15,7 @@ export const Header: React.FC = () => {
     const history = useHistory()
     const onClick = () => {
         if (auth && auth !== 'unauthorized')
-            return dispatch({type: 'auth/logout'})
+            return dispatch(authLogoutAction())
         history.push('/auth/login')
     }
 

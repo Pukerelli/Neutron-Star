@@ -4,7 +4,7 @@ import {Requests} from "./API";
 const requests = new Requests('profile')
 export const Profile = {
     ///// POST
-    postUpdatePhoto: (data: {data: string}) => requests.post<IUser, {data: string}>('user/update/photo', data),
+    postUpdatePhoto: (data: {data: string}) => requests.post<string, {data: string}>('user/update/photo', data),
     ///// PUT
     postUpdateUser: (data: IUpdateData) => requests.put<IUser, IUpdateData>('user/update', data),
     ///// GET
@@ -15,7 +15,7 @@ export const Profile = {
 export interface IUpdateData {
     fullName?: string,
     age?: string,
-    interest?: string,
+    interests?: string,
     about?: string,
     country?: string,
     city?: string

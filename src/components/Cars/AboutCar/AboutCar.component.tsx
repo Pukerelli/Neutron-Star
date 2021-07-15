@@ -3,8 +3,8 @@ import {CarCard} from "../CarCard.component";
 import {useAppDispatch} from "../../../store";
 import {useSelector} from "react-redux";
 import {selectCarIsFetching, selectCurrentCar} from "../../../selectors/Cars/Car.selector";
-import {useHistory, useParams} from "react-router-dom";
-import {getCurrentCar} from "../../../store/reducers/Cars/Car.slice";
+import {useParams} from "react-router-dom";
+import {carCurrentAction} from "../../../store/actions/car.action";
 
 export const AboutCar = () => {
     const dispatch = useAppDispatch()
@@ -14,7 +14,7 @@ export const AboutCar = () => {
 
 
     useEffect(() => {
-        dispatch(getCurrentCar(carname))
+        dispatch(carCurrentAction(carname))
     }, [carname])
 
     return (

@@ -4,7 +4,7 @@ export const selectAuthUser = (state: RootState) => {
     return state.auth.isAuth
 }
 
-export const selectLoading = (state: RootState) => {
+export const selectAuthLoading = (state: RootState) => {
     return state.auth.loading
 }
 

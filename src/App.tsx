@@ -6,21 +6,22 @@ import {Header} from './components/Header/Header.component';
 import {Footer} from './components/Footer/Footer.component';
 import {AppWrapper} from "./styles/StyledComponents/App/AppWrapper.StyledComponent";
 import {useAppDispatch} from "./store";
-import {fetchAuth} from "./store/reducers/auth-reducer/auth.slice";
 import {Auth} from './components/Auth/Auth.component';
 import {useSelector} from "react-redux";
-import {selectAuthUser} from "./selectors/auth/auth.selector";
+import {selectAuthLoading, selectAuthUser} from "./selectors/auth/auth.selector";
 import {Car} from "./components/Cars/Car.component";
 import {Profile} from "./components/Profile/Profile.Component";
+import {authMeAction} from "./store/actions/auth.action";
 
 
 const App: React.FC = () => {
     const dispatch = useAppDispatch()
+    const loading = useSelector(selectAuthLoading)
     const auth = useSelector(selectAuthUser)
     useEffect(() => {
-        dispatch(fetchAuth(null))
-    }, [])
-    if (auth === 'loading') {
+        dispatch(authMeAction())
+    }, [auth])
+    if (loading === 'idle') {
         return <div><h1>LOADING</h1></div>
     }
     return (

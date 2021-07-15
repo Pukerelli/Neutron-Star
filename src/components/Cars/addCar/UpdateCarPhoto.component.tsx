@@ -5,7 +5,7 @@ import {CommonBtn} from "../../../styles/StyledComponents/Buttons/CommonButton.s
 import {useAppDispatch} from "../../../store";
 
 import {defaultImage} from '../../../common/images/images';
-import {uploadPhoto} from "../../../store/reducers/Cars/Car.slice";
+import {carPhotoAction} from "../../../store/actions/car.action";
 
 interface IProps{
     carName: string
@@ -18,7 +18,7 @@ export const UpdateCarPhoto: React.FC<IProps> = ({carName}) => {
 
     const submitHandler = () => {
         if(photo.length > 4 && carName !== '' && carName){
-            dispatch(uploadPhoto({photo, carName}))
+            dispatch(carPhotoAction({photo, carName}))
         }
     }
     const inputHandler = (e: React.FormEvent<HTMLInputElement>) => {

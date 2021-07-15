@@ -8,9 +8,9 @@ import {useHistory} from "react-router-dom";
 import {FollowBtn} from "../../Common/Buttons/FollowBtn.component";
 import {useSelector} from "react-redux";
 import {selectAuthUser} from "../../../selectors/auth/auth.selector";
-import { CommonBtn } from '../../../styles/StyledComponents/Buttons/CommonButton.styledComponent';
+import {CommonBtn} from '../../../styles/StyledComponents/Buttons/CommonButton.styledComponent';
 import {useAppDispatch} from "../../../store";
-import { deleteCar } from '../../../store/reducers/Cars/Car.slice';
+import {carDeleteAction} from "../../../store/actions/car.action";
 
 interface IProps {
     car: ICar
@@ -25,7 +25,7 @@ export const CarMiniCard: React.FC<IProps> = ({car, isFetching}) => {
         history.push(`/cars/about/${car.name}`)
     }
     const onDeleteClick = () => {
-        dispatch(deleteCar(car.name))
+        dispatch(carDeleteAction(car.name))
     }
     if(isFetching){
         return <div>loading</div>
