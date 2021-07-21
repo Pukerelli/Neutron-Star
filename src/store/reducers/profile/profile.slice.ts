@@ -13,7 +13,7 @@ const initialState = {
     users: [{}],
     user: {},
     error: null,
-    isFetching: true
+    isFetching: true,
 } as IInitialState
 
 const profileSlice = createSlice({
@@ -28,9 +28,24 @@ const profileSlice = createSlice({
             state.isFetching = false
             state.error = null
         },
+        usersSucceed: (state, action: PayloadAction<Array<IUser>>) => {
+            state.users = action.payload
+            state.error = null
+            state.isFetching = false
+        },
         userPhoto: (state, action: PayloadAction<string>) => {
             state.user.photo = action.payload
             state.isFetching = false
+            state.error = null
+        },
+        unfollowUser: (state, action: PayloadAction<string>) => {
+            state.user.following = state.user.following.filter(user => user !== action.payload)
+            state.users = state.users.filter(user => user.username !== action.payload)
+            state.error = null
+        },
+        followUser: (state, action: PayloadAction<IUser>) => {
+            state.user.following.push(action.payload.username)
+            state.users[state.users.findIndex((user) => user.username === action.payload.username)] = action.payload
             state.error = null
         },
         error: (state, action: PayloadAction<IError>) => {

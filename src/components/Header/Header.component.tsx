@@ -28,9 +28,9 @@ export const Header: React.FC = () => {
                 <HeaderItem>
                     <NavLink to={`/profile/user/${auth}`}>Profile</NavLink>
                 </HeaderItem>
-                <HeaderItem>
+                {/*<HeaderItem>
                     <NavLink to='/cars'>Cars</NavLink>
-                </HeaderItem>
+                </HeaderItem>*/}
                 <HeaderItem>
                     <NavLink to='/shop'>Shop</NavLink>
                 </HeaderItem>

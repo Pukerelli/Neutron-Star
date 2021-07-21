@@ -1,4 +1,6 @@
 import {RootState} from "../../store";
+import {createSelector} from "reselect";
+import { INote } from "../../common/interfaces/common-interfaces/index.interface";
 
 export const selectCars = (state: RootState) => {
     return state.car.cars
@@ -17,3 +19,15 @@ export const selectCurrentCarPhoto = (state: RootState) => {
 export const selectCarIsFetching = (state: RootState) => {
     return state.car.isFetching
 }
+export const selectCarError = (state: RootState) => {
+    return state.car.error
+}
+
+export const selectCurrentCarNotes = (state: RootState) => {
+    return state.car.currentCar.notes
+}
+
+export const selectCurrentNote = (id: string) => createSelector(
+    selectCurrentCarNotes,
+    notes => notes.find(note => note!._id === id)
+)

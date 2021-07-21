@@ -7,19 +7,22 @@ import {
     carDeleteAction,
     carErrorAction,
     carFetchingAction,
-    carReplaceSucceedAction,
+    carFilterSucceedAction,
     carFollowAction,
     carFollowedAction,
     carGarageAction,
+    carNotePullAction,
+    carNotePushAction, carNoteReplaceAction,
+    carNotesPullSucceedAction, carNotesReplaceSucceedAction,
     carPhotoAction,
-    carFilterSucceedAction,
     carPushSucceedAction,
+    carReplaceSucceedAction,
     carSearchAction,
-    carUpdateAction,
-    carUnfollowAction
+    carUnfollowAction,
+    carUpdateAction
 } from "../actions/car.action";
-import {IAction, ICar, IResponse} from "../../common/interfaces/common-interfaces/index.interface";
-import {Car, INewCar, IUpdateCar, IUploadPhoto} from "../../API/car.api";
+import {IAction, ICar, INote, IResponse} from "../../common/interfaces/common-interfaces/index.interface";
+import {Car, INewCar, INewNote, IUpdateCar, IUpdateNote, IUploadPhoto} from "../../API/car.api";
 import * as type from '../saga.actionTypes'
 
 ///// CAR GARAGE
@@ -55,7 +58,7 @@ function* watchCarUpdate() {
 }
 
 function* carUpdate({payload}: ReturnType<typeof carUpdateAction>) {
-    yield carSuperHandler<IUpdateCar, ICar>(Car.putUpdateCar, payload, carCurrentSucceedAction)
+    yield carSuperHandler<IUpdateCar, ICar>(Car.putUpdateCar, payload, carCurrentSucceedAction, undefined, false)
 }
 
 ///// CAR DELETE
@@ -100,7 +103,7 @@ function* watchCarFollow() {
 }
 
 function* carFollow({payload}: ReturnType<typeof carFollowAction>) {
-    yield carSuperHandler<{ carname: string }, ICar>(Car.postFollowCar, payload, carReplaceSucceedAction, undefined, false)
+    yield carSuperHandler<{ payload: string }, ICar>(Car.postFollowCar, payload, carReplaceSucceedAction, undefined, false)
 }
 
 ///// CAR UNFOLLOW
@@ -109,7 +112,34 @@ function* watchCarUnfollow() {
 }
 
 function* carUnfollow({payload}: ReturnType<typeof carUnfollowAction>) {
-    yield carSuperHandler<string, ICar>(Car.deleteFollowCar, payload, carFilterSucceedAction, undefined, false)
+    yield carSuperHandler<{ payload: string }, ICar>(Car.deleteFollowCar, payload, carFilterSucceedAction, undefined, false)
+}
+
+///// CAR NOTE PUSH
+function* watchCarNotePush() {
+    yield takeEvery(type.CAR_NOTE_PUSH, carNotePush)
+}
+
+function* carNotePush({payload}: ReturnType<typeof carNotePushAction>) {
+    yield carSuperHandler<INewNote, INote>(Car.postNoteCar, payload, undefined, undefined, false)
+}
+
+///// CAR NOTE REPLACE
+function* watchCarNoteReplace() {
+    yield takeEvery(type.CAR_NOTE_REPLACE, carNoteReplace)
+}
+
+function* carNoteReplace({payload}: ReturnType<typeof carNoteReplaceAction>) {
+    yield carSuperHandler<IUpdateNote, INote>(Car.putUpdateNote, payload, carNotesReplaceSucceedAction)
+}
+
+///// CAR NOTE PULL
+function* watchCarNotePull() {
+    yield takeEvery(type.CAR_NOTE_PULL, carNotePull)
+}
+
+function* carNotePull({payload}: ReturnType<typeof carNotePullAction>) {
+    yield carSuperHandler<{ _id: string, car: string }, string>(Car.putDeleteNote, payload, carNotesPullSucceedAction, undefined, false)
 }
 
 export function* carSaga() {
@@ -123,15 +153,19 @@ export function* carSaga() {
         watchCarSearch(),
         watchCarFollowed(),
         watchCarFollow(),
-        watchCarUnfollow()
+        watchCarUnfollow(),
+        watchCarNotePush(),
+        watchCarNotePull(),
+        watchCarNoteReplace()
     ])
 }
 
 
 ///// HANDLER FOR COMMON CASES
-function* carHandler<T>(response: IResponse<T>, action: IAction<T>) {
+function* carHandler<T>(response: IResponse<T>, action?: IAction<T>) {
     if (!response.error) {
-        yield put(action(response.data))
+        if (action)
+            yield put(action(response.data))
     } else {
         yield put(carErrorAction(response.error))
     }
@@ -141,18 +175,14 @@ function* carHandler<T>(response: IResponse<T>, action: IAction<T>) {
 ///// R - request type, D - return data type
 
 function* carSuperHandler<R, D>(api: (data: R) => Promise<IResponse<D>>,
-                                request: R, action: IAction<D>, additionalAction?: IAction<D>, fetch = true) {
-    try {
-        if (fetch)
-            yield put(carFetchingAction())
-        const response: IResponse<D> = yield call(api, request)
-        yield carHandler<D>(response, action)
+                                request: R, action?: IAction<D>, additionalAction?: IAction<D>, fetch = true) {
+    if (fetch)
+        yield put(carFetchingAction())
+    const response: IResponse<D> = yield call(api, request)
+    yield carHandler<D>(response, action)
 
-        if (additionalAction) {
-            yield put(additionalAction(response.data))
-        }
-    } catch (e) {
-        yield put(carErrorAction(e))
+    if (additionalAction) {
+        yield put(additionalAction(response.data))
     }
 }
 

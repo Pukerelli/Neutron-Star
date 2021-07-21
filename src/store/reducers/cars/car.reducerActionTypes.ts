@@ -5,6 +5,6 @@ export const CAR_PUSH_SUCCEED = 'car/push'
 export const CAR_FILTER_SUCCEED = 'car/filter'
 export const CAR_REPLACE_SUCCEED = 'car/replace'
 export const CAR_ERROR = 'car/error'
-export const CAR_NOTE_PUSH_SUCCEED = 'car/pushNote'
-export const CAR_NOTE_PULL_SUCCEED = 'car/pushPull'
+export const CAR_NOTE_PULL_SUCCEED = 'car/pullNote'
+export const CAR_NOTE_REPLACE_SUCCEED = 'car/replaceNote'
 

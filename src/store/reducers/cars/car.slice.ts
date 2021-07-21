@@ -5,7 +5,8 @@ import {ICar, IError, INote} from "../../../common/interfaces/common-interfaces/
 const initialState = {
     cars: [],
     currentCar: {
-        _id: null,
+        _id: '',
+        id: null,
         name: '',
         brand: '',
         model: '',
@@ -40,13 +41,18 @@ const carSlice = createSlice({
             state.isFetching = false
             state.error = null
         },
-        pushNote: (state, action: PayloadAction<INote>) => {
-            state.currentCar.notes.push(action.payload)
-            state.isFetching = false
-            state.error = null
+        pullNote: (state, action: PayloadAction<string>) => {
+            state.currentCar.notes = state.currentCar.notes.filter(note => note!._id !== action.payload)
         },
-        pullNote: (state, action: PayloadAction<number>) => {
-            state.currentCar.notes.filter(note => note!._id !== action.payload )
+        replaceNote: (state, action: PayloadAction<INote>) => {
+            state.currentCar.notes[
+                state.currentCar.notes.findIndex(note => note!._id === action.payload._id)
+                ] = action.payload
+            state.error = null
+            state.isFetching = false
+        },
+        unmount: (state) => {
+            return initialState
         },
         filter: (state, action: PayloadAction<ICar>) => {
             state.cars = state.cars.filter(car => car.name !== action.payload.name)
@@ -54,7 +60,7 @@ const carSlice = createSlice({
             state.error = null
         },
         replace: (state, action: PayloadAction<ICar>) => {
-            state.cars[state.cars.findIndex((car) => car.name === action.payload.name)] = action.payload
+            state.cars[state.cars.findIndex(car => car.name === action.payload.name)] = action.payload
             state.isFetching = false
             state.error = null
         },

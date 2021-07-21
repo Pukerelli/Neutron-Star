@@ -1,30 +1,33 @@
 import React from 'react';
 import {CommonBtn, ICommonBtn} from "../../../styles/StyledComponents/Buttons/CommonButton.styledComponent";
 import {useAppDispatch} from "../../../store";
-import {carFollowAction, carUnfollowAction} from "../../../store/actions/car.action";
+import {IAction} from "../../../common/interfaces/common-interfaces/index.interface";
+import {useSelector} from "react-redux";
+import {selectAuthUser} from "../../../selectors/auth/auth.selector";
 
 interface IProps {
-    carname: string
+    payload: string
     followedBy: Array<string>
     btnStyle: ICommonBtn
+    followAction: IAction<{payload: string}>
+    unFollowAction: IAction<{payload: string}>
 }
 
 
-export const FollowBtn: React.FC<IProps> = ({carname, followedBy, btnStyle}) => {
+export const FollowBtn: React.FC<IProps> = ({payload, followedBy, btnStyle, followAction, unFollowAction}) => {
     const dispatch = useAppDispatch()
-
-
+    const auth = useSelector(selectAuthUser)
     const followHandler = (follow: boolean) => {
         if (follow) {
-            dispatch(carFollowAction({carname}))
+            dispatch(followAction({payload}))
         } else {
-            dispatch(carUnfollowAction(carname))
+            dispatch(unFollowAction({payload}))
         }
     }
     return (
         <>
             {
-                followedBy.includes('creator')
+                followedBy.includes(auth)
                     ? <CommonBtn {...btnStyle}
                                  onClick={() => followHandler(false)}>unfollow</CommonBtn>
                     : <CommonBtn {...btnStyle}

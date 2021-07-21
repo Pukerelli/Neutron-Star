@@ -21,7 +21,7 @@ export const Layout = styled.div`
   
 `
 
-export const NavBarLayout = styled.div<IProps>`
+export const NavbarLayout = styled.div<IProps>`
   background-color: #EB3649;
   margin-top: 1rem;
   position: relative;

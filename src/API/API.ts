@@ -3,6 +3,7 @@ import axios, {AxiosInstance} from "axios";
 class API {
     protected serviceUrl: string
     protected instance: () => AxiosInstance
+
     constructor(serviceUrl: string) {
         this.serviceUrl = serviceUrl
         this.instance = () => axios.create({
@@ -16,13 +17,13 @@ class API {
 // D - RESPONSE, R - REQUEST
 
 export class Requests extends API {
-   public get<D, R = undefined>(url: string, req?: R) {
+    public get<D, R = undefined>(url: string, req?: R) {
         return this.instance().get<IResponse<D>>(`/${this.serviceUrl}/get/${url}` + (req ? '/' + req : ''))
             .then(response => response.data)
     }
 
     public post<D, R>(url: string, req: R) {
-        return this.instance().post<IResponse<D>>(`/${this.serviceUrl}/post/${url}`,{...req})
+        return this.instance().post<IResponse<D>>(`/${this.serviceUrl}/post/${url}`, {...req})
             .then(response => response.data)
     }
 

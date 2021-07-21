@@ -24,6 +24,7 @@ const authSlice = createSlice({
         logout: (state) => {
             state.isAuth = 'unauthorized'
             localStorage.clear()
+            state.loading = 'succeeded'
         },
         loading: (state) => {
             state.loading = 'pending'

@@ -9,6 +9,7 @@ import {useHistory} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {selectAuthUser} from "../../../selectors/auth/auth.selector";
 import {authRegAction} from "../../../store/actions/auth.action";
+import {validate} from "uuid";
 
 
 interface IValues {

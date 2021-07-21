@@ -1,6 +1,6 @@
 import React from 'react'
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
-import {NavDisplayBtn} from "../../../styles/StyledComponents/NavBar/NavBar.styledComponents";
+import {NavDisplayBtn} from "../../../styles/StyledComponents/Navbar/Navbar.styledComponents";
 
 
 interface IProps {

@@ -6,14 +6,15 @@ interface IProps {
     image: string
     title: string
     link: string
+    location: string
 }
 
 
-export const MenuContainer: React.FC<IProps> = ({image, title, link}) => {
+export const MenuContainer: React.FC<IProps> = ({image, title, link, location}) => {
     const history = useHistory()
 
     const onClick = () => {
-        history.push(`/cars/${link}`)
+        history.push(`/${location}/${link}`)
     }
 
     return (

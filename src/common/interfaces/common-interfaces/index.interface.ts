@@ -9,7 +9,8 @@ export interface IResponse<R>{
 }
 
 export interface IUser {
-    _id: number
+    _id: string
+    id: number
     username: string
     fullName?: string
     email: string
@@ -21,10 +22,13 @@ export interface IUser {
     age?: string
     interests?: string
     about?: string
+    following: Array<string>
+    followedBy: Array<string>
 }
 
 export interface ICar {
-    _id: number | null
+    id: number | null
+    _id: string
     name: string
     owner: string
     brand: string
@@ -59,7 +63,6 @@ export interface INote{
     title: string
     date: string
     description: string
-    car: string
-    _id: number
+    _id: string
 }
 export type IError = string | SerializedError | undefined | null

@@ -8,22 +8,31 @@ import {AppWrapper} from "./styles/StyledComponents/App/AppWrapper.StyledCompone
 import {useAppDispatch} from "./store";
 import {Auth} from './components/Auth/Auth.component';
 import {useSelector} from "react-redux";
-import {selectAuthLoading, selectAuthUser} from "./selectors/auth/auth.selector";
-import {Car} from "./components/Cars/Car.component";
+import {selectAuthLoading} from "./selectors/auth/auth.selector";
+import {Car} from "./components/Profile/Car/Car.component";
 import {Profile} from "./components/Profile/Profile.Component";
-import {authMeAction} from "./store/actions/auth.action";
+import {authLogoutAction, authMeAction} from "./store/actions/auth.action";
 
 
 const App: React.FC = () => {
     const dispatch = useAppDispatch()
     const loading = useSelector(selectAuthLoading)
-    const auth = useSelector(selectAuthUser)
+
+    setTimeout(() =>
+        () => {
+        if(loading === 'idle'){
+           dispatch(authLogoutAction())
+        }
+    }, 20000)
+
     useEffect(() => {
         dispatch(authMeAction())
-    }, [auth])
+    }, [])
+
     if (loading === 'idle') {
         return <div><h1>LOADING</h1></div>
     }
+
     return (
         <Router>
             <AppWrapper>
