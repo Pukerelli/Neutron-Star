@@ -2,12 +2,12 @@ import React, {useState} from 'react';
 import {GridLayout} from "../../../../../styles/StyledComponents/Layout/GridLayout.styledComponent";
 import {CarAvatar} from "../../../../Common/Avatar/CarAvatar.component";
 import {CarInfo} from "../CarInfo/CarInfo.component";
-import {ICar} from "../../../../../common/interfaces/common-interfaces/index.interface";
+import {ICar} from "../../../../../common/interfaces/index.interface";
 import {CommonBtn} from "../../../../../styles/StyledComponents/Buttons/CommonButton.styledComponent";
 import {UpdateCarInfo} from "../../CarAdd/UpdateCarInfo.component";
 import {FollowBtn} from "../../../../Common/Buttons/FollowBtn.component";
-import {carFollowAction, carUnfollowAction} from "../../../../../store/actions/car.action";
 import {CarNoteMini} from "../CarNote/CarNoteMini.component";
+import {listFollowCarAction, subsUnfollowCarAction} from '../../../../../store/actions/list.action';
 
 interface IProps {
     auth: string
@@ -36,7 +36,7 @@ export const CarCard: React.FC<IProps> = ({car, onNoteClick, onNewNoteHandler, a
                                  onClick={onEditHandler}>{edit ? 'cancel' : 'edit'}</CommonBtn>
                     : <FollowBtn btnStyle={{width: '10vw', height: '3rem', top: '95%', color: '#EB3649'}}
                                  payload={car.name} followedBy={car.followedBy}
-                                 followAction={carFollowAction} unFollowAction={carUnfollowAction}/>
+                                 followAction={listFollowCarAction} unFollowAction={subsUnfollowCarAction}/>
             }
             {car.notes.map(note => <CarNoteMini car={car._id} note={note} key={note!._id} handler={onNoteClick}/>)}
             <CommonBtn width='7vw' height='2rem'  color='#EB3649' position='static' margin='0 auto'

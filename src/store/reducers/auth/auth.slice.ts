@@ -1,15 +1,5 @@
-import {createAsyncThunk, createSlice, PayloadAction, SerializedError} from "@reduxjs/toolkit";
-import {Auth} from "../../../API/auth-api";
-import {IError, ILogin, IReg, IUser} from "../../../common/interfaces/common-interfaces/index.interface";
-import {AUTH_LOGIN, AUTH_ME, AUTH_REG} from "../../saga.actionTypes";
-import {authMeAction} from "../../actions/auth.action";
-
-
-interface IInitialState {
-    loading: 'idle' | 'pending' | 'succeeded',
-    error: string | SerializedError | undefined | null
-    isAuth: string
-}
+import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {IError} from "../../../common/interfaces/index.interface";
 
 const initialState: IInitialState = {
     loading: 'idle',
@@ -23,18 +13,17 @@ const authSlice = createSlice({
     reducers: {
         logout: (state) => {
             state.isAuth = 'unauthorized'
-            localStorage.clear()
             state.loading = 'succeeded'
         },
         loading: (state) => {
             state.loading = 'pending'
         },
-        authSucceed: (state, action: PayloadAction<string>) => {
+        auth: (state, action: PayloadAction<string>) => {
             state.isAuth = action.payload
             state.loading = 'succeeded'
             state.error = null
         },
-        authFailed: (state, action: PayloadAction<IError>) => {
+        unauthorized: (state, action: PayloadAction<IError>) => {
             state.isAuth = 'unauthorized'
             state.loading = 'succeeded'
             state.error = action.payload
@@ -46,6 +35,11 @@ const authSlice = createSlice({
     }
 })
 
-
-export const {} = authSlice.actions
 export default authSlice.reducer
+
+
+interface IInitialState {
+    loading: 'idle' | 'pending' | 'succeeded',
+    error: IError
+    isAuth: string
+}

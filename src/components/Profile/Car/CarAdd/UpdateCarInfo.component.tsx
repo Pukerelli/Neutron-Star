@@ -1,10 +1,9 @@
 import React from 'react';
 import {Field, Form, Formik} from "formik";
 import * as Yup from "yup";
-import styles from './addCarInfo.module.css'
 import {useAppDispatch} from '../../../../store';
 import {MyCard} from "../../../../styles/StyledComponents/Cards/MyCard"
-import {ICar} from "../../../../common/interfaces/common-interfaces/index.interface";
+import {ICar} from "../../../../common/interfaces/index.interface";
 import {carUpdateAction} from "../../../../store/actions/car.action";
 
 interface IProps {
@@ -61,36 +60,36 @@ export const UpdateCarInfo: React.FC<IProps> = ({carName, car, onEditHandler}) =
                 validationSchema={validation}
                 onSubmit={onSubmit}
             >
-                <Form className={styles.form}>
-                    <div className={styles.div}>
-                        <label htmlFor="generation" className={styles.label}>generation</label>
-                        <Field name="generation" type="text" className={styles.field} placeHolder='enter generation'/>
+                <Form>
+                    <div>
+                        <label htmlFor="generation">generation</label>
+                        <Field name="generation" type="text" placeHolder='enter generation'/>
                     </div>
-                    <div className={styles.div}>
-                        <label htmlFor="year" className={styles.label}>year</label>
-                        <Field name="year" type="text" className={styles.field} placeHolder='enter year'/>
+                    <div>
+                        <label htmlFor="year">year</label>
+                        <Field name="year" type="text" placeHolder='enter year'/>
                     </div>
-                    <div className={styles.div}>
-                        <label htmlFor="doors" className={styles.label}>doors</label>
-                        <Field name="doors" type="text" className={styles.field} placeHolder='enter count of doors'/>
+                    <div>
+                        <label htmlFor="doors">doors</label>
+                        <Field name="doors" type="text" placeHolder='enter count of doors'/>
                     </div>
-                    <div className={styles.div}>
-                        <label htmlFor="engine" className={styles.label}>engine</label>
-                        <Field name="engine" type="text" className={styles.field} placeHolder='enter engine'/>
+                    <div>
+                        <label htmlFor="engine">engine</label>
+                        <Field name="engine" type="text" placeHolder='enter engine'/>
                     </div>
-                    <div className={styles.div}>
-                        <label htmlFor="hp" className={styles.label}>hp</label>
-                        <Field name="hp" type='text' className={styles.field} placeHolder='enter hp'/>
+                    <div>
+                        <label htmlFor="hp">hp</label>
+                        <Field name="hp" type='text' placeHolder='enter hp'/>
                     </div>
-                    <div className={styles.div}>
-                        <label htmlFor="rims" className={styles.label}>rims</label>
-                        <Field name="rims" type='text' className={styles.field} placeHolder='enter rims'/>
+                    <div>
+                        <label htmlFor="rims">rims</label>
+                        <Field name="rims" type='text' placeHolder='enter rims'/>
                     </div>
-                    <div className={styles.div}>
-                        <label htmlFor="ownTime" className={styles.label}>ownTime</label>
-                        <Field name="ownTime" type='text' className={styles.field} placeHolder='enter ownTime'/>
+                    <div>
+                        <label htmlFor="ownTime">ownTime</label>
+                        <Field name="ownTime" type='text' placeHolder='enter ownTime'/>
                     </div>
-                    <button type="submit" className={styles.button}>Submit</button>
+                    <button type="submit">Submit</button>
                 </Form>
             </Formik>
         </MyCard>

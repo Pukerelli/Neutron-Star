@@ -1,5 +1,5 @@
 import React from 'react';
-import {AvatarCard} from "./AvatarCard.component";
+import {UserProfileAvatarLayout} from "../../Profile/User/UserProfile/Avatar/UserProfileAvatarLayout.component";
 import {useSelector} from "react-redux";
 import {defaultImage} from '../../../common/images/images';
 import {useAppDispatch} from "../../../store";
@@ -20,7 +20,7 @@ export const CarAvatar: React.FC<IProps> = ({carName, photo, owner}) => {
         dispatch(carPhotoAction({photo, carName}))
     }
     return (
-        <AvatarCard photo={photo ? photo : defaultImage} update={auth===owner} photoHandler={updateCarPhoto}/>
+        <UserProfileAvatarLayout photo={photo ? photo : defaultImage} update={auth===owner} photoHandler={updateCarPhoto}/>
 
     );
 };

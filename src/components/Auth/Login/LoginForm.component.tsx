@@ -1,7 +1,6 @@
 import {Field, Form, Formik} from 'formik';
 import * as Yup from 'yup';
 import React, {useEffect, useState} from 'react'
-import styles from '../auth.module.css'
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import {useAppDispatch} from "../../../store";
 import {useSelector} from "react-redux";
@@ -9,6 +8,7 @@ import {selectAuthUser} from "../../../selectors/auth/auth.selector";
 import {useHistory} from 'react-router-dom';
 import {MyCard} from '../../../styles/StyledComponents/Cards/MyCard';
 import {authLoginAction} from "../../../store/actions/auth.action";
+
 
 interface IValues {
     username: string
@@ -51,21 +51,21 @@ export const LoginForm: React.FC = () => {
                 })}
                 onSubmit={onSubmit}
             >
-                <Form className={styles.form}>
-                    <div className={styles.title}>
+                <Form>
+                    <div>
                         <AccountBoxIcon fontSize='large'/>
                         <h2>log in</h2>
                     </div>
-                    <div className={styles.username}>
-                        <label htmlFor="username" className={styles.label}>username</label>
-                        <Field name="username" type="text" className={styles.field} placeholder='enter username'/>
+                    <div>
+                        <label htmlFor="username">username</label>
+                        <Field name="username" type="text" placeholder='enter username'/>
                     </div>
-                    <div className={styles.password}>
-                        <label htmlFor="password" className={styles.label}>password</label>
-                        <Field name="password" type="password" className={styles.field} placeholder='enter password'/>
+                    <div>
+                        <label htmlFor="password">password</label>
+                        <Field name="password" type="password" placeholder='enter password'/>
                     </div>
-                    <button disabled={isSubmitting} type="submit" className={styles.button}>Submit</button>
-                    <button onClick={onRegClick} className={styles.regBtn}>Registration</button>
+                    <button disabled={isSubmitting} type="submit">Submit</button>
+                    <button onClick={onRegClick}>Registration</button>
                 </Form>
             </Formik>
         </MyCard>

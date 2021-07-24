@@ -1,8 +1,7 @@
 import React from 'react';
-import {INote} from "../../../../../common/interfaces/common-interfaces/index.interface";
+import {INote} from "../../../../../common/interfaces/index.interface";
 import {noteValidation} from "../../../../../common/validations";
 import {Field, Form, Formik} from "formik";
-import styles from "../../CarAdd/addCarInfo.module.css";
 import {useAppDispatch} from "../../../../../store";
 import {carNoteReplaceAction} from "../../../../../store/actions/car.action";
 
@@ -10,7 +9,6 @@ import {carNoteReplaceAction} from "../../../../../store/actions/car.action";
 interface IProps{
     note: INote
     cancelHandler: () => void
-
 }
 
 export const CarEditNote: React.FC<IProps> = ({note, cancelHandler}) => {
@@ -30,17 +28,17 @@ export const CarEditNote: React.FC<IProps> = ({note, cancelHandler}) => {
             validationSchema={noteValidation}
             onSubmit={onSubmit}
         >
-            <Form className={styles.form}>
-                <div className={styles.div}>
-                    <label htmlFor="title" className={styles.label}>title</label>
-                    <Field name="title" type="text" className={styles.field} placeholder='enter title'/>
+            <Form>
+                <div>
+                    <label htmlFor="title">title</label>
+                    <Field name="title" type="text" placeholder='enter title'/>
                 </div>
-                <div className={styles.div}>
-                    <label htmlFor="description" className={styles.label}>description</label>
-                    <Field name="description" as='textarea' className={styles.textarea}  placeholder='enter description'/>
+                <div>
+                    <label htmlFor="description">description</label>
+                    <Field name="description" as='textarea' placeholder='enter description'/>
                 </div>
-                <button type="submit" className={styles.button}>confirm</button>
-                <button type="button" className={styles.button} onClick={() => cancelHandler()}>cancel</button>
+                <button type="submit">confirm</button>
+                <button type="button" onClick={() => cancelHandler()}>cancel</button>
             </Form>
         </Formik>
     );

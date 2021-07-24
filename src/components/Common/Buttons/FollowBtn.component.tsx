@@ -1,7 +1,7 @@
 import React from 'react';
 import {CommonBtn, ICommonBtn} from "../../../styles/StyledComponents/Buttons/CommonButton.styledComponent";
 import {useAppDispatch} from "../../../store";
-import {IAction} from "../../../common/interfaces/common-interfaces/index.interface";
+import {IAction} from "../../../common/interfaces/index.interface";
 import {useSelector} from "react-redux";
 import {selectAuthUser} from "../../../selectors/auth/auth.selector";
 

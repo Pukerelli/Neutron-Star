@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import {useAppDispatch} from "../../../../store";
 import {useSelector} from "react-redux";
-import {selectCarIsFetching, selectCurrentCar} from "../../../../selectors/Cars/Car.selector";
+import {selectCarIsFetching, selectCurrentCar} from "../../../../selectors/cars/car.selector";
 import {useHistory, useParams} from "react-router-dom";
 import {carCurrentAction} from "../../../../store/actions/car.action";
 import {selectAuthUser} from "../../../../selectors/auth/auth.selector";
-import {INote} from "../../../../common/interfaces/common-interfaces/index.interface";
+import {INote} from "../../../../common/interfaces/index.interface";
 import {CarNote} from "./CarNote/CarNote.component";
 import {CarCard} from "./CarCard/CarCard.component";
 

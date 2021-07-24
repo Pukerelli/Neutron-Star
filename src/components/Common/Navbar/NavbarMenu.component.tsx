@@ -13,7 +13,7 @@ export const NavbarMenu: React.FC<IProps> = ({links}) => {
             {
                 links.map((link, index) =>
                     <NavLinkStyled key={index}>
-                        <NavLink to={`/profile/${link.substring(link.indexOf("/") + 1)}`}>
+                        <NavLink to={`/${link.substring(link.indexOf("/") + 1)}`}>
                             {link.split('/')[0]}
                         </NavLink>
                     </NavLinkStyled>)

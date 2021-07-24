@@ -7,6 +7,7 @@ import {useSelector} from "react-redux";
 import {selectAuthUser} from "../../selectors/auth/auth.selector";
 import {useAppDispatch} from "../../store";
 import {authLogoutAction} from "../../store/actions/auth.action";
+import {clearStorage} from "../../common/functions";
 
 
 export const Header: React.FC = () => {
@@ -14,23 +15,21 @@ export const Header: React.FC = () => {
     const dispatch = useAppDispatch()
     const history = useHistory()
     const onClick = () => {
-        if (auth && auth !== 'unauthorized')
-            return dispatch(authLogoutAction())
+        if (auth && auth !== 'unauthorized') {
+            clearStorage()
+            dispatch(authLogoutAction())
+            return
+        }
         history.push('/auth/login')
     }
-
     return (
-        <header>
-            <HeaderWrapper>
+        <HeaderWrapper>
                 <HeaderItem>
                     <NavLink to='/'>Home</NavLink>
                 </HeaderItem>
                 <HeaderItem>
                     <NavLink to={`/profile/user/${auth}`}>Profile</NavLink>
                 </HeaderItem>
-                {/*<HeaderItem>
-                    <NavLink to='/cars'>Cars</NavLink>
-                </HeaderItem>*/}
                 <HeaderItem>
                     <NavLink to='/shop'>Shop</NavLink>
                 </HeaderItem>
@@ -43,8 +42,7 @@ export const Header: React.FC = () => {
                     <span><AccountBoxIcon/></span>
                     <span>{auth && auth !== 'unauthorized' ? 'logout' : 'login'}</span>
                 </HeaderItem>
-            </HeaderWrapper>
-        </header>
+        </HeaderWrapper>
     );
 };
 

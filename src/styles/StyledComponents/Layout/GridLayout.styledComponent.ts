@@ -24,3 +24,14 @@ export const GridLayout = styled.div<IProps>`
   align-self: ${props => props.align ? props.align : 'center'};
   margin: ${props => props.margin ? props.margin : 0}
 `
+export const UserProfileLayout= styled.div`
+  width: 800px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-areas:
+          'ds ds ds av'
+          'ds ds ds av'
+          'ab ab ab av'
+          'cr cr cr fl';
+  grid-gap: 1rem;
+`

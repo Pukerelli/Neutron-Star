@@ -1,6 +1,6 @@
 import React from 'react';
 import {GridLayout} from "../../../../../styles/StyledComponents/Layout/GridLayout.styledComponent";
-import {ICar} from "../../../../../common/interfaces/common-interfaces/index.interface";
+import {IAction, ICar} from "../../../../../common/interfaces/index.interface";
 import {ImgSimple} from "../../../../../styles/StyledComponents/Images/ImgSimple.styledComponent";
 import {defaultImage} from '../../../../../common/images/images';
 import {CarMiniInfo} from "../CarInfo/CarMiniInfo.component";
@@ -10,16 +10,17 @@ import {useSelector} from "react-redux";
 import {selectAuthUser} from "../../../../../selectors/auth/auth.selector";
 import {CommonBtn} from '../../../../../styles/StyledComponents/Buttons/CommonButton.styledComponent';
 import {useAppDispatch} from "../../../../../store";
-import {carDeleteAction, carFollowAction, carUnfollowAction} from "../../../../../store/actions/car.action";
+import {carDeleteAction} from "../../../../../store/actions/car.action";
+import {listFollowCarAction, searchUnfollowCarAction} from '../../../../../store/actions/list.action';
 
 interface IProps {
     car: ICar
-    isFetching: boolean
     path?: string
     btn?: boolean
+    unfollow?: IAction<{payload: string}>
 }
 
-export const CarMiniCard: React.FC<IProps> = ({car, isFetching, path, btn = true}) => {
+export const CarMiniCard: React.FC<IProps> = ({car, path, unfollow, btn = true}) => {
     const auth = useSelector(selectAuthUser)
     const dispatch = useAppDispatch()
     const history = useHistory()
@@ -33,9 +34,6 @@ export const CarMiniCard: React.FC<IProps> = ({car, isFetching, path, btn = true
     const onDeleteClick = () => {
         dispatch(carDeleteAction(car.name))
     }
-    if (isFetching) {
-        return <div>loading</div>
-    }
     return (
         <div style={{position: 'relative'}}>
             {
@@ -45,7 +43,7 @@ export const CarMiniCard: React.FC<IProps> = ({car, isFetching, path, btn = true
                                    onClick={onDeleteClick}>delete</CommonBtn>
                         : <FollowBtn btnStyle={{height: '2rem', width: '4rem', top: '10%', right: '105%'}}
                                      followedBy={car.followedBy}
-                                     followAction={carFollowAction} unFollowAction={carUnfollowAction}
+                                     followAction={listFollowCarAction} unFollowAction={unfollow? unfollow: searchUnfollowCarAction}
                                      payload={car.name}
                         />
                     : null

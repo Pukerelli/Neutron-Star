@@ -9,12 +9,11 @@ import { NavbarMenu } from './NavbarMenu.component';
 export const Navbar: React.FC = () => {
     const [displayBar, setDisplayBar] = useState(true)
 
-    const navbar = ['MyProfile/user', 'Garage/cars/garage', 'Subs/subscriprions', 'Search/search']
+    const navbar = ['MyProfile/profile/user', 'Garage/profile/cars/garage', 'Subs/profile/subscriptions', 'Search/search']
     const navbarHandler = () => {
         setDisplayBar(!displayBar)
     }
     return (
-        <>
             <NavbarLayout show={displayBar}>
                 <NavbarMenu links={navbar}/>
                 <NavHideBtn onClick={navbarHandler}>
@@ -22,9 +21,6 @@ export const Navbar: React.FC = () => {
                 </NavHideBtn>
                 <NavButtonShow handler={navbarHandler} show={displayBar}/>
             </NavbarLayout>
-
-
-        </>
     );
 };
 

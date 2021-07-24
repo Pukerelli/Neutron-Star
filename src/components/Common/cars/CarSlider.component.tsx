@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {MyCard} from "../../../styles/StyledComponents/Cards/MyCard";
 import {ImgSimple} from '../../../styles/StyledComponents/Images/ImgSimple.styledComponent';
 import {useSelector} from "react-redux";
-import {selectCars} from "../../../selectors/Cars/Car.selector";
+import {selectCars} from "../../../selectors/cars/car.selector";
 import {CommonBtn} from "../../../styles/StyledComponents/Buttons/CommonButton.styledComponent";
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';

@@ -1,12 +1,12 @@
 import React from 'react';
-import {INote} from '../../../../../common/interfaces/common-interfaces/index.interface';
+import {INote} from '../../../../../common/interfaces/index.interface';
 import {MyCard} from "../../../../../styles/StyledComponents/Cards/MyCard";
 import config from '../../../../../common/config/config.json'
 import {CommonBtn} from '../../../../../styles/StyledComponents/Buttons/CommonButton.styledComponent';
 import {useState} from 'react';
 import {CarEditNote} from "./CarEditNote.component";
 import {useSelector} from "react-redux";
-import {selectCurrentNote} from "../../../../../selectors/Cars/Car.selector";
+import {selectCurrentNote} from "../../../../../selectors/cars/car.selector";
 
 interface IProps {
     note: INote

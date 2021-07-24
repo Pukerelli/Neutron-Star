@@ -1,3 +1,5 @@
 {
-  "color": "#EB3649"
+  "color": "#EB3649",
+  "background": "rgba(171, 207, 250, 0.2)",
+  "linkColor": "#5E8FACFF"
 }

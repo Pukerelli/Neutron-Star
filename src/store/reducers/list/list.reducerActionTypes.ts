@@ -1,0 +1,7 @@
+export const LIST_FETCHING = 'list/isFetching'
+export const LIST_USERS_SUCCEED = 'list/users'
+export const LIST_CARS_SUCCEED = 'list/cars'
+export const LIST_FILTER_SUCCEED = 'list/filter'
+export const LIST_REPLACE_SUCCEED = 'list/replace'
+export const LIST_ERROR = 'list/error'
+export const LIST_UNMOUNT = 'list/unmount'

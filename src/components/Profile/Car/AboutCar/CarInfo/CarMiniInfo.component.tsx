@@ -1,6 +1,6 @@
 import React from 'react';
 import {MyCard} from "../../../../../styles/StyledComponents/Cards/MyCard";
-import {ICar} from "../../../../../common/interfaces/common-interfaces/index.interface";
+import {ICar} from "../../../../../common/interfaces/index.interface";
 
 interface IProps {
     car: ICar

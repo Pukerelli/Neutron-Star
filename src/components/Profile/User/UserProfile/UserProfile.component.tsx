@@ -1,60 +1,31 @@
-import React, {useEffect} from 'react';
-import {useHistory, useParams} from 'react-router-dom';
-import {UserCard} from "./UserCard.component";
-import {useAppDispatch} from "../../../../store";
-import {useSelector} from "react-redux";
-import {selectAuthUser} from "../../../../selectors/auth/auth.selector";
-import {selectProfileFetchErrors} from "../../../../selectors/Profile/UserProfile.selector";
-import {carGarageAction} from "../../../../store/actions/car.action";
-import {profileUserAction} from "../../../../store/actions/profile.action";
+import React from 'react';
+import {UserProfileLayout} from '../../../../styles/StyledComponents/Layout/GridLayout.styledComponent';
+import {UserProfileAvatar} from "./Avatar/UserAvatar.component";
+import {UserProfileDescription} from "./Description/UserProfileDescription.component";
+import {UserAbout} from "../../../../styles/StyledComponents/Profile/Description/UserDescription.styledComponents";
+import {ICar, IUser} from "../../../../common/interfaces/index.interface";
+import {UserProfileCars} from "./Cars/UserProfileCars.component";
+import {Subscriptions} from "./Subscriptions/Subscriptions.component";
 
-
-export const UserProfile = () => {
-    const {username} = useParams<{ username: string }>();
-    const dispatch = useAppDispatch()
-    const history = useHistory()
-    const auth = useSelector(selectAuthUser)
-    const error = useSelector(selectProfileFetchErrors)
-
-
-    ///// effects depends on username
-
-    useEffect(() => {
-        if (!username) {
-            history.push(`/profile/user/${auth}`)
-            return
-        }
-        if (username !== 'unauthorized') {
-            dispatch(profileUserAction(username))
-            dispatch(carGarageAction(username))
-            return
-        }
-
-    }, [username])
-
-    ///// redirecting after login
-
-    useEffect(() => {
-        if (username === 'unauthorized' && auth !== 'unauthorized') {
-            history.push(`/profile/user/${auth}`)
-        }
-    }, [username, auth])
-
-    ///// checking auth
-
-
-    ///// error handling
-    if (error) {
-        return <div>user not found</div>
-    }
-    if(username === 'unauthorized'){
-        return <div>please log in</div>
-    }
-
-    return (
-        <>
-            <UserCard auth={auth}/>
-        </>
-    );
+interface IProps {
+    cars: Array<ICar>
+    user: IUser
 }
 
+
+export const UserProfile: React.FC<IProps> = ({user, cars}) => {
+
+    return (
+        <UserProfileLayout>
+            <UserProfileDescription user={user}/>
+            <UserProfileAvatar user={user}/>
+            <UserAbout>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad aliquam asperiores
+                    ea eum inventore molestias, nihil odio officiis quibusdam, quidem repellendus rerum sint,
+                    vel voluptates. Ipsam labore modi perferendis.</p>
+            </UserAbout>
+            <Subscriptions following={user.following}/>
+            <UserProfileCars cars={cars}/>
+        </UserProfileLayout>
+    );
+}

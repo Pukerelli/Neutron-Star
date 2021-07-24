@@ -3,10 +3,9 @@ import {MyCard} from '../../../../../styles/StyledComponents/Cards/MyCard';
 import {useAppDispatch} from "../../../../../store";
 import date from 'date-and-time';
 import {Field, Form, Formik} from "formik";
-import styles from "../../CarAdd/addCarInfo.module.css";
 import {carCurrentAction, carNotePushAction} from "../../../../../store/actions/car.action";
 import {useSelector} from "react-redux";
-import {selectCarError, selectCurrentCar} from "../../../../../selectors/Cars/Car.selector";
+import {selectCarError, selectCurrentCar} from "../../../../../selectors/cars/car.selector";
 import {SelectCar} from "../../selectCar/SelectCar.component";
 import {useHistory, useParams} from "react-router-dom";
 import {noteValidation} from '../../../../../common/validations';
@@ -47,16 +46,16 @@ export const CarAddNote: React.FC = () => {
                 validationSchema={noteValidation}
                 onSubmit={onSubmit}
             >
-                <Form className={styles.form}>
-                    <div className={styles.div}>
-                        <label htmlFor="title" className={styles.label}>title</label>
-                        <Field name="title" type="text" className={styles.field} placeholder='enter title'/>
+                <Form >
+                    <div>
+                        <label htmlFor="title">title</label>
+                        <Field name="title" type="text" placeholder='enter title'/>
                     </div>
-                    <div className={styles.div}>
-                        <label htmlFor="description" className={styles.label}>description</label>
-                        <Field name="description" as='textarea' className={styles.textarea}  placeholder='enter description'/>
+                    <div>
+                        <label htmlFor="description">description</label>
+                        <Field name="description" as='textarea'   placeholder='enter description'/>
                     </div>
-                    <button type="submit" className={styles.button}>add</button>
+                    <button type="submit" >add</button>
                 </Form>
             </Formik>
         </MyCard>

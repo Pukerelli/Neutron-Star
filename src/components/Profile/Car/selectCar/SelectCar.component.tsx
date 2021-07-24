@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {useAppDispatch} from "../../../../store";
 import {useSelector} from "react-redux";
-import {selectCarIsFetching, selectCars} from "../../../../selectors/Cars/Car.selector";
+import {selectCarIsFetching, selectCars} from "../../../../selectors/cars/car.selector";
 import {carGarageAction} from "../../../../store/actions/car.action";
 import {GridLayout} from "../../../../styles/StyledComponents/Layout/GridLayout.styledComponent";
 import {CarMiniCard} from "../AboutCar/CarCard/CarMiniCard.component";
@@ -25,7 +25,7 @@ export const SelectCar = () => {
     }
     return (
         <GridLayout width='80%' overflow='scroll' margin='0 auto'>
-            {cars.map(car => <CarMiniCard car={car} isFetching={isFetching} path={`/cars/add/note/${car.name}`} btn={false}/>)}
+            {cars.map(car => <CarMiniCard car={car} path={`/cars/add/note/${car.name}`} btn={false}/>)}
         </GridLayout>
     );
 };

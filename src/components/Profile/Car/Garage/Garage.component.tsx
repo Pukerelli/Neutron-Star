@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useSelector} from "react-redux";
-import {selectCarIsFetching, selectCars} from "../../../../selectors/Cars/Car.selector";
+import {selectCarIsFetching, selectCars} from "../../../../selectors/cars/car.selector";
 import {useAppDispatch} from "../../../../store";
 import {CarMiniCard} from "../AboutCar/CarCard/CarMiniCard.component";
 import {GridLayout} from '../../../../styles/StyledComponents/Layout/GridLayout.styledComponent';
@@ -15,7 +15,6 @@ export const Garage: React.FC = () => {
         const [addCar, setAddCar] = useState(false)
         const dispatch = useAppDispatch()
         const allCars = useSelector(selectCars)
-        const isFetching = useSelector(selectCarIsFetching)
         const {username} = useParams<{ username: string }>()
         const auth = useSelector(selectAuthUser)
 
@@ -61,7 +60,7 @@ export const Garage: React.FC = () => {
                     }
                 </div>
                 <GridLayout width='80%' margin='0 auto' align='start'>
-                    {allCars.map((car, index) => <CarMiniCard key={index} car={car} isFetching={isFetching}/>)}
+                    {allCars.map((car, index) => <CarMiniCard key={index} car={car}/>)}
                 </GridLayout>
             </>
         );

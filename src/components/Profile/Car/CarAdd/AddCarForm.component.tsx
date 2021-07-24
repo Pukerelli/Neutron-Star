@@ -1,7 +1,6 @@
 import React, {Dispatch, SetStateAction} from 'react';
 import {Field, Form, Formik} from "formik";
 import * as Yup from "yup";
-import styles from '../../User/UserProfile/UserInfo/updateUser.module.css'
 import {useAppDispatch} from '../../../../store';
 import {MyCard} from "../../../../styles/StyledComponents/Cards/MyCard";
 import {carAddAction} from "../../../../store/actions/car.action";
@@ -46,24 +45,24 @@ export const AddCarForm: React.FC<IProps> = ({setFinished}) => {
                 validationSchema={validation}
                 onSubmit={onSubmit}
             >
-                <Form className={styles.form}>
-                    <div className={styles.div}>
-                        <label htmlFor="name" className={styles.label}>Name</label>
-                        <Field name="name" type="text" className={styles.field} placeHolder='name'/>
+                <Form>
+                    <div>
+                        <label htmlFor="name">Name</label>
+                        <Field name="name" type="text" placeHolder='name'/>
                     </div>
-                    <div className={styles.div}>
-                        <label htmlFor="brand" className={styles.label}>brand</label>
-                        <Field name="brand" type="text" className={styles.field} placeHolder='brand'/>
+                    <div>
+                        <label htmlFor="brand" >brand</label>
+                        <Field name="brand" type="text" placeHolder='brand'/>
                     </div>
-                    <div className={styles.div}>
-                        <label htmlFor="model" className={styles.label}>model</label>
-                        <Field name="model" type="text" className={styles.field} placeHolder='model'/>
+                    <div>
+                        <label htmlFor="model">model</label>
+                        <Field name="model" type="text" placeHolder='model'/>
                     </div>
-                    <div className={styles.div}>
-                        <label htmlFor="generation" className={styles.label}>generation</label>
-                        <Field name="generation" type="text" className={styles.field} placeHolder='generation'/>
+                    <div>
+                        <label htmlFor="generation">generation</label>
+                        <Field name="generation" type="text" placeHolder='generation'/>
                     </div>
-                    <button type="submit" className={styles.button}>Submit</button>
+                    <button type="submit">Submit</button>
                 </Form>
             </Formik>
         </MyCard>

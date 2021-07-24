@@ -1,5 +1,4 @@
 import React, {useEffect} from 'react'
-import styles from '../auth.module.css'
 import {Field, Form, Formik} from 'formik';
 import * as Yup from 'yup';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
@@ -9,7 +8,6 @@ import {useHistory} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {selectAuthUser} from "../../../selectors/auth/auth.selector";
 import {authRegAction} from "../../../store/actions/auth.action";
-import {validate} from "uuid";
 
 
 interface IValues {
@@ -48,24 +46,24 @@ export const RegistrationForm: React.FC = () => {
                 })}
                 onSubmit={onSubmit}
             >
-                <Form className={styles.form}>
-                    <div className={styles.title}>
+                <Form>
+                    <div>
                         <AccountBoxIcon fontSize='large'/>
                         <h2>registration</h2>
                     </div>
-                    <div className={styles.username}>
-                        <label htmlFor="username" className={styles.label}>username</label>
-                        <Field name="username" type="text" className={styles.field} placeholder='enter username'/>
+                    <div >
+                        <label htmlFor="username">username</label>
+                        <Field name="username" type="text" placeholder='enter username'/>
                     </div>
-                    <div className={styles.email}>
-                        <label htmlFor="email" className={styles.label}>email</label>
-                        <Field name="email" type="email" className={styles.field} placeholder='enter email'/>
+                    <div>
+                        <label htmlFor="email">email</label>
+                        <Field name="email" type="email" placeholder='enter email'/>
                     </div>
-                    <div className={styles.password}>
-                        <label htmlFor="password" className={styles.label}>password</label>
-                        <Field name="password" type="password" className={styles.field} placeholder='enter password'/>
+                    <div>
+                        <label htmlFor="password">password</label>
+                        <Field name="password" type="password" placeholder='enter password'/>
                     </div>
-                    <button disabled={false} type="submit" className={styles.button}>Registration</button>
+                    <button disabled={false} type="submit">Registration</button>
                 </Form>
             </Formik>
         </MyCard>

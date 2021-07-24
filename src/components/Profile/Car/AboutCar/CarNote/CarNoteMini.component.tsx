@@ -1,5 +1,5 @@
 import React from 'react';
-import {INote} from "../../../../../common/interfaces/common-interfaces/index.interface";
+import {INote} from "../../../../../common/interfaces/index.interface";
 import {GridLayout} from '../../../../../styles/StyledComponents/Layout/GridLayout.styledComponent';
 import {useAppDispatch} from "../../../../../store";
 import {carNotePullAction} from "../../../../../store/actions/car.action";

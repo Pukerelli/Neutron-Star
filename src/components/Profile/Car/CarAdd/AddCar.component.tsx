@@ -3,7 +3,7 @@ import {AddCarForm} from "./AddCarForm.component";
 import {UpdateCarPhoto} from "./UpdateCarPhoto.component";
 import {UpdateCarInfo} from "./UpdateCarInfo.component";
 import {useSelector} from "react-redux";
-import {selectCarName, selectCurrentCar} from "../../../../selectors/Cars/Car.selector";
+import {selectCarName, selectCurrentCar} from "../../../../selectors/cars/car.selector";
 import {CarInfo} from "../AboutCar/CarInfo/CarInfo.component";
 
 export const AddCar: React.FC = () => {

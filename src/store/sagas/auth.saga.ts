@@ -1,8 +1,8 @@
 import {all, call, put, takeEvery} from "redux-saga/effects";
-import {Auth} from "../../API/auth-api";
+import {Auth} from "../../API/auth.api";
 import * as types from '../saga.actionTypes'
 import {AUTH_REG} from '../saga.actionTypes'
-import {IResponse, IUser} from "../../common/interfaces/common-interfaces/index.interface";
+import {IResponse, IUser} from "../../common/interfaces/index.interface";
 import {
     authErrorAction,
     authFailedAction,
@@ -12,7 +12,8 @@ import {
     authSucceedAction
 } from "../actions/auth.action";
 import {setStorage} from "../../common/functions";
-import {profileUserSucceedAction} from "../actions/profile.action";
+import {userProfileSucceedAction} from "../actions/user.action";
+import { authHelper } from "./saga.helpers";
 
 ///// AUTH ME
 function* watchAuthMe() {
@@ -26,7 +27,7 @@ function* authMe() {
             if (response.token)
                 setStorage('token', response.token)
             yield put(authSucceedAction(response.data.username))
-            yield put(profileUserSucceedAction(response.data))
+            yield put(userProfileSucceedAction(response.data))
         } else {
             yield put(authFailedAction(response.error))
         }
@@ -44,7 +45,7 @@ function* login({payload}: ReturnType<typeof authLoginAction>) {
     try {
         yield put(authLoadingAction())
         const response: IResponse<string> = yield call(Auth.postLogin, payload)
-        yield authHandler(response)
+        yield authHelper(response)
     } catch (e) {
         yield put(authErrorAction(e))
     }
@@ -59,24 +60,12 @@ function* registration({payload}: ReturnType<typeof authRegAction>) {
     try {
         yield put(authLoadingAction())
         const response: IResponse<string> = yield call(Auth.postRegistration, payload)
-        yield authHandler(response)
+        yield authHelper(response)
     } catch (e) {
         yield put(authErrorAction(e))
     }
 }
 
-///// HANDLE FOR COMMON CASES
-function* authHandler(response: IResponse<string>) {
-    if (!response.error) {
-        if (response.token)
-            setStorage('token', response.token)
-        yield put(authSucceedAction(response.data))
-    } else {
-        yield put(authErrorAction(response.error))
-    }
-}
-
-///// EXPORT SAGA TO ROOT
 export function* authSaga() {
     yield all([
         watchAuthMe(),
