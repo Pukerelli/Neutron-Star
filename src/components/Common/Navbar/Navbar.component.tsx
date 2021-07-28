@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {NavbarLayout} from "../../../styles/StyledComponents/Layout/Layout.styledComponent";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
-import {NavButtonShow} from "../Buttons/NavButtonShow";
+import {NavButtonShow} from "../Buttons/NavButtonShow.component";
 import {NavHideBtn} from "../../../styles/StyledComponents/Navbar/Navbar.styledComponents";
 import { NavbarMenu } from './NavbarMenu.component';
 

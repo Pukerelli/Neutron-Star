@@ -23,10 +23,13 @@ const authSlice = createSlice({
             state.loading = 'succeeded'
             state.error = null
         },
-        unauthorized: (state, action: PayloadAction<IError>) => {
+        unauthorized: (state) => {
             state.isAuth = 'unauthorized'
             state.loading = 'succeeded'
-            state.error = action.payload
+            state.error = null
+        },
+        clearErrors: (state) => {
+            state.error = null
         },
         error: (state, action: PayloadAction<IError>) => {
             state.error = action.payload

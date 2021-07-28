@@ -7,7 +7,7 @@ import {
     userProfileAction,
     userProfileSucceedAction
 } from "../actions/user.action";
-import {IUpdateData, User} from "../../API/user.api";
+import {IUpdateUser, User} from "../../API/user.api";
 import {IUser} from "../../common/interfaces/index.interface";
 import {userHelper} from "./saga.helpers";
 
@@ -27,7 +27,7 @@ function* watchUserUpdate() {
 }
 
 function* userUpdate({payload}: ReturnType<typeof userUpdateAction>) {
-    yield userHelper<IUpdateData, IUser>(User.putUpdateUser, payload, userProfileSucceedAction)
+    yield userHelper<IUpdateUser, IUser>(User.putUpdateUser, payload, userProfileSucceedAction)
 }
 
 ///// UPDATE USER PHOTO

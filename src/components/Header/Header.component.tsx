@@ -1,7 +1,10 @@
 import React from 'react';
 import {NavLink, useHistory} from "react-router-dom";
-import {HeaderWrapper} from "../../styles/StyledComponents/Header/Header.StyledComponent";
-import {HeaderItem} from '../../styles/StyledComponents/Header/HeaderItem.styledComponent';
+import {
+    HeaderWrapper,
+    HeaderItem,
+    HeaderItemContainer
+} from "../../styles/StyledComponents/Header/Header.StyledComponent";
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import {useSelector} from "react-redux";
 import {selectAuthUser} from "../../selectors/auth/auth.selector";
@@ -24,6 +27,7 @@ export const Header: React.FC = () => {
     }
     return (
         <HeaderWrapper>
+            <HeaderItemContainer>
                 <HeaderItem>
                     <NavLink to='/'>Home</NavLink>
                 </HeaderItem>
@@ -35,13 +39,15 @@ export const Header: React.FC = () => {
                 </HeaderItem>
                 <HeaderItem>
                     <NavLink to='/services'>Services</NavLink>
-                </HeaderItem><HeaderItem>
-                <NavLink to='/search'>Search</NavLink>
-            </HeaderItem>
+                </HeaderItem>
+                <HeaderItem>
+                    <NavLink to='/search'>Search</NavLink>
+                </HeaderItem>
                 <HeaderItem onClick={onClick} style={{cursor: 'pointer'}}>
                     <span><AccountBoxIcon/></span>
                     <span>{auth && auth !== 'unauthorized' ? 'logout' : 'login'}</span>
                 </HeaderItem>
+            </HeaderItemContainer>
         </HeaderWrapper>
     );
 };

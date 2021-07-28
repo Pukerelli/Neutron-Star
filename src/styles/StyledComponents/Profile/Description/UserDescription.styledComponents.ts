@@ -1,7 +1,7 @@
 import styled from "styled-components";
+import config from "../../../../common/config/config.json"
 
 export const UserDescription = styled.div`
-  grid-area: ds;
   position: relative;
   box-shadow: 0 0 4px 0 rgba(34, 60, 80, 0.2);
   color: rgb(130, 130, 130);
@@ -9,6 +9,9 @@ export const UserDescription = styled.div`
   padding: 1rem 1.5rem;
   border-radius: 6px;
   width: 530px;
+  min-height: 230px;
+  height: fit-content;
+  max-height: 350px;
 
   &::after {
     content: '';
@@ -31,13 +34,24 @@ export const UserInfo = styled.div`
 `
 
 export const UserAbout = styled.div`
-  grid-area: ab;
   width: 530px;
   box-shadow: 0 0 4px 0 rgba(34, 60, 80, 0.2);
-  color: rgb(130, 130, 130);
+  color: ${config.commonColor};
   background-color: white;
   padding: 1rem 1.5rem;
   border-radius: 6px;
+  height: 100px;
 `
 
+
+export const UserEditFormContainer = styled.div`
+  display: grid;
+  width: 360px;
+  margin: 20px auto 0;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 40px;
+  grid-template-rows: repeat(4, 65px);
+  align-items: center;
+  height: 265px;
+`
 

@@ -1,11 +1,12 @@
 import styled from "styled-components";
+import config from "../../../../common/config/config.json"
 
 export const UserCars = styled.div`
   display: grid;
   width: 530px;
   grid-template-columns: 3fr 2fr;
   grid-column-gap: .3rem;
-  grid-area: cr;
+  grid-row-gap: 1rem;
 `
 export const UserCarCard = styled.div`
   padding: 1rem;
@@ -19,7 +20,8 @@ export const UserCarCard = styled.div`
   grid-template-rows: 1fr 3fr;
   height: 120px;
 `
-export const CarTitleContainer = styled.div`
+export const TitleContainer = styled.div`
+  cursor: pointer;
   grid-column: span 2;
   grid-column-gap: 1rem;
   display: grid;
@@ -40,4 +42,12 @@ export const CarTitleContainer = styled.div`
 `
 export const CarImgContainer = styled.div`
   height: 120px;
+`
+
+export const ImgCommon = styled.img`
+  box-shadow: ${config.shadow};
+  border-radius: 6px;
+  width: 100%;
+  height: inherit;
+  object-fit: cover;
 `

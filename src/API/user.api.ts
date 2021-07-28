@@ -7,7 +7,7 @@ export const User = {
     postUpdateUserPhoto: (payload: {data: string}) => requests.post<string, {data: string}>('user/update/photo', payload),
     postFollowUser: (payload: {payload: string}) => requests.post<IUser, {payload: string}>('user/follow', payload),
     ///// PUT
-    putUpdateUser: (payload: IUpdateData) => requests.put<IUser, IUpdateData>('user/update', payload),
+    putUpdateUser: (payload: IUpdateUser) => requests.put<IUser, IUpdateUser>('user/update', payload),
     putUnfollowUser: (payload: {payload: string}) => requests.put<IUser, {payload: string}>('user/unfollow', payload),
     ///// GET
     getUser: (payload: string) => requests.get<IUser, string>('user', payload),
@@ -16,11 +16,12 @@ export const User = {
 }
 
 ///// TYPES
-export interface IUpdateData {
+export interface IUpdateUser {
     fullName?: string,
     age?: string,
-    interests?: string,
-    about?: string,
+    drivingExperience?: string,
     country?: string,
-    city?: string
+    city?: string,
+    whatsapp?: string,
+    telegram?: string
 }

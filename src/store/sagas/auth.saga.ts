@@ -28,8 +28,9 @@ function* authMe() {
                 setStorage('token', response.token)
             yield put(authSucceedAction(response.data.username))
             yield put(userProfileSucceedAction(response.data))
-        } else {
-            yield put(authFailedAction(response.error))
+        }else{
+            if(response.error === 'auth error')
+            yield put(authFailedAction())
         }
     } catch (e) {
         yield put(authErrorAction(e))

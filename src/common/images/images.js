@@ -15,4 +15,5 @@ export const stockPhotos = [
 ]
 
 
-export const defaultImage = 'https://media.istockphoto.com/vectors/car-flat-icon-vector-id1144092062?k=6&m=1144092062&s=612x612&w=0&h=KjHYZQoPokl3q-FtNHBx6Nbgy79vQ2BOpsTrgJzVNuA='
+export const userDefaultImage = 'https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png'
+export const carDefaultImage = 'https://media.istockphoto.com/vectors/car-flat-icon-vector-id1144092062?k=6&m=1144092062&s=612x612&w=0&h=KjHYZQoPokl3q-FtNHBx6Nbgy79vQ2BOpsTrgJzVNuA='

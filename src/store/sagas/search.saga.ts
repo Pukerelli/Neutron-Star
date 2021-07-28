@@ -8,8 +8,8 @@ import {
     listReplaceSucceedAction,
     listUsersSucceedAction,
     searchCarAction,
-    searchUnfollowCarAction,
-    searchUnfollowUserAction,
+    listUnfollowCarAction,
+    listUnfollowUserAction,
     searchUserAction
 } from "../actions/list.action";
 import {Car} from "../../API/car.api";
@@ -32,13 +32,13 @@ function* carSearch({payload}: ReturnType<typeof searchCarAction>) {
 
 ///// UNFOLLOW WITH REPLACE
 function* watchSearchUserUnfollow() {
-    yield takeEvery(type.LIST_SEARCH_USER_UNFOLLOW, searchUnfollow)
+    yield takeEvery(type.LIST_USER_UNFOLLOW, searchUnfollow)
 }
 function* watchSearchCarUnfollow() {
-    yield takeEvery(type.LIST_SEARCH_CAR_UNFOLLOW, searchUnfollow)
+    yield takeEvery(type.LIST_CAR_UNFOLLOW, searchUnfollow)
 }
-function* searchUnfollow(action: ReturnType<typeof searchUnfollowCarAction | typeof searchUnfollowUserAction>) {
-    if (action.type === type.LIST_SEARCH_USER_UNFOLLOW)
+function* searchUnfollow(action: ReturnType<typeof listUnfollowCarAction | typeof listUnfollowUserAction>) {
+    if (action.type === type.LIST_USER_UNFOLLOW)
         yield listHelper<{ payload: string }, ICar | IUser>(User.putUnfollowUser, action.payload, listReplaceSucceedAction)
     else
         yield listHelper<{ payload: string }, ICar | IUser>(Car.deleteFollowCar, action.payload, listReplaceSucceedAction)

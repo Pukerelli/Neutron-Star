@@ -2,7 +2,7 @@ import React from 'react';
 import {Route, Switch} from 'react-router-dom';
 import {Car} from "./Car/Car.component";
 import {User} from "./User/User.component";
-import {Subscriptions} from "./Subscriptions/Subscriptions.component";
+import {SubscriptionsPage} from "./Subscriptions/SubscriptionsPage.component";
 
 
 export const Profile = () => {
@@ -15,7 +15,7 @@ export const Profile = () => {
                 <Car/>
             </Route>
             <Route path={'/profile/subscriptions'}>
-                <Subscriptions/>
+                <SubscriptionsPage/>
             </Route>
         </Switch>
     );

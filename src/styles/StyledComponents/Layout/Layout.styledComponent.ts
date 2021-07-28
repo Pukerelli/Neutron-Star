@@ -1,19 +1,14 @@
 import styled from 'styled-components'
-
-interface IProps {
-    show: boolean
-}
+import config from "../../../common/config/config.json"
 export const Layout = styled.main`
   grid-area: content;
   display: grid;
-  grid-template-columns: 1.2fr 8fr 0.8fr;
-  grid-gap: 1rem;
+  grid-template-columns: 15% 70% 15%;
   position: relative;
 `
 
 export const NavbarLayout = styled.div<IProps>`
-  margin-top: 1rem;
-  background-color: #EB3649;
+  background-color: ${config.color};
   position: relative;
   height: fit-content;
   width: 8rem;
@@ -24,16 +19,13 @@ export const NavbarLayout = styled.div<IProps>`
   z-index: 100;
 
 `
-interface IDev {
-    bg?: string
-}
 
-export const ContentLayout = styled.div<IDev>`
+export const ContentLayout = styled.div`
   border-radius: 6px;
   overflow-y: scroll;
-  margin-top: 1rem;
-  height: 85vh;
- background-color: ${props => props.bg? props.bg: 'none'};
+  padding: 0 8px 0 16px;
+  height: 88vh;
+  margin: 0 auto;
 
   ///// scroll styles
   &::-webkit-scrollbar {
@@ -46,7 +38,7 @@ export const ContentLayout = styled.div<IDev>`
 
   &::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    background-color: #EB3649;
+    background-color: ${config.linkColor};
   }
 
   ///// devices
@@ -55,3 +47,6 @@ export const ContentLayout = styled.div<IDev>`
   }
 `
 
+interface IProps {
+    show: boolean
+}

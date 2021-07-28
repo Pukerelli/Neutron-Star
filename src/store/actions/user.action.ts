@@ -1,6 +1,6 @@
 import {createAction} from "@reduxjs/toolkit";
 import {USER_UPDATE_PHOTO, USER_UPDATE, USER_PROFILE} from "../saga.actionTypes";
-import {IUpdateData} from "../../API/user.api";
+import {IUpdateUser} from "../../API/user.api";
 import {
     USER_ERROR,
     USER_FETCHING,
@@ -11,7 +11,7 @@ import {IError, IUser} from "../../common/interfaces/index.interface";
 
 ///// SAGA
 export const userProfileAction = createAction<string>(USER_PROFILE)
-export const userUpdateAction = createAction<IUpdateData>(USER_UPDATE)
+export const userUpdateAction = createAction<IUpdateUser>(USER_UPDATE)
 export const userUpdatePhotoAction = createAction<{ data: string }>(USER_UPDATE_PHOTO)
 
 

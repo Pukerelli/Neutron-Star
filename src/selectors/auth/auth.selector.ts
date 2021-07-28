@@ -8,3 +8,7 @@ export const selectAuthLoading = (state: RootState) => {
     return state.auth.loading
 }
 
+export const selectAuthErrors = (state: RootState) => {
+    return state.auth.error
+}
+

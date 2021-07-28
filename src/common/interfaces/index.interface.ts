@@ -1,6 +1,6 @@
 import {SerializedError} from "@reduxjs/toolkit";
 
-export interface IResponse<R>{
+export interface IResponse<R> {
     message: string
     data: R
     code?: number
@@ -18,10 +18,9 @@ export interface IUser {
     photo?: string
     backgroundPhoto?: string
     address?: { country?: string, city?: string }
-    contact?: {telegram?: string, whatsapp?: string}
+    contacts?: { telegram?: string, whatsapp?: string }
     drivingExperience?: string
     age?: string
-    about?: string
     following: Array<string>
     followingCars: Array<string>
     followedBy: Array<string>
@@ -36,13 +35,20 @@ export interface ICar {
     model: string
     generation?: string
     year?: string
+    color?: string
     doors?: string
     isStock?: boolean
     engine?: string
     hp?: string
+    address?: {
+        country?: string
+        city?: string
+    }
     rims?: string
+    equipment?: string
     ownTime?: string
     photo?: string
+    mileage?: string
     followedBy: Array<string>
     notes: Array<INote | null>
 }
@@ -60,10 +66,12 @@ export interface IReg {
     password: string
     email: string
 }
-export interface INote{
+
+export interface INote {
     title: string
     date: string
     description: string
     _id: string
 }
+
 export type IError = string | SerializedError | undefined | null

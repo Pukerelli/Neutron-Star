@@ -19,9 +19,3 @@ export const ImgSimple = styled.img<IProps>`
   max-height: inherit;
 `
 
-export const ImgProfileCar = styled.img`
-  border-radius: 6px;
-  width: 100%;
-  height: inherit;
-  object-fit: cover;
-`

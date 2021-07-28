@@ -8,8 +8,8 @@ import {
     LIST_SEARCH_USERS,
     LIST_SUBS_USER_UNFOLLOW,
     LIST_SUBS_USERS,
-    LIST_SEARCH_USER_UNFOLLOW,
-    LIST_SEARCH_CAR_UNFOLLOW
+    LIST_USER_UNFOLLOW,
+    LIST_CAR_UNFOLLOW
 } from "../saga.actionTypes";
 import {
     LIST_CARS_SUCCEED,
@@ -29,8 +29,8 @@ export const subsUsersFollowedAction = createAction<string>(LIST_SUBS_USERS)
 export const subsCarsFollowedAction = createAction<string>(LIST_SUBS_CARS)
 export const listFollowUserAction = createAction<{ payload: string }>(LIST_USER_FOLLOW)
 export const listFollowCarAction = createAction<{ payload: string }>(LIST_CAR_FOLLOW)
-export const searchUnfollowUserAction = createAction<{ payload: string }>(LIST_SEARCH_USER_UNFOLLOW)
-export const searchUnfollowCarAction = createAction<{ payload: string }>(LIST_SEARCH_CAR_UNFOLLOW)
+export const listUnfollowUserAction = createAction<{ payload: string }>(LIST_USER_UNFOLLOW)
+export const listUnfollowCarAction = createAction<{ payload: string }>(LIST_CAR_UNFOLLOW)
 export const subsUnfollowUserAction = createAction<{ payload: string }>(LIST_SUBS_USER_UNFOLLOW)
 export const subsUnfollowCarAction = createAction<{ payload: string }>(LIST_SUBS_CAR_UNFOLLOW)
 

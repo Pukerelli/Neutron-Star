@@ -9,9 +9,8 @@ export const UserAvatarContainer = styled.div<{ image: string }>`
   grid-template-rows: 55% 45%;
   border-radius: 6px;
   box-shadow: 0 0 4px 0 rgba(34, 60, 80, 0.2);
-  grid-area: av;
-  width: 260px;
-  height: 100%;
+  width: 250px;
+  height: 350px;
 `
 
 export const UserAvatarBlock = styled.div`

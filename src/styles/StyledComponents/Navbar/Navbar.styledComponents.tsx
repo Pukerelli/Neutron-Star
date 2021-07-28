@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import React from "react";
+import config from "../../../common/config/config.json"
 
 interface IProps{
     show?: boolean
@@ -19,7 +20,7 @@ export const NavLinkStyled = styled.div`
 `
 
 export const NavDisplayBtn = styled.button<IProps>`
-  background-color: #EB3649;
+  background-color: ${config.MainColor};
   height: 40px;
   width: 30px;
   display: flex;
@@ -37,7 +38,7 @@ export const NavDisplayBtn = styled.button<IProps>`
   
 `
 export const NavHideBtn = styled.button`
-  background-color: #EB3649;
+  background-color: ${config.color};
   height: 40px;
   width: 16px;
   display: flex;

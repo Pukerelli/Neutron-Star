@@ -1,5 +1,8 @@
 {
   "color": "#EB3649",
-  "background": "rgba(171, 207, 250, 0.2)",
-  "linkColor": "#5E8FACFF"
+  "background": "#E8F1E7",
+  "linkColor": "#4A8A98",
+  "shadow": "0 0 4px 0 rgba(34, 60, 80, 0.2)",
+  "commonColor": "#6F848F",
+  "MainColor": "#fff"
 }
