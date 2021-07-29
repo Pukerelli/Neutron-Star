@@ -1,7 +1,10 @@
 import React from 'react';
 import {ICar} from "../../../../../../common/interfaces/index.interface";
 import {AboutCarColumn} from "../../../../../../styles/StyledComponents/Cars/AboutCar/AboutCarLayout.styledComponent";
-import {AboutCarDescriptionContainer, CarNameContainer} from "../../../../../../styles/StyledComponents/Cars/AboutCar/Description/CarDescription.styledComponents";
+import {
+    AboutCarDescriptionContainer,
+    CarNameContainer
+} from "../../../../../../styles/StyledComponents/Cars/AboutCar/Description/CarDescription.styledComponents";
 import {Name, Subtitle, Title} from "../../../../../../styles/StyledComponents/Common/Common.styledComponents";
 
 export const AboutCarDescription: React.FC<{car: ICar}> = ({car}) => {

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useSelector} from "react-redux";
 import {selectCarIsFetching, selectCars} from "../../../../selectors/cars/car.selector";
 import {useAppDispatch} from "../../../../store";
@@ -41,7 +41,7 @@ export const GaragePage: React.FC = () => {
             return <div></div>
         }
 
-        return <Garage cars={cars} user={user}/>
+        return <Garage cars={cars} user={user} auth={auth}/>
     }
 
 

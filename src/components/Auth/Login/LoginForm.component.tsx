@@ -1,7 +1,7 @@
 import {Form, Formik} from 'formik';
 import React from 'react';
 import * as Yup from 'yup';
-import {InputForm} from "../../Common/Forms/InputForm.component";
+import {InputForm} from "../../Common/Forms/Forms.component";
 import {IError} from "../../../common/interfaces/index.interface";
 import {AuthCard, AuthError, LoginFormLayout} from '../../../styles/StyledComponents/Auth/AuthLayout.styledComponents';
 import {Name} from '../../../styles/StyledComponents/Common/Common.styledComponents';
@@ -45,7 +45,7 @@ export const LoginForm: React.FC<IProps> = ({onSubmit, onRegClick, errors}) => {
                     </LoginFormLayout>
                 </Form>
             </Formik>
-            <CommonBtn margin='0 auto' width='60%' height='2rem' onClick={onRegClick}>
+            <CommonBtn display={true} margin='0 auto' width='60%' height='2rem' onClick={onRegClick}>
                 Registration
             </CommonBtn>
         </AuthCard>

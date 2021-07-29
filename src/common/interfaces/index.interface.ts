@@ -73,5 +73,9 @@ export interface INote {
     description: string
     _id: string
 }
+export interface ICurrentNote extends INote {
+    owner: string
+}
+
 
 export type IError = string | SerializedError | undefined | null

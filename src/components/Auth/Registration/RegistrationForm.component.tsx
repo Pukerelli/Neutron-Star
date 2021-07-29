@@ -1,7 +1,7 @@
 import {Form, Formik} from 'formik';
 import React from 'react';
 import * as Yup from 'yup';
-import {InputForm} from "../../Common/Forms/InputForm.component";
+import {InputForm} from "../../Common/Forms/Forms.component";
 import {IError} from "../../../common/interfaces/index.interface";
 import {
     AuthCard,
@@ -59,7 +59,7 @@ export const RegistrationForm: React.FC<IProps> = ({onSubmit, onLoginClick, erro
                         <InputForm label='Repeat password' name='repeatPassword' type='password'
                                    placeholder='enter password'/>
                         <ButtonContainer>
-                            <CommonBtn width='100%' height='2rem' type="submit">Confirm</CommonBtn>
+                            <CommonBtn  display={true} width='100%' height='2rem' type="submit">Confirm</CommonBtn>
                         </ButtonContainer>
                     </RegistrationFormLayout>
                 </Form>

@@ -7,14 +7,14 @@ import {
     listUnfollowUserAction,
     subsUnfollowCarAction,
     subsUnfollowUserAction
-} from '../../../store/actions/list.action';
-import {ButtonFollow} from "./CardButtons/ButtonFollow.component";
+} from '../../../../store/actions/list.action';
+import {ButtonFollow} from "./ButtonFollow.component";
 import {useSelector} from "react-redux";
-import {selectAuthUser} from "../../../selectors/auth/auth.selector";
-import { CardBtn } from '../../../styles/StyledComponents/Buttons/CommonButtons.styledComponent';
-import {useAppDispatch} from "../../../store";
-import {carDeleteAction} from "../../../store/actions/car.action";
-import {SearchSelf} from "../../../styles/StyledComponents/Common/Common.styledComponents";
+import {selectAuthUser} from "../../../../selectors/auth/auth.selector";
+import { CardBtn } from '../../../../styles/StyledComponents/Buttons/CommonButtons.styledComponent';
+import {useAppDispatch} from "../../../../store";
+import {carDeleteAction} from "../../../../store/actions/car.action";
+import {SearchSelf} from "../../../../styles/StyledComponents/Common/Common.styledComponents";
 
 interface IProps {
     card: 'user' | 'car'
@@ -25,7 +25,7 @@ interface IProps {
 }
 
 
-export const ButtonComponent: React.FC<IProps> = ({card, owner, payload, followedBy}) => {
+export const CardButton: React.FC<IProps> = ({card, owner, payload, followedBy}) => {
     const location = useLocation()
     const auth = useSelector(selectAuthUser)
     const dispatch = useAppDispatch()

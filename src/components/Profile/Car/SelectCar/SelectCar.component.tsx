@@ -5,24 +5,25 @@ import {selectCarIsFetching, selectCars} from "../../../../selectors/cars/car.se
 import {carGarageAction} from "../../../../store/actions/car.action";
 import {selectAuthUser} from "../../../../selectors/auth/auth.selector";
 import {useHistory} from "react-router-dom";
+import {GarageCars} from "../Garage/GarageLayout/Cars/GarageCars.component";
 
 export const SelectCar = () => {
     const dispatch = useAppDispatch()
     const history = useHistory()
-    const isFetching = useSelector(selectCarIsFetching)
     const cars = useSelector(selectCars)
+    const isFetching = useSelector(selectCarIsFetching)
     const auth = useSelector(selectAuthUser)
-    if(auth === 'unauthorized'){
+
+    if (auth === 'unauthorized')
         history.push('/auth/login')
-    }
+
     useEffect(() => {
         dispatch(carGarageAction(auth))
     }, [])
-    if(cars.length < 1){
-        return <div>add car</div>
-    }
-    return (
-        <div></div>
-    );
-};
+
+    if (!isFetching && cars.length < 1)
+        history.push(`/profile/cars/add`)
+
+    return <GarageCars cars={cars}/>
+}
 

@@ -1,5 +1,6 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {IError, IUser} from "../../../common/interfaces/index.interface";
+import {IUpdateAvatar} from "../../../API/user.api";
 
 const initialState = {
     users: [{}],
@@ -20,8 +21,9 @@ const userSlice = createSlice({
             state.isFetching = false
             state.error = null
         },
-        updatePhoto: (state, action: PayloadAction<string>) => {
-            state.user.photo = action.payload
+        updatePhoto: (state, action: PayloadAction<IUpdateAvatar>) => {
+            state.user.photo = action.payload.photo
+            state.user.backgroundPhoto = action.payload.backgroundPhoto
             state.isFetching = false
             state.error = null
         },

@@ -76,7 +76,7 @@ export const CommonBtn = styled.button<ICommonBtn>`
   border-radius: 10px;
   background-color: white;
   border: 2px solid ${config.linkColor};
-  display: flex;
+  display: ${props => props.display? 'flex': 'none'};
   align-items: center;
   justify-content: center;
   color: ${config.linkColor};
@@ -94,6 +94,7 @@ interface ICommonBtn {
     grid?: string
     margin?: string
     fz?: string
+    display?: boolean
 
 }
 

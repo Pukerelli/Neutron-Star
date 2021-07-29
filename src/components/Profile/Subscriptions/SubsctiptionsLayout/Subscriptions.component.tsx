@@ -5,7 +5,7 @@ import {
     SubscriptionsColumn,
     UserAvatarColumn
 } from "../../../../styles/StyledComponents/Layout/ProfileLayout.styledComponents";
-import {UserProfileAvatar} from "../../User/UserProfile/Avatar/UserAvatar.component";
+import {UserAvatarBlock} from "../../User/UserProfile/Avatar/UserAvatarBlock.component";
 import {
     ListToggle,
     ListToggleContainer
@@ -40,7 +40,7 @@ export const Subscriptions: React.FC<IProps> = ({user, users, cars, subs, toggle
                 {subs === 'cars' ? <Cars cars={cars}/> : <Users users={users}/>}
             </SubscriptionsColumn>
             <UserAvatarColumn>
-                <UserProfileAvatar user={user}/>
+                <UserAvatarBlock user={user}/>
             </UserAvatarColumn>
         </ProfileLayout>
     );

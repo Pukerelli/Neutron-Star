@@ -1,11 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {useAppDispatch} from "../../../../store";
 import {useSelector} from "react-redux";
 import {selectCarIsFetching, selectCurrentCar} from "../../../../selectors/cars/car.selector";
 import {useHistory, useParams} from "react-router-dom";
 import {carCurrentAction} from "../../../../store/actions/car.action";
 import {selectAuthUser} from "../../../../selectors/auth/auth.selector";
-import {CarNote} from "./Notes/Note/CarNote.component";
 import {AboutCar} from "./AboutLayout/AboutCar.component";
 
 export const AboutCarPage = () => {
@@ -13,7 +12,6 @@ export const AboutCarPage = () => {
     const car = useSelector(selectCurrentCar)
     const {carname} = useParams<{ carname: string }>()
     const isFetching = useSelector(selectCarIsFetching)
-    const [note, selectNote] = useState('')
     const history = useHistory()
     const auth = useSelector(selectAuthUser)
 
@@ -21,24 +19,12 @@ export const AboutCarPage = () => {
         dispatch(carCurrentAction(carname))
     }, [carname])
 
-    const onNoteClick = (noteId?: string) => {
-        if (noteId)
-            selectNote(noteId)
-        else
-            selectNote('')
-    }
-
-    const onNewNoteHandler = () => {
+    const onNewNoteHandler = () =>
         history.push(`/profile/cars/add/note/${car.name}`)
-    }
 
     if (isFetching || car.name === '')
         return <div></div>
 
-    if (note !== '')
-        return <CarNote noteId={note} handler={onNoteClick}/>
-
-
-    return <AboutCar car={car} onNoteClick={onNoteClick} onNewNoteHandler={onNewNoteHandler} auth={auth}/>
+    return <AboutCar car={car} onNewNoteHandler={onNewNoteHandler} auth={auth}/>
 };
 

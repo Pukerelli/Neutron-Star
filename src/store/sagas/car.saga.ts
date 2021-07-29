@@ -3,6 +3,8 @@ import {
     carAddAction,
     carCarsSucceedAction,
     carCurrentAction,
+    carCurrentNoteAction,
+    carCurrentNoteSucceedAction,
     carCurrentSucceedAction,
     carDeleteAction,
     carFilterSucceedAction,
@@ -11,13 +13,12 @@ import {
     carNotePushAction,
     carNoteReplaceAction,
     carNotesPullSucceedAction,
-    carNotesReplaceSucceedAction,
     carPhotoAction,
     carPushSucceedAction,
     carReplaceSucceedAction,
     carUpdateAction
 } from "../actions/car.action";
-import {ICar, INote} from "../../common/interfaces/index.interface";
+import {ICar, ICurrentNote, INote} from "../../common/interfaces/index.interface";
 import {Car, INewCar, INewNote, IUpdateCar, IUpdateNote, IUploadPhoto} from "../../API/car.api";
 import * as type from '../saga.actionTypes'
 import {carHelper} from "./saga.helpers";
@@ -76,6 +77,16 @@ function* carPhoto({payload}: ReturnType<typeof carPhotoAction>) {
     yield carHelper<IUploadPhoto, ICar>(Car.putUpdateCarPhoto, payload, carCurrentSucceedAction, carReplaceSucceedAction)
 }
 
+///// GET CURRENT NOTE
+function* watchCarCurrentNote() {
+    yield takeEvery(type.CAR_CURRENT_NOTE, carCurrentNote)
+}
+
+function* carCurrentNote({payload}: ReturnType<typeof carCurrentNoteAction>) {
+    yield carHelper<string, ICurrentNote>(Car.getNote, payload, carCurrentNoteSucceedAction)
+}
+
+
 ///// ADD CAR NOTE
 function* watchCarNotePush() {
     yield takeEvery(type.CAR_NOTE_PUSH, carNotePush)
@@ -91,7 +102,7 @@ function* watchCarNoteReplace() {
 }
 
 function* carNoteReplace({payload}: ReturnType<typeof carNoteReplaceAction>) {
-    yield carHelper<IUpdateNote, INote>(Car.putUpdateNote, payload, carNotesReplaceSucceedAction)
+    yield carHelper<IUpdateNote, ICurrentNote>(Car.putUpdateNote, payload, carCurrentNoteSucceedAction)
 }
 
 ///// DELETE CAR NOTE
@@ -112,6 +123,7 @@ export function* carSaga() {
         watchCarDelete(),
         watchCarPhoto(),
         watchCarNotePush(),
+        watchCarCurrentNote(),
         watchCarNotePull(),
         watchCarNoteReplace()
     ])

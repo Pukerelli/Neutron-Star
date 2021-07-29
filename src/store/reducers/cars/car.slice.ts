@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {ICar, IError, INote} from "../../../common/interfaces/index.interface";
+import {ICar, ICurrentNote, IError, INote} from "../../../common/interfaces/index.interface";
 
 
 const initialState = {
@@ -13,6 +13,13 @@ const initialState = {
         owner: '',
         followedBy: [''],
         notes: []
+    },
+    currentNote: {
+        owner: '',
+        _id: '',
+        date: '',
+        title: '',
+        description: ''
     },
     isFetching: true,
     error: null
@@ -41,15 +48,14 @@ const carSlice = createSlice({
             state.isFetching = false
             state.error = null
         },
+        currentNote: (state, action: PayloadAction<ICurrentNote>) => {
+            state.currentNote = action.payload
+            state.isFetching = false
+            state.error = null
+        },
         pullNote: (state, action: PayloadAction<string>) => {
             state.currentCar.notes = state.currentCar.notes.filter(note => note!._id !== action.payload)
-        },
-        replaceNote: (state, action: PayloadAction<INote>) => {
-            state.currentCar.notes[
-                state.currentCar.notes.findIndex(note => note!._id === action.payload._id)
-                ] = action.payload
-            state.error = null
-            state.isFetching = false
+
         },
         filterCars: (state, action: PayloadAction<ICar>) => {
             state.cars = state.cars.filter(car => car.name !== action.payload.name)
@@ -76,6 +82,7 @@ interface IInitialState {
     cars: Array<ICar>
     error: IError
     currentCar: ICar
+    currentNote: ICurrentNote
     isFetching: boolean
 
 }

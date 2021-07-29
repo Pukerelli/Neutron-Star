@@ -1,6 +1,6 @@
 import React from 'react';
 import {ICar} from "../../../../common/interfaces/index.interface";
-import {useHistory} from "react-router-dom";
+import {useHistory, useLocation} from "react-router-dom";
 import {
     CarCardAvatar,
     CarCardAvatarContainer,
@@ -15,12 +15,17 @@ import {
     Title
 } from "../../../../styles/StyledComponents/Common/Common.styledComponents";
 import {carDefaultImage} from "../../../../common/images/images";
-import {ButtonComponent} from "../../Buttons/Button.component";
+import {CardButton} from "../../Buttons/CardButtons/CardButton.component";
 
 export const CarCard: React.FC<{ car: ICar }> = ({car}) => {
     const history = useHistory()
+    const location = useLocation()
+
     const onClick = () => {
-        history.push(`/profile/cars/about/${car.name}`)
+        if (location.pathname.includes('/add/note'))
+            history.push(`/profile/cars/add/note/${car.name}`)
+        else
+            history.push(`/profile/cars/about/${car.name}`)
     }
     return (
         <CarCardLayout>
@@ -47,7 +52,7 @@ export const CarCard: React.FC<{ car: ICar }> = ({car}) => {
                 </CarCardAvatarContainer>
                 <Title>Mileage:</Title>
                 <Subtitle>{car.mileage ? car.mileage : 'unknown'}</Subtitle>
-                <ButtonComponent followedBy={car.followedBy} payload={car.name} card={'car'} owner={car.owner}/>
+                <CardButton followedBy={car.followedBy} payload={car.name} card={'car'} owner={car.owner}/>
             </CarCardAvatar>
         </CarCardLayout>
     );

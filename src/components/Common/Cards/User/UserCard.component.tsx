@@ -15,7 +15,7 @@ import {
     UserCardDescription,
     UserCardLayout
 } from "../../../../styles/StyledComponents/Cards/User/UserCard.styledComponents";
-import {ButtonComponent} from "../../Buttons/Button.component";
+import {CardButton} from "../../Buttons/CardButtons/CardButton.component";
 
 export const UserCard: React.FC<{ user: IUser }> = ({user}) => {
     const history = useHistory()
@@ -43,7 +43,7 @@ export const UserCard: React.FC<{ user: IUser }> = ({user}) => {
                     <ImgCommon
                         src={user.photo || userDefaultImage}/>
                 </UserCardAvatarContainer>
-                <ButtonComponent followedBy={user.followedBy} payload={user.username} card={'user'}/>
+                <CardButton followedBy={user.followedBy} payload={user.username} card={'user'}/>
             </UserCardAvatar>
         </UserCardLayout>
     );

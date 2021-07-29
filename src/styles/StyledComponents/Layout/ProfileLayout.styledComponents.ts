@@ -13,7 +13,8 @@ export const UserAvatarColumn = styled.div`
   width: 100%;
   display: grid;
   grid-row-gap: 20px;
-  grid-template-rows: 350px 120px;
+  height: fit-content;
+  grid-template-rows: minmax(350px, auto) 120px;
 `
 
 export const UserAboutColumn = styled.div`

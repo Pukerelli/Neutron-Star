@@ -7,7 +7,7 @@ import {
 import {ListToggle, ListToggleContainer} from "../../../styles/StyledComponents/Common/List.styledComponent";
 import {Cars} from "../../Common/Cards/Cars/Cars.component";
 import {Users} from "../../Common/Cards/User/Users.components";
-import {UserProfileAvatar} from "../../Profile/User/UserProfile/Avatar/UserAvatar.component";
+import {UserAvatarBlock} from "../../Profile/User/UserProfile/Avatar/UserAvatarBlock.component";
 import {ICar, IUser} from "../../../common/interfaces/index.interface";
 import {SearchInput} from "../../../styles/StyledComponents/Common/Common.styledComponents";
 
@@ -42,7 +42,7 @@ export const Search: React.FC<IProps> = ({search, cars, users, user, toggle, val
                 {search === 'cars' ? <Cars cars={cars}/> : <Users users={users}/>}
             </SearchColumn>
             <UserAvatarColumn>
-                <UserProfileAvatar user={user}/>
+                <UserAvatarBlock user={user}/>
             </UserAvatarColumn>
         </ProfileLayout>
     );

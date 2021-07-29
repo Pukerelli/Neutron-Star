@@ -6,11 +6,11 @@ export const UserAvatarContainer = styled.div<{ image: string }>`
   background-size: cover;
   background-position: center;
   display: grid;
-  grid-template-rows: 55% 45%;
+  grid-template-rows: 190px minmax(160px, auto);
+  height: fit-content;
   border-radius: 6px;
   box-shadow: 0 0 4px 0 rgba(34, 60, 80, 0.2);
   width: 250px;
-  height: 350px;
 `
 
 export const UserAvatarBlock = styled.div`
@@ -66,4 +66,25 @@ export const UserAvatarContactsLinks = styled.a`
   cursor: pointer;
   margin-left: 1rem;
   color: ${config.linkColor}
+`
+
+
+export const UserAvatarEditFormContainer = styled.div`
+  background-color: transparent;
+  position: relative;
+  padding: 20px 10px;
+  height: fit-content;
+  display: grid;
+  grid-row-gap: 20px;
+  grid-template-rows: 20px 30px 20px 30px 30px;
+`
+export const AbortBtn = styled.div`
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: ${config.linkColor};
+  position: absolute;
+  z-index: 100;
+  top: 5%;
+  right: 5%;
 `

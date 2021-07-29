@@ -19,10 +19,7 @@ export const selectCarIsFetching = (state: RootState) => {
 export const selectCarError = (state: RootState) => {
     return state.car.error
 }
-export const selectCurrentCarNotes = (state: RootState) => {
-    return state.car.currentCar.notes
+
+export const selectCurrentNote = (state: RootState) => {
+    return state.car.currentNote
 }
-export const selectCurrentNote = (id: string) => createSelector(
-    selectCurrentCarNotes,
-    notes => notes.find(note => note!._id === id)
-)

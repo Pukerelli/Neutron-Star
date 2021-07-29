@@ -39,46 +39,12 @@ export const RegistrationFormLayout = styled.div`
   grid-row-gap: 10px;
   grid-template-rows: 60px 60px 35px;
 `
-export const ValidErrors = styled.div`
-  height: 20px;
-  color: ${config.color};
-  font-size: 12px;
-  margin-left: auto;
-`
-export const FieldContainer = styled.div`
-  display: grid;
-  width: 100%;
-  grid-row-gap: 5px;
-  grid-template-rows: 10px 35px 10px;
-`
-export const LabelForm = styled.label`
-  color: ${config.linkColor};
-  font-size: 10px;
-`
+
 export const AuthError = styled.div`
   text-align: center;
   color: ${config.color}
 `
 
-export const AuthInput = styled.input<{error: boolean}>`
-  width: 100%;
-  height: 100%;
-  border-radius: 2px;
-  box-shadow: ${config.shadow};
-  text-transform: none;
-  font-size: 1.5rem;
-  padding: .5rem;
-  border: ${props => props.error? `1px solid ${config.color}`: 'none'};
-  ::placeholder{
-    text-transform: uppercase;
-    font-size: .7rem;
-    
-  }
-  :focus {
-    border: 2px solid ${props => props.error? config.color: config.linkColor};
-    outline: none;
-  }
-`
 export const ButtonContainer = styled.div`
   align-self: end;
   grid-column: span 2;

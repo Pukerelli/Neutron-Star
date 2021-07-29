@@ -13,6 +13,7 @@ import {
     Title
 } from "../../../../../../styles/StyledComponents/Common/Common.styledComponents";
 import {useHistory} from "react-router-dom";
+import { carDefaultImage } from "../../../../../../common/images/images";
 
 interface IProps {
     car: ICar
@@ -37,7 +38,7 @@ export const UserProfileCarCard: React.FC<IProps> = ({car}) => {
             </UserCarCard>
             <CarImgContainer>
                 <ImgCommon
-                    src='https://s.auto.drom.ru/i24207/c/photos/fullsize/nissan/laurel/nissan_laurel_697209.jpg'/>
+                    src={car.photo || carDefaultImage}/>
             </CarImgContainer>
         </>
     )

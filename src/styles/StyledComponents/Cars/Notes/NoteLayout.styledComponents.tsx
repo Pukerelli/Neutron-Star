@@ -2,11 +2,17 @@ import styled from "styled-components";
 import config from "../../../../common/config/config.json"
 
 export const NoteLayout = styled.div`
+  width: 700px;
+  margin: 0 auto;
+`
+
+export const NoteCard = styled.div<{ form: boolean }>`
   position: relative;
   display: grid;
-  grid-template-rows: 40px auto 30px;
+  grid-template-rows: ${props => props.form ? '' : 'auto auto 30px'};
   grid-gap: 20px;
-  width: 500px;
+  width: 600px;
+  height: fit-content;
   margin: 0 auto;
   background-color: white;
   box-shadow: ${config.shadow};
@@ -16,6 +22,17 @@ export const NoteLayout = styled.div`
   h1 {
     text-align: center;
   }
+`
+
+export const NoteFormLayout = styled.div`
+  height: 450px;
+  width: 100%;
+  padding: 20px;
+`
+export const NoteFormFieldsContainer = styled.div`
+  display: grid;
+  grid-template-rows: 60px 280px 40px;
+  grid-row-gap: 20px;
 `
 
 export const NoteDescription = styled.p`
@@ -30,6 +47,7 @@ export const NoteDate = styled.div`
 
 export const NoteBtnBack = styled.div`
   position: absolute;
+  z-index: 300;
   color: ${config.linkColor};
   cursor: pointer;
   top: 0;

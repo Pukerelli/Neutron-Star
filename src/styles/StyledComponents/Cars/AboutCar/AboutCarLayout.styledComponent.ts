@@ -1,14 +1,16 @@
 import styled from "styled-components";
 import config from "../../../../common/config/config.json"
 
-export const AboutCarLayout = styled.div`
+export const AboutLayout = styled.div`
+  position: relative;
   display: grid;
   width: 800px;
-  margin: 0 auto;
   grid-template-rows: 400px auto;
+  margin: 0 auto;
   grid-gap: 20px;
 `
 export const AboutCarColumn = styled.div`
+  position: relative;
   display: grid;
   height: 400px;
   width: 330px;

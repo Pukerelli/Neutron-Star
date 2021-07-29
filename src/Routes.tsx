@@ -1,6 +1,6 @@
 import React from 'react';
 import {Navbar} from "./components/Common/Navbar/Navbar.component";
-import {ContentLayout, Layout} from "./styles/StyledComponents/Layout/Layout.styledComponent";
+import {Layout} from "./styles/StyledComponents/Layout/Layout.styledComponent";
 import {Route, Switch} from "react-router-dom";
 import {Home} from "./components/Home/Home";
 import {Profile} from "./components/Profile/Profile.Component";
@@ -12,20 +12,18 @@ export const Routes: React.FC = () => {
         <Switch>
             <Layout>
                 <Navbar/>
-                <ContentLayout>
-                    <Route exact path='/'>
-                        <Home/>
-                    </Route>
-                    <Route path='/profile'>
-                        <Profile/>
-                    </Route>
-                    <Route path='/search'>
-                        <SearchPage/>
-                    </Route>
-                    <Route path='/auth'>
-                        <Auth/>
-                    </Route>
-                </ContentLayout>
+                <Route exact path='/'>
+                    <Home/>
+                </Route>
+                <Route path='/profile'>
+                    <Profile/>
+                </Route>
+                <Route path='/search'>
+                    <SearchPage/>
+                </Route>
+                <Route path='/auth'>
+                    <Auth/>
+                </Route>
             </Layout>
         </Switch>
     );

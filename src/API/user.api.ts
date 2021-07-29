@@ -4,7 +4,7 @@ import {Requests} from "./API";
 const requests = new Requests('profile')
 export const User = {
     ///// POST
-    postUpdateUserPhoto: (payload: {data: string}) => requests.post<string, {data: string}>('user/update/photo', payload),
+    postUpdateUserPhoto: (payload: IUpdateAvatar) => requests.post<IUpdateAvatar, IUpdateAvatar>('user/update/photo', payload),
     postFollowUser: (payload: {payload: string}) => requests.post<IUser, {payload: string}>('user/follow', payload),
     ///// PUT
     putUpdateUser: (payload: IUpdateUser) => requests.put<IUser, IUpdateUser>('user/update', payload),
@@ -24,4 +24,9 @@ export interface IUpdateUser {
     city?: string,
     whatsapp?: string,
     telegram?: string
+}
+
+export interface IUpdateAvatar {
+    photo: string
+    backgroundPhoto: string
 }

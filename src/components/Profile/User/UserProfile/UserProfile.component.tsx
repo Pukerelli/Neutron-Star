@@ -1,5 +1,5 @@
 import React from 'react';
-import {UserProfileAvatar} from "./Avatar/UserAvatar.component";
+import {UserAvatarBlock} from "./Avatar/UserAvatarBlock.component";
 import {ICar, IUser} from "../../../../common/interfaces/index.interface";
 import {SubscriptionsBlock} from "./Subscriptions/SubscriptionsBlock.component";
 import {
@@ -21,7 +21,7 @@ export const UserProfile: React.FC<IProps> = ({user, cars}) => {
         <ProfileLayout>
             <UserAbout user={user} cars={cars}/>
             <UserAvatarColumn>
-                <UserProfileAvatar user={user}/>
+                <UserAvatarBlock user={user}/>
                 <SubscriptionsBlock link='user' following={user.following}/>
             </UserAvatarColumn>
         </ProfileLayout>

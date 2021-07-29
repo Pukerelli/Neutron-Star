@@ -7,7 +7,7 @@ import {
     userProfileAction,
     userProfileSucceedAction
 } from "../actions/user.action";
-import {IUpdateUser, User} from "../../API/user.api";
+import {IUpdateAvatar, IUpdateUser, User} from "../../API/user.api";
 import {IUser} from "../../common/interfaces/index.interface";
 import {userHelper} from "./saga.helpers";
 
@@ -36,7 +36,7 @@ function* watchUserUpdatePhoto() {
 }
 
 function* userUpdatePhoto({payload}: ReturnType<typeof userUpdatePhotoAction>) {
-    yield userHelper<{ data: string }, string>(User.postUpdateUserPhoto, payload, userUpdatePhotoSucceedAction)
+    yield userHelper<IUpdateAvatar, IUpdateAvatar>(User.postUpdateUserPhoto, payload, userUpdatePhotoSucceedAction)
 }
 
 
