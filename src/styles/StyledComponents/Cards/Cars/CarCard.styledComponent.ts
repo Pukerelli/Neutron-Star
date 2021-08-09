@@ -4,7 +4,7 @@ import config from "../../../../common/config/config.json";
 export const CarCardLayout = styled.div`
   box-shadow: ${config.shadow};
   display: grid;
-  padding: 0.5rem 0.5rem 0.5rem 1rem;
+  padding: 7px 7px 7px 15px;
   width: 100%;
   height: 215px;
   grid-template-columns: 3fr 2fr;

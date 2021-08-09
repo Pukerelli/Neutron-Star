@@ -18,38 +18,44 @@ import {Car} from "../../API/car.api";
 function* watchSearchUsers() {
     yield takeEvery(type.LIST_SEARCH_USERS, userSearch)
 }
+
 function* userSearch({payload}: ReturnType<typeof searchUserAction>) {
-    yield listHelper<string, Array<IUser>>(User.getSearchUsers, payload, listUsersSucceedAction)
+    yield listHelper<string, Array<IUser>>(User.getSearchUsers, payload, listUsersSucceedAction, true)
 }
 
 ///// SEARCH CARS
 function* watchSearchCars() {
     yield takeEvery(type.LIST_SEARCH_CARS, carSearch)
 }
+
 function* carSearch({payload}: ReturnType<typeof searchCarAction>) {
-    yield listHelper<string, Array<ICar>>(Car.getSearchCar, payload, listCarsSucceedAction)
+    yield listHelper<string, Array<ICar>>(Car.getSearchCar, payload, listCarsSucceedAction, true)
 }
 
 ///// UNFOLLOW WITH REPLACE
 function* watchSearchUserUnfollow() {
     yield takeEvery(type.LIST_USER_UNFOLLOW, searchUnfollow)
 }
+
 function* watchSearchCarUnfollow() {
     yield takeEvery(type.LIST_CAR_UNFOLLOW, searchUnfollow)
 }
+
 function* searchUnfollow(action: ReturnType<typeof listUnfollowCarAction | typeof listUnfollowUserAction>) {
     if (action.type === type.LIST_USER_UNFOLLOW)
-        yield listHelper<{ payload: string }, ICar | IUser>(User.putUnfollowUser, action.payload, listReplaceSucceedAction)
+        yield listHelper<{ payload: string }, ICar | IUser>
+        (User.putUnfollowUser, action.payload, listReplaceSucceedAction)
     else
-        yield listHelper<{ payload: string }, ICar | IUser>(Car.deleteFollowCar, action.payload, listReplaceSucceedAction)
+        yield listHelper<{ payload: string }, ICar | IUser>
+        (Car.deleteFollowCar, action.payload, listReplaceSucceedAction)
 }
 
 export function* searchSaga() {
     yield all([
-        watchSearchUsers(),
-        watchSearchCars(),
-        watchSearchUserUnfollow(),
-        watchSearchCarUnfollow()
+            watchSearchUsers(),
+            watchSearchCars(),
+            watchSearchUserUnfollow(),
+            watchSearchCarUnfollow()
         ]
     )
 }

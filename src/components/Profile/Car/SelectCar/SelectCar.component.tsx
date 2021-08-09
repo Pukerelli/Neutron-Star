@@ -5,7 +5,9 @@ import {selectCarIsFetching, selectCars} from "../../../../selectors/cars/car.se
 import {carGarageAction} from "../../../../store/actions/car.action";
 import {selectAuthUser} from "../../../../selectors/auth/auth.selector";
 import {useHistory} from "react-router-dom";
-import {GarageCars} from "../Garage/GarageLayout/Cars/GarageCars.component";
+import {GarageCars} from "../Garage/Layout/Cars/GarageCars.component";
+import {SelectLayout} from "../../../../styles/StyledComponents/Cars/Garage/Garage.styledComponents";
+import { SelectCarsFetching } from '../../../Common/Fetching/Garage.fetchingComponents';
 
 export const SelectCar = () => {
     const dispatch = useAppDispatch()
@@ -24,6 +26,14 @@ export const SelectCar = () => {
     if (!isFetching && cars.length < 1)
         history.push(`/profile/cars/add`)
 
-    return <GarageCars cars={cars}/>
+    if (isFetching)
+        return <SelectCarsFetching/>
+
+    return (
+        <SelectLayout>
+            <GarageCars cars={cars} btnHide={false}/>
+        </SelectLayout>
+    )
+
 }
 

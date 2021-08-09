@@ -1,11 +1,14 @@
 import React, {useState} from 'react';
 import {ICar} from "../../../../../common/interfaces/index.interface";
-import {AboutLayout} from "../../../../../styles/StyledComponents/Cars/AboutCar/AboutCarLayout.styledComponent";
+import {
+    AboutCarBtnContainer,
+    AboutLayout
+} from "../../../../../styles/StyledComponents/Cars/AboutCar/AboutCarLayout.styledComponent";
 import {AboutCarDescription} from "./Description/AboutCarDescription.component";
 import {CarAvatar} from "./Avatar/CarAvatar.component";
-import {CarNotes} from "../../Note/NoteLayout/Notes/CarNotes.component";
+import {CarNotes} from "../../Note/Layout/Notes/CarNotes.component";
 import {CommonBtn} from '../../../../../styles/StyledComponents/Buttons/CommonButtons.styledComponent';
-import {EditBtn} from "../../../../Common/Edit/EditBtn.component";
+import {EditBtn} from "../../../../Common/Buttons/Edit/EditBtn.component";
 import {AddCarForm} from "../../Add/AddCarForm.component";
 
 interface IProps {
@@ -22,10 +25,12 @@ export const AboutCar: React.FC<IProps> = ({car, onNewNoteHandler, auth, edit, t
         <AboutLayout>
             <AboutCarDescription car={car} auth={auth} edit={edit} toggle={toggle}/>
             <CarAvatar car={car}/>
-            <CommonBtn onClick={onNewNoteHandler} width='800px'
-                       display={car.owner === auth} height='40px' grid='span 2'>
-                Add Note
-            </CommonBtn>
+            <AboutCarBtnContainer>
+                <CommonBtn onClick={onNewNoteHandler} width='800px'
+                           hide={car.owner !== auth} height='40px' grid='span 2'>
+                    Add Note
+                </CommonBtn>
+            </AboutCarBtnContainer>
             <CarNotes car={car}/>
         </AboutLayout>
     );

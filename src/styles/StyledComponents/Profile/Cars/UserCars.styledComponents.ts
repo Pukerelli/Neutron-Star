@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import config from "../../../../common/config/config.json"
 
 export const UserCars = styled.div`
   display: grid;
@@ -38,16 +37,9 @@ export const TitleContainer = styled.div`
     background: rgba(0, 0, 0, 0.14);
     margin-bottom: 0.3rem;
   }
-
 `
 export const CarImgContainer = styled.div`
   height: 120px;
 `
 
-export const ImgCommon = styled.img`
-  box-shadow: ${config.shadow};
-  border-radius: 6px;
-  width: 100%;
-  height: inherit;
-  object-fit: cover;
-`
+

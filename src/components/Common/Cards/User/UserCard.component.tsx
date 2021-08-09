@@ -1,8 +1,9 @@
 import React from 'react';
 import {IUser} from "../../../../common/interfaces/index.interface";
 import {useHistory} from "react-router-dom";
-import {ImgCommon, TitleContainer} from "../../../../styles/StyledComponents/Profile/Cars/UserCars.styledComponents";
+import {TitleContainer} from "../../../../styles/StyledComponents/Profile/Cars/UserCars.styledComponents";
 import {
+    ImgCommon,
     NameDouble,
     NameMini,
     Subtitle,
@@ -31,6 +32,8 @@ export const UserCard: React.FC<{ user: IUser }> = ({user}) => {
                 </TitleContainer>
                 <Title>age:</Title>
                 <Subtitle>{user.age ? user.age : 'unknown'}</Subtitle>
+                <Title>Garage:</Title>
+                <Subtitle>{user.cars.length}</Subtitle>
                 <Title>Country:</Title>
                 <Subtitle>{user.address?.country ? user.address.country : 'unknown'}</Subtitle>
                 <Title>City:</Title>

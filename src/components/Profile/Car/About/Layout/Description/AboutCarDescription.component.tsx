@@ -1,12 +1,11 @@
 import React from 'react';
 import {ICar} from "../../../../../../common/interfaces/index.interface";
-import {AboutCarColumn} from "../../../../../../styles/StyledComponents/Cars/AboutCar/AboutCarLayout.styledComponent";
 import {
-    AboutCarDescriptionContainer,
+    AboutCarColumn, AboutCarDescriptionContainer,
     CarNameContainer
-} from "../../../../../../styles/StyledComponents/Cars/AboutCar/Description/CarDescription.styledComponents";
+} from "../../../../../../styles/StyledComponents/Cars/AboutCar/AboutCarLayout.styledComponent";
 import {Name, Subtitle, Title} from "../../../../../../styles/StyledComponents/Common/Common.styledComponents";
-import {EditBtn} from "../../../../../Common/Edit/EditBtn.component";
+import {EditBtn} from "../../../../../Common/Buttons/Edit/EditBtn.component";
 
 interface IProps {
     car: ICar

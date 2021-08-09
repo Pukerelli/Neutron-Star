@@ -13,12 +13,15 @@ const listSlice = createSlice({
     name: 'list',
     initialState,
     reducers: {
+        fetching: (state) => {
+            state.isFetching = true
+        },
         replace: (state, action: PayloadAction<ICar | IUser>) => {
-            if (isCar(action.payload)) {
+            if (isCar(action.payload))
                 state.cars[state.cars.findIndex(car => car._id === action.payload._id)] = action.payload
-            } else {
+            else
                 state.users[state.users.findIndex(user => user._id === action.payload._id)] = action.payload
-            }
+
             state.isFetching = false
             state.error = null
         },

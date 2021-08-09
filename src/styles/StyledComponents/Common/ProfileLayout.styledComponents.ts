@@ -28,15 +28,14 @@ export const UserAboutCarsContainer = styled.div`
   display: grid;
   width: 100%;
   grid-row-gap: 20px;
-  grid-template-rows: 40px repeat(auto, 120px);
+  grid-template-rows: 40px repeat(auto-fill, 120px);
 `
 
-
-export const GarageCarsColumn = styled.div<{button: boolean}>`
+export const GarageCarsColumn = styled.div<{hideBtn: boolean}>`
   display: grid;
   width: 530px;
   height: fit-content;
-  grid-template-rows: ${props => props.button? '40px': ''} repeat(auto-fill, 215px);
+  grid-template-rows: ${props => props.hideBtn? '': '40px'} repeat(auto-fill, 215px);
   grid-row-gap: 20px;
 `
 

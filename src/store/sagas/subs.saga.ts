@@ -23,19 +23,19 @@ import {listHelper} from "./saga.helpers";
 function* watchSubsUsersFollowed() {
     yield takeEvery(type.LIST_SUBS_USERS, subsUsersFollowed)
 }
-function* subsUsersFollowed({payload}: ReturnType< typeof subsUsersFollowedAction>) {
-    yield listHelper<string, Array<IUser>>(User.getFollowedUsers, payload, listUsersSucceedAction, true)
 
+function* subsUsersFollowed({payload}: ReturnType<typeof subsUsersFollowedAction>) {
+    yield listHelper<string, Array<IUser>>(User.getFollowedUsers, payload, listUsersSucceedAction, true)
 }
+
 ///// GET FOLLOWED CARS
 function* watchSubsCarsFollowed() {
     yield takeEvery(type.LIST_SUBS_CARS, subsCarsFollowed)
 }
+
 function* subsCarsFollowed({payload}: ReturnType<typeof subsCarsFollowedAction>) {
     yield listHelper<string, Array<ICar>>(Car.getFollowedCars, payload, listCarsSucceedAction, true)
-
 }
-
 
 ///// FOLLOW
 function* watchSubsUserFollow() {

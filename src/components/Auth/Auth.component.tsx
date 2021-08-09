@@ -7,13 +7,8 @@ import {AuthLayout} from '../../styles/StyledComponents/Auth/AuthLayout.styledCo
 
 export const Auth = () => {
     return (
-        <AuthLayout>
-            <Route path='/auth/login'>
-                <Login/>
-            </Route>
-            <Route path='/auth/registration'>
-                <Registration/>
-            </Route>
-        </AuthLayout>
+        <>
+
+        </>
     );
 };

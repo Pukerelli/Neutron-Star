@@ -11,16 +11,17 @@ import {
     CAR_PHOTO,
     CAR_UPDATE
 } from "../saga.actionTypes";
-import {INewCar, INewNote, IUpdateCar, IUpdateNote, IUploadPhoto} from "../../API/car.api";
+import {INewNote, IUpdateCar, IUpdateNote, IUploadPhoto} from "../../API/car.api";
 import {
+    CAR_ADDING_SUCCEED,
     CAR_CARS_SUCCEED,
+    CAR_CLEAR_ERRORS,
     CAR_CURRENT_NOTE_SUCCEED,
     CAR_CURRENT_SUCCEED,
     CAR_ERROR,
     CAR_FETCHING,
     CAR_FILTER_SUCCEED,
     CAR_NOTE_PULL_SUCCEED,
-    CAR_PUSH_SUCCEED,
     CAR_REPLACE_SUCCEED
 } from "../reducers/cars/car.reducerActionTypes";
 import {ICar, ICurrentNote, IError} from "../../common/interfaces/index.interface";
@@ -28,7 +29,7 @@ import {ICar, ICurrentNote, IError} from "../../common/interfaces/index.interfac
 ///// SAGA
 export const carGarageAction = createAction<string>(CAR_GARAGE)
 export const carDeleteAction = createAction<string>(CAR_DELETE)
-export const carAddAction = createAction<INewCar>(CAR_ADD)
+export const carAddAction = createAction<IUpdateCar>(CAR_ADD)
 export const carCurrentAction = createAction<string>(CAR_CURRENT)
 export const carUpdateAction = createAction<IUpdateCar>(CAR_UPDATE)
 export const carPhotoAction = createAction<IUploadPhoto>(CAR_PHOTO)
@@ -37,17 +38,17 @@ export const carCurrentNoteAction = createAction<string>(CAR_CURRENT_NOTE)
 export const carNoteReplaceAction = createAction<IUpdateNote>(CAR_NOTE_REPLACE)
 export const carNotePullAction = createAction<{_id: string, car: string }>(CAR_NOTE_PULL)
 
-
 /////REDUCER
 export const carFetchingAction = createAction<undefined>(CAR_FETCHING)
+export const carAddingAction = createAction<boolean>(CAR_ADDING_SUCCEED)
 export const carCarsSucceedAction = createAction<Array<ICar>>(CAR_CARS_SUCCEED)
 export const carCurrentSucceedAction = createAction<ICar>(CAR_CURRENT_SUCCEED)
-export const carPushSucceedAction = createAction<ICar>(CAR_PUSH_SUCCEED)
 export const carFilterSucceedAction = createAction<ICar>(CAR_FILTER_SUCCEED)
 export const carReplaceSucceedAction = createAction<ICar>(CAR_REPLACE_SUCCEED)
 export const carCurrentNoteSucceedAction = createAction<ICurrentNote>(CAR_CURRENT_NOTE_SUCCEED)
 export const carNotesPullSucceedAction = createAction<string>(CAR_NOTE_PULL_SUCCEED)
 export const carErrorAction = createAction<IError>(CAR_ERROR)
+export const carClearErrors = createAction<undefined>(CAR_CLEAR_ERRORS)
 
 
 

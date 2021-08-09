@@ -19,7 +19,7 @@ export const UserAvatarEditForm: React.FC<IProps> = ({photo, bg, onChangePhoto, 
             <InputText value={photo} onChange={onChangePhoto}/>
             <Title>Background: </Title>
             <InputText value={bg} onChange={onChangeBg}/>
-            <CommonBtn  display={true} width='100%' height='100%' onClick={handler}>Confirm</CommonBtn>
+            <CommonBtn width='100%' height='100%' onClick={handler}>Confirm</CommonBtn>
         </UserAvatarEditFormContainer>
     );
 };

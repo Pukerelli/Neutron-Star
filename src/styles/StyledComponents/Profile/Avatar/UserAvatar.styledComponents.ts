@@ -34,12 +34,6 @@ export const UserAvatarImageContainer = styled.div`
   transform: translate(-50%, -50%);
 `
 
-export const UserAvatarImg = styled.img`
-  border-radius: 50%;
-  width: 100%;
-  overflow: hidden;
-  object-fit: cover;
-`
 export const UserAvatarContacts = styled.div`
   width: 70%;
   align-items: center;
@@ -67,7 +61,6 @@ export const UserAvatarContactsLinks = styled.a`
   margin-left: 1rem;
   color: ${config.linkColor}
 `
-
 
 export const UserAvatarEditFormContainer = styled.div`
   background-color: transparent;

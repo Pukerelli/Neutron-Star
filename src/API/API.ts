@@ -1,4 +1,5 @@
 import axios, {AxiosInstance} from "axios";
+import { IResponse } from "../common/interfaces/index.interface";
 
 class API {
     protected serviceUrl: string
@@ -38,10 +39,3 @@ export class Requests extends API {
     }
 }
 
-interface IResponse<D> {
-    message: string
-    code: number
-    error: string
-    data: D
-    token?: string
-}

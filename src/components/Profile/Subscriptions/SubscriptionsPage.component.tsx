@@ -3,14 +3,17 @@ import {useAppDispatch} from "../../../store";
 import {useSelector} from "react-redux";
 import {selectAuthUser} from "../../../selectors/auth/auth.selector";
 import {subsCarsFollowedAction, subsUsersFollowedAction} from "../../../store/actions/list.action";
-import {selectListCars, selectListUsers} from "../../../selectors/list/list.selector";
+import {selectListCars, selectListIsFetching, selectListUsers} from "../../../selectors/list/list.selector";
 import {selectUserIsFetching, selectUserProfile} from "../../../selectors/user/user.selector";
 import {userProfileAction} from "../../../store/actions/user.action";
-import {Subscriptions} from './SubsctiptionsLayout/Subscriptions.component';
+import {Subscriptions} from './Layout/Subscriptions.component';
+import { ListFetching } from '../../Common/Fetching/List.fetchingComponents';
+import { Login } from '../../Auth/Login/Login.component';
 
 export const SubscriptionsPage = () => {
     const dispatch = useAppDispatch()
     const [subs, setSubs] = useState<'cars' | 'users'>('users')
+    const listIsFetching = useSelector(selectListIsFetching)
     const auth = useSelector(selectAuthUser)
     const user = useSelector(selectUserProfile)
     const userIsFetching = useSelector(selectUserIsFetching)
@@ -20,26 +23,23 @@ export const SubscriptionsPage = () => {
     useEffect(() => {
         if (auth === 'unauthorized')
             return
-        else
+        else {
             dispatch(userProfileAction(auth))
-
-
-        if (subs === 'users')
             dispatch(subsUsersFollowedAction(auth))
-        else
             dispatch(subsCarsFollowedAction(auth))
+        }
+    }, [auth])
 
-    }, [subs, auth])
+    if (auth === 'unauthorized')
+        return <Login/>
 
     const toggleTarget = (target: 'users' | 'cars') => setSubs(target)
 
-    if (auth === 'unauthorized')
-        return <div>please log in</div>
+    if (userIsFetching || listIsFetching)
+        return <ListFetching/>
 
-    if (userIsFetching)
-        return <div></div>
-
-    return <Subscriptions toggle={toggleTarget} subs={subs} user={user} cars={cars} users={users}/>
+    return <Subscriptions toggle={toggleTarget} subs={subs} auth={auth} user={user}
+                          users={users} cars={cars}/>
 }
 
 

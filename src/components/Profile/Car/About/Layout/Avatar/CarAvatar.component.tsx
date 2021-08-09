@@ -3,12 +3,11 @@ import {ICar} from "../../../../../../common/interfaces/index.interface";
 import {
     AboutCarAvatarColumn,
     AboutCarAvatarContainer,
-    AboutCarAvatarSubtitle
+    AboutCarAvatarSubtitle,
+    AvatarSubtitle
 } from "../../../../../../styles/StyledComponents/Cars/AboutCar/AboutCarLayout.styledComponent";
-import {ImgCommon} from "../../../../../../styles/StyledComponents/Profile/Cars/UserCars.styledComponents";
 import {carDefaultImage} from "../../../../../../common/images/images";
-import {AvatarSubtitle} from "../../../../../../styles/StyledComponents/Cars/AboutCar/Description/AvatarSubtitle.styledComponents";
-import {Subtitle, Title} from "../../../../../../styles/StyledComponents/Common/Common.styledComponents";
+import {ImgCommon, Subtitle, Title} from "../../../../../../styles/StyledComponents/Common/Common.styledComponents";
 
 export const CarAvatar: React.FC<{car: ICar}> = ({car}) => {
     return (

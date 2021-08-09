@@ -4,16 +4,24 @@ import {Requests} from './API';
 const requests = new Requests('auth')
 export const Auth = {
     ///// POST
-    postLogin: (payload: { username: string, password: string }) =>
-        requests.post<string, typeof payload>('login', payload),
-    postRegistration: (payload: {email: string, username: string, password: string}) =>
-        requests.post<string, typeof payload>('registration', payload),
+    postLogin: (payload: ILogin) =>
+        requests.post<string, ILogin>('login', payload),
+    postRegistration: (payload: IRegistration) =>
+        requests.post<string, IRegistration>('registration', payload),
     ///// GET
     getAuth: () => requests.get<IUser>('auth')
-
 }
 
+export interface ILogin {
+    username: string
+    password: string
+}
 
+export interface IRegistration {
+    email: string,
+    username: string,
+    password: string
+}
 
 
 

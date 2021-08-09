@@ -1,6 +1,6 @@
 import {all, takeEvery} from "redux-saga/effects";
 import {
-    carAddAction,
+    carAddAction, carAddingAction,
     carCarsSucceedAction,
     carCurrentAction,
     carCurrentNoteAction,
@@ -14,12 +14,11 @@ import {
     carNoteReplaceAction,
     carNotesPullSucceedAction,
     carPhotoAction,
-    carPushSucceedAction,
     carReplaceSucceedAction,
     carUpdateAction
 } from "../actions/car.action";
 import {ICar, ICurrentNote, INote} from "../../common/interfaces/index.interface";
-import {Car, INewCar, INewNote, IUpdateCar, IUpdateNote, IUploadPhoto} from "../../API/car.api";
+import {Car, INewNote, IUpdateCar, IUpdateNote, IUploadPhoto} from "../../API/car.api";
 import * as type from '../saga.actionTypes'
 import {carHelper} from "./saga.helpers";
 
@@ -47,7 +46,7 @@ function* watchCarAdd() {
 }
 
 function* carAdd({payload}: ReturnType<typeof carAddAction>) {
-    yield carHelper<INewCar, ICar>(Car.postAddCar, payload, carCurrentSucceedAction, carPushSucceedAction)
+    yield carHelper<IUpdateCar, boolean>(Car.postAddCar, payload, carAddingAction)
 }
 
 ///// UPDATE CAR INFO
@@ -93,7 +92,7 @@ function* watchCarNotePush() {
 }
 
 function* carNotePush({payload}: ReturnType<typeof carNotePushAction>) {
-    yield carHelper<INewNote, INote>(Car.postNoteCar, payload, undefined, undefined, false)
+    yield carHelper<INewNote, boolean>(Car.postNoteCar, payload, carAddingAction, undefined, false)
 }
 
 ///// UPDATE CAR NOTE

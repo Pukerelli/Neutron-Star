@@ -1,10 +1,12 @@
 import styled from 'styled-components'
 import config from "../../../common/config/config.json"
-export const Layout = styled.main`
+export const Layout = styled.main<{hideScroll: boolean}>`
+  margin-top: ${props => props.hideScroll? '0' : '8px'};
   grid-area: content;
-  overflow-y: scroll;
+  overflow-y: ${props => props.hideScroll? 'auto' : 'scroll'};
   display: grid;
-  grid-template-columns: 15% 70% 15%;
+  grid-template-columns: 15% minmax(70%, 700px) 15%;
+  margin-bottom: ${props => props.hideScroll? '0' : '8px'};
   
   &::-webkit-scrollbar {
     width: 8px;
@@ -16,12 +18,8 @@ export const Layout = styled.main`
 
   &::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    background-color: ${config.linkColor};
+    background-color: ${config.RedColor};
   }
 `
 
-export const NavbarLayout = styled.div`
-  height: fit-content;
-  position: relative;
-`
 

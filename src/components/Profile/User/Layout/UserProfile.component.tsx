@@ -1,5 +1,5 @@
 import React from 'react';
-import {UserAvatarBlock} from "./Avatar/UserAvatarBlock.component";
+import {UserAvatarBlock} from "./Avatar/Block/UserAvatarBlock.component";
 import {ICar, IUser} from "../../../../common/interfaces/index.interface";
 import {SubscriptionsBlock} from "./Subscriptions/SubscriptionsBlock.component";
 import {
@@ -11,18 +11,22 @@ import {UserAbout} from "./About/UserAbout.component";
 interface IProps {
     cars: Array<ICar>
     user: IUser
+    edit: boolean
+    toggle: () => void
+    auth: string
+
 }
 
 
-export const UserProfile: React.FC<IProps> = ({user, cars}) => {
-
-
+export const UserProfile: React.FC<IProps> = (props) => {
     return (
         <ProfileLayout>
-            <UserAbout user={user} cars={cars}/>
+            <UserAbout {...props}/>
             <UserAvatarColumn>
-                <UserAvatarBlock user={user}/>
-                <SubscriptionsBlock link='user' following={user.following}/>
+                <UserAvatarBlock user={props.user}
+                                 auth={props.auth}/>
+                <SubscriptionsBlock link='user'
+                                    following={props.user.following}/>
             </UserAvatarColumn>
         </ProfileLayout>
     );

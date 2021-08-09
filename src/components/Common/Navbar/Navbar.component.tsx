@@ -1,28 +1,24 @@
-import React, {useState} from 'react';
-import {NavbarLayout} from "../../../styles/StyledComponents/Layout/Layout.styledComponent";
-import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
-import {NavButtonShow} from "./NavButtonShow.component";
-import {NavBarContainer, NavHideBtn} from "../../../styles/StyledComponents/Navbar/Navbar.styledComponents";
+import React from 'react';
+import {NavBarContainer} from "../../../styles/StyledComponents/Navbar/Navbar.styledComponents";
 import {NavbarMenu} from './NavbarMenu.component';
+import {useSelector} from "react-redux";
+import {selectAuthUser} from "../../../selectors/auth/auth.selector";
 
 
-export const Navbar: React.FC = () => {
-    const [displayBar, setDisplayBar] = useState(true)
+export const Navbar: React.FC<{ hide: boolean }> = ({hide}) => {
+    const auth = useSelector(selectAuthUser)
 
-    const navbar = ['MyProfile/profile/user', 'Garage/profile/cars/garage', 'Subs/profile/subscriptions', 'Search/search']
-    const navbarHandler = () => {
-        setDisplayBar(!displayBar)
-    }
+    const navbar = [
+        `MyProfile/profile/user/${auth}`,
+        'Garage/profile/cars/garage',
+        'Subs/profile/subscriptions',
+        'Search/search'
+    ]
+
     return (
-        <NavbarLayout>
-            <NavBarContainer show={displayBar}>
-                <NavbarMenu links={navbar}/>
-                <NavHideBtn onClick={navbarHandler}>
-                    <ArrowForwardIosIcon/>
-                </NavHideBtn>
-                <NavButtonShow handler={navbarHandler} show={displayBar}/>
-            </NavBarContainer>
-        </NavbarLayout>
-    );
-};
+        <NavBarContainer hide={hide}>
+            <NavbarMenu links={navbar}/>
+        </NavBarContainer>
+    )
+}
 

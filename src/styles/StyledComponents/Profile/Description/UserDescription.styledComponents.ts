@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import config from "../../../../common/config/config.json"
+
 
 export const UserDescription = styled.div`
   position: relative;
   box-shadow: 0 0 4px 0 rgba(34, 60, 80, 0.2);
   color: rgb(130, 130, 130);
   background-color: white;
-  padding: 1rem 1.5rem;
+  padding: 15px 22px;
   border-radius: 6px;
   width: 530px;
   min-height: 230px;
@@ -28,21 +28,10 @@ export const UserDescription = styled.div`
 export const UserInfo = styled.div`
   display: grid;
   grid-row-gap: .3rem;
-  padding: 1rem 0;
+  padding: 15px;
   width: 80%;
   grid-template-columns: 1fr 1fr;
 `
-
-export const UserAbout = styled.div`
-  width: 530px;
-  box-shadow: 0 0 4px 0 rgba(34, 60, 80, 0.2);
-  color: ${config.commonColor};
-  background-color: white;
-  padding: 1rem 1.5rem;
-  border-radius: 6px;
-  height: 100px;
-`
-
 
 export const UserEditFormContainer = styled.div`
   display: grid;

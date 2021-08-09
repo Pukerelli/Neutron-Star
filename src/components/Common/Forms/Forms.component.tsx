@@ -2,7 +2,8 @@ import React from 'react';
 import {useField} from "formik";
 import {
     FieldAreaContainer,
-    FieldInputContainer, InputArea,
+    FieldInputContainer,
+    InputArea,
     InputText,
     LabelForm,
     ValidErrors

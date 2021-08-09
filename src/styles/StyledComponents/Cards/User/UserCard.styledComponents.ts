@@ -16,7 +16,7 @@ export const UserCardLayout = styled.div`
 export const UserCardDescription = styled.div`
   display: grid;
   grid-row-gap: 10px;
-  grid-template-rows: repeat(5, auto);
+  grid-template-rows: repeat(6, auto);
   align-items: center;
   grid-template-columns: 1fr 1fr;
 `

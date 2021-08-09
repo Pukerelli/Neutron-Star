@@ -1,16 +1,18 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useHistory, useParams} from 'react-router-dom';
-import {UserProfile} from "./UserProfile.component";
-import {useAppDispatch} from "../../../../store";
+import {UserProfile} from "./Layout/UserProfile.component";
+import {useAppDispatch} from "../../../store";
 import {useSelector} from "react-redux";
-import {selectAuthUser} from "../../../../selectors/auth/auth.selector";
-import {selectUserErrors, selectUserIsFetching, selectUserProfile} from "../../../../selectors/user/user.selector";
-import {carGarageAction} from "../../../../store/actions/car.action";
-import {userProfileAction} from "../../../../store/actions/user.action";
-import {selectCarIsFetching, selectCars} from "../../../../selectors/cars/car.selector";
-
+import {selectAuthUser} from "../../../selectors/auth/auth.selector";
+import {selectUserErrors, selectUserIsFetching, selectUserProfile} from "../../../selectors/user/user.selector";
+import {carGarageAction} from "../../../store/actions/car.action";
+import {userProfileAction} from "../../../store/actions/user.action";
+import {selectCarIsFetching, selectCars} from "../../../selectors/cars/car.selector";
+import {Login} from '../../Auth/Login/Login.component';
+import { ProfileFetching } from '../../Common/Fetching/Profile.fetchingComponents';
 
 export const UserProfilePage = () => {
+    const [edit, toggleEdit] = useState(false)
     const {username} = useParams<{ username: string }>();
     const dispatch = useAppDispatch()
     const history = useHistory()
@@ -19,13 +21,12 @@ export const UserProfilePage = () => {
     const user = useSelector(selectUserProfile)
     const cars = useSelector(selectCars)
     const userIsFetching = useSelector(selectUserIsFetching)
-    const carsIsFetching = useSelector(selectCarIsFetching)
+    const carIsFetching = useSelector(selectCarIsFetching)
 
     useEffect(() => {
-        if (!username) {
-            history.push(`/profile/user/${auth}`)
-            return
-        }
+        if (!username || (username === 'unauthorized' && auth !== 'unauthorized'))
+            return history.push(`/profile/user/${auth}`)
+
         if (username !== 'unauthorized') {
             dispatch(userProfileAction(username))
             dispatch(carGarageAction(username))
@@ -34,22 +35,19 @@ export const UserProfilePage = () => {
 
     }, [username])
 
-    ///// redirecting after login
-    useEffect(() => {
-        if (username === 'unauthorized' && auth !== 'unauthorized') {
-            history.push(`/profile/user/${auth}`)
-        }
-    }, [username, auth])
+    if (username === 'unauthorized' && auth === 'unauthorized')
+        return <Login/>
 
-    if (error) {
-        return <div>user not found</div>
-    }
-    if(username === 'unauthorized'){
-        return <div>please log in</div>
-    }
-    if(userIsFetching || carsIsFetching){
-        return <div/>
-    }
-    return <UserProfile cars={cars} user={user}/>
+    const onEditClick = () => toggleEdit(!edit)
+
+    if (error)
+        history.push('/404')
+
+
+    if (userIsFetching || carIsFetching)
+        return <ProfileFetching/>
+
+    return <UserProfile cars={cars} user={user} edit={edit} auth={auth}
+                        toggle={onEditClick}/>
 }
 

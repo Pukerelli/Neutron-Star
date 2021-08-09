@@ -35,7 +35,7 @@ export const UserEditForm: React.FC<IProps> = ({user, onSubmit}) => {
                         <InputForm label='Drive Exp.' name='drivingExperience' type='text' placeholder='Drive Exp.'/>
                         <InputForm label='Whatsapp' name='whatsapp' type='text' placeholder='1XXXXXXXXXX'/>
                         <InputForm label='Telegram' name='telegram' type='text' placeholder='without @'/>
-                        <CommonBtn display={true} width='100%' height='40px' type='submit'>Confirm</CommonBtn>
+                        <CommonBtn width='100%' height='40px' type='submit'>Confirm</CommonBtn>
                     </UserEditFormContainer>
                 </Form>
             </Formik>

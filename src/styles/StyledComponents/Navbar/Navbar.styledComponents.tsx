@@ -5,24 +5,26 @@ interface IProps {
     show?: boolean
 }
 
-export const NavBarContainer = styled.div<{show: boolean}>`
-  position: fixed;
-  height: fit-content;
-  width: 8rem;
+export const NavBarContainer = styled.div<{hide: boolean}>`
+  height: 230px;
+  width: 160px;
+  margin-left: auto;
   padding: 0.8rem;
-  transform: ${props => (props.show ? 'translateX(0)' : 'translateX(-8rem)')};
+  display: ${props => props.hide? 'none': 'block'};
   transition-duration: 0.7s;
-  border-radius: 0 6px 6px 0;
-  background-color: ${config.color};
+  border-radius: 6px;
+  border: 1px solid ${config.linkColor};
+  a{
+    color: ${config.linkColor}
+  }
 `
 
 export const NavLinkStyled = styled.div`
-  color: white;
   font-size: 24px;
   padding: 0.2rem;
 
   &:hover {
-    background-color: rgb(205, 53, 68);
+    background-color: ${config.RedColor};
   }
 
   transition: .4ms linear;
@@ -31,7 +33,7 @@ export const NavLinkStyled = styled.div`
 `
 
 export const NavDisplayBtn = styled.button<IProps>`
-  background-color: ${config.color};
+  background-color: ${config.RedColor};
   height: 40px;
   width: 30px;
   display: flex;
@@ -49,7 +51,7 @@ export const NavDisplayBtn = styled.button<IProps>`
 
 `
 export const NavHideBtn = styled.button`
-  background-color: ${config.color};
+  background-color: ${config.RedColor};
   height: 40px;
   width: 16px;
   display: flex;

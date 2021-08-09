@@ -2,10 +2,10 @@ import React from 'react';
 import {
     UserAvatarBlock,
     UserAvatarContainer
-} from "../../../../../styles/StyledComponents/Profile/Avatar/UserAvatar.styledComponents";
-import {IUser} from '../../../../../common/interfaces/index.interface';
-import {UserAvatar} from "./Photo/UserPhoto.component";
-import {UserContacts} from "./Contacts/UserContacts.component";
+} from "../../../../../../styles/StyledComponents/Profile/Avatar/UserAvatar.styledComponents";
+import {IUser} from '../../../../../../common/interfaces/index.interface';
+import {UserAvatar} from "../Photo/UserPhoto.component";
+import {UserContacts} from "../Contacts/UserContacts.component";
 
 interface IProps {
     photo: string

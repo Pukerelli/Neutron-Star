@@ -14,9 +14,6 @@ export const userProfileAction = createAction<string>(USER_PROFILE)
 export const userUpdateAction = createAction<IUpdateUser>(USER_UPDATE)
 export const userUpdatePhotoAction = createAction<IUpdateAvatar>(USER_UPDATE_PHOTO)
 
-
-
-
 ///// REDUCER
 export const userProfileSucceedAction = createAction<IUser>(USER_PROFILE_SUCCEED)
 export const userUpdatePhotoSucceedAction = createAction<IUpdateAvatar>(USER_UPDATE_PHOTO_SUCCEED)

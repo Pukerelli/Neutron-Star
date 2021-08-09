@@ -7,14 +7,17 @@ import {ICar, IUser} from "../../../../../common/interfaces/index.interface";
 interface IProps {
     user: IUser
     cars: Array<ICar>
+    toggle: () => void
+    edit: boolean
+    auth: string
 }
 
-export const UserAbout: React.FC<IProps> = ({cars, user}) => {
-
+export const UserAbout: React.FC<IProps> = (props) => {
     return (
         <UserAboutColumn>
-            <UserProfileDescription user={user}/>
-            <UserProfileCars cars={cars} owner={user.username}/>
+            <UserProfileDescription user={props.user}
+                                    toggle={props.toggle} auth={props.auth} edit={props.edit}/>
+            <UserProfileCars cars={props.cars} owner={props.user.username}/>
         </UserAboutColumn>
     );
 };

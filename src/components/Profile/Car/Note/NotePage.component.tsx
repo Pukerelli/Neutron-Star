@@ -5,7 +5,8 @@ import {useHistory, useParams} from "react-router-dom";
 import {selectAuthUser} from "../../../../selectors/auth/auth.selector";
 import {useAppDispatch} from "../../../../store";
 import {carCurrentNoteAction, carNoteReplaceAction} from "../../../../store/actions/car.action";
-import {CarNote} from "./NoteLayout/CarNote.component";
+import {CarNote} from "./Layout/CarNote.component";
+import { CarNoteFetching } from '../../../Common/Fetching/About.fetchingComponents';
 
 
 export const CarNotePage: React.FC = () => {
@@ -28,7 +29,7 @@ export const CarNotePage: React.FC = () => {
         dispatch(carNoteReplaceAction({...values, _id: note}))
 
     if (isFetching)
-        return <div></div>
+        return <CarNoteFetching/>
 
     if(!note || (!currentNote && !isFetching))
         return <div>not found</div>

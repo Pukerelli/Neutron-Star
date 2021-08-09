@@ -3,9 +3,9 @@ import {GarageCars} from "./Cars/GarageCars.component";
 import {
     ProfileLayout,
     UserAvatarColumn
-} from "../../../../../styles/StyledComponents/Layout/ProfileLayout.styledComponents";
-import {UserAvatarBlock} from "../../../User/UserProfile/Avatar/UserAvatarBlock.component";
-import {SubscriptionsBlock} from "../../../User/UserProfile/Subscriptions/SubscriptionsBlock.component";
+} from "../../../../../styles/StyledComponents/Common/ProfileLayout.styledComponents";
+import {UserAvatarBlock} from "../../../User/Layout/Avatar/Block/UserAvatarBlock.component";
+import {SubscriptionsBlock} from "../../../User/Layout/Subscriptions/SubscriptionsBlock.component";
 import {ICar, IUser} from "../../../../../common/interfaces/index.interface";
 
 interface IProps {
@@ -17,10 +17,11 @@ interface IProps {
 export const Garage: React.FC<IProps> = ({cars, user, auth}) => {
     return (
         <ProfileLayout>
-            <GarageCars btn={auth === user.username} cars={cars}/>
+            <GarageCars btnHide={auth !== user.username} cars={cars}/>
             <UserAvatarColumn>
-                <UserAvatarBlock user={user}/>
-                <SubscriptionsBlock link='cars/about' following={user.followingCars}/>
+                <UserAvatarBlock auth={auth} user={user}/>
+                <SubscriptionsBlock link='cars/about'
+                                    following={user.followingCars}/>
             </UserAvatarColumn>
         </ProfileLayout>
     );

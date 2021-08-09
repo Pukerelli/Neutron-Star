@@ -1,29 +1,15 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {ICar, ICurrentNote, IError, INote} from "../../../common/interfaces/index.interface";
+import {ICar, ICurrentNote, IError} from "../../../common/interfaces/index.interface";
 
 
-const initialState = {
+const initialState: IInitialState = {
     cars: [],
-    currentCar: {
-        _id: '',
-        id: 0,
-        name: '',
-        brand: '',
-        model: '',
-        owner: '',
-        followedBy: [''],
-        notes: []
-    },
-    currentNote: {
-        owner: '',
-        _id: '',
-        date: '',
-        title: '',
-        description: ''
-    },
+    currentCar: null,
+    currentNote: null,
     isFetching: true,
-    error: null
-} as IInitialState
+    error: null,
+    addingSucceed: false
+}
 
 
 const carSlice = createSlice({
@@ -38,13 +24,11 @@ const carSlice = createSlice({
             state.isFetching = false
             state.error = null
         },
+        adding: (state, action: PayloadAction<boolean>) => {
+            state.addingSucceed = action.payload
+        },
         current: (state, action: PayloadAction<ICar>) => {
             state.currentCar = action.payload
-            state.isFetching = false
-            state.error = null
-        },
-        pushCar: (state, action: PayloadAction<ICar>) => {
-            state.cars.push(action.payload)
             state.isFetching = false
             state.error = null
         },
@@ -54,8 +38,7 @@ const carSlice = createSlice({
             state.error = null
         },
         pullNote: (state, action: PayloadAction<string>) => {
-            state.currentCar.notes = state.currentCar.notes.filter(note => note!._id !== action.payload)
-
+            state.currentCar!.notes = state.currentCar!.notes.filter(note => note!._id !== action.payload)
         },
         filterCars: (state, action: PayloadAction<ICar>) => {
             state.cars = state.cars.filter(car => car.name !== action.payload.name)
@@ -70,8 +53,10 @@ const carSlice = createSlice({
         error: (state, action: PayloadAction<IError>) => {
             state.error = action.payload
             state.isFetching = false
+        },
+        clearErrors: (state) => {
+            state.error = null
         }
-
     }
 })
 
@@ -81,8 +66,8 @@ export default carSlice.reducer
 interface IInitialState {
     cars: Array<ICar>
     error: IError
-    currentCar: ICar
-    currentNote: ICurrentNote
+    currentCar: ICar | null
+    currentNote: ICurrentNote | null
     isFetching: boolean
-
+    addingSucceed: boolean
 }

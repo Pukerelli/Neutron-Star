@@ -1,5 +1,5 @@
 import React from 'react';
-import {EditProfileIcon} from "../../../styles/StyledComponents/Common/Common.styledComponents";
+import {EditProfileIcon} from "../../../../styles/StyledComponents/Common/Common.styledComponents";
 import CloseIcon from "@material-ui/icons/Close";
 import EditIcon from "@material-ui/icons/Edit";
 

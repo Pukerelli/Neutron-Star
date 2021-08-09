@@ -28,7 +28,7 @@ export const NoteForm: React.FC<IProps> = ({note, onSubmit}) => {
                         <InputForm type='text' name='title' placeholder='Title' label='Title'/>
                         <TextAreaForm type='textarea' name='description' placeholder='Enter your note'
                                       label='Description'/>
-                        <CommonBtn display={true} type='submit' width='100%' height='40px'>Confirm</CommonBtn>
+                        <CommonBtn type='submit' width='100%' height='40px'>Confirm</CommonBtn>
                     </NoteFormFieldsContainer>
                 </Form>
             </Formik>

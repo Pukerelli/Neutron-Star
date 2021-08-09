@@ -1,14 +1,10 @@
 import React, {useEffect} from 'react'
-import {Field, Form, Formik} from 'formik';
-import * as Yup from 'yup';
-import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import {useAppDispatch} from "../../../store";
-import {MyCard} from '../../../styles/StyledComponents/Cards/MyCard';
 import {useHistory} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {selectAuthErrors, selectAuthUser} from "../../../selectors/auth/auth.selector";
 import {authClearErrorsAction, authRegAction} from "../../../store/actions/auth.action";
-import { RegistrationForm } from './RegistrationForm.component';
+import {RegistrationForm} from './RegistrationForm.component';
 
 
 interface IValues {

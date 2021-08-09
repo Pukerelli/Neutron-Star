@@ -9,14 +9,14 @@ width: 100%;
   text-transform: none;
   font-size: 1.5rem;
   padding: .5rem;
-  border: ${props.error ? `1px solid ${config.color}` : 'none'};
+  border: ${props.error ? `1px solid ${config.RedColor}` : 'none'};
   ::placeholder{
     text-transform: uppercase;
     font-size: .7rem;
     
   }
   :focus {
-    border: 2px solid ${props.error ? config.color : config.linkColor};
+    border: 2px solid ${props.error ? config.RedColor : config.linkColor};
     outline: none;
   }
 
@@ -66,7 +66,7 @@ export const InputArea = styled.textarea<{ error?: boolean }>`
 
 export const ValidErrors = styled.div`
   height: 20px;
-  color: ${config.color};
+  color: ${config.RedColor};
   font-size: 12px;
   margin-left: auto;
 `

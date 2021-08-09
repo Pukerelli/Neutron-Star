@@ -19,13 +19,12 @@ export const NoteCard = styled.div`
   box-shadow: ${config.shadow};
   display: grid;
   grid-template-columns:  5% 75% 15% 5%;
-  grid-template-rows: 35px;
+  height:  35px;
   cursor: pointer;
   align-items: center;
   background-color: white;
 `
 export const NoteDeleteBtn = styled.div`
-  
   color: ${config.linkColor};
   border: 2px solid ${config.linkColor};
   width: 100%;

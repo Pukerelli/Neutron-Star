@@ -5,7 +5,7 @@ import config from "../../../common/config/config.json"
 export const Name = styled.h1<IName>`
   color: #333234;
   font-size: 1.7rem;
-  text-align: ${props=> props.textAlign? props.textAlign: 'normal'};
+  text-align: ${props => props.textAlign ? props.textAlign : 'normal'};
 
   &::after {
     margin-top: .2rem;
@@ -30,7 +30,6 @@ export const Title = styled.p`
 `
 export const Subtitle = styled.p`
   color: ${config.linkColor};
-
   font-size: 1.2rem;
 `
 export const EditProfileIcon = styled.div`
@@ -40,6 +39,14 @@ export const EditProfileIcon = styled.div`
   font-size: 1.4rem;
   color: ${config.linkColor};
   cursor: pointer;
+`
+
+export const ImgCommon = styled.img`
+  box-shadow: ${config.shadow};
+  border-radius: 6px;
+  width: 100%;
+  height: inherit;
+  object-fit: cover;
 `
 
 export const SearchSelf = styled.div`
@@ -58,11 +65,22 @@ export const SearchInput = styled.input`
   height: 100%;
   border: 2px solid ${config.commonColor};
   border-radius: 6px;
-  :focus{
+
+  :focus {
     border: 2px solid ${config.linkColor};
     outline: none;
   }
-  
+
+`
+
+export const WhiteCard = styled.div<ICard>`
+  box-shadow: ${config.shadow};
+  background-color: #fff;
+  border-radius: 6px;
+  width: ${props => props.width};
+  height: ${props => props.height};
+  padding: ${props => props.padding};
+  margin: ${props => props.margin? props.margin : 0}
 `
 
 
@@ -70,7 +88,12 @@ interface IName {
     underline?: boolean
     textAlign?: string
 }
-
+interface ICard {
+    width: string
+    padding: string
+    height: string
+    margin?: string
+}
 interface ICarModel {
     font?: string
     color?: string

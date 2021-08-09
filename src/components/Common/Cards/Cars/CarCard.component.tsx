@@ -7,8 +7,9 @@ import {
     CarCardDescription,
     CarCardLayout
 } from "../../../../styles/StyledComponents/Cards/Cars/CarCard.styledComponent";
-import {ImgCommon, TitleContainer} from "../../../../styles/StyledComponents/Profile/Cars/UserCars.styledComponents";
+import {TitleContainer} from "../../../../styles/StyledComponents/Profile/Cars/UserCars.styledComponents";
 import {
+    ImgCommon,
     NameDouble,
     NameMini,
     Subtitle,

@@ -22,7 +22,6 @@ import {
 import {ICar, IError, IUser} from "../../common/interfaces/index.interface";
 
 ///// SAGA
-
 export const searchCarAction = createAction<string>(LIST_SEARCH_CARS)
 export const searchUserAction = createAction<string>(LIST_SEARCH_USERS)
 export const subsUsersFollowedAction = createAction<string>(LIST_SUBS_USERS)
@@ -34,10 +33,7 @@ export const listUnfollowCarAction = createAction<{ payload: string }>(LIST_CAR_
 export const subsUnfollowUserAction = createAction<{ payload: string }>(LIST_SUBS_USER_UNFOLLOW)
 export const subsUnfollowCarAction = createAction<{ payload: string }>(LIST_SUBS_CAR_UNFOLLOW)
 
-
-
 ///// REDUCER
-
 export const listFetchingAction = createAction<undefined>(LIST_FETCHING)
 export const listUsersSucceedAction = createAction<Array<IUser>>(LIST_USERS_SUCCEED)
 export const listCarsSucceedAction = createAction<Array<ICar>>(LIST_CARS_SUCCEED)

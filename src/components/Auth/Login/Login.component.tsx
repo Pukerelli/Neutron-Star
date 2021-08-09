@@ -2,18 +2,20 @@ import React, {useEffect} from 'react'
 import {useAppDispatch} from "../../../store";
 import {useSelector} from "react-redux";
 import {selectAuthErrors, selectAuthUser} from "../../../selectors/auth/auth.selector";
-import {useHistory} from 'react-router-dom';
+import {useHistory, useLocation} from 'react-router-dom';
 import {authClearErrorsAction, authLoginAction} from "../../../store/actions/auth.action";
 import {LoginForm} from "./LoginForm.component";
+import {ILogin} from "../../../API/auth.api";
 
 export const Login: React.FC = () => {
     const history = useHistory()
+    const {pathname} = useLocation()
     const dispatch = useAppDispatch()
     const isAuth = useSelector(selectAuthUser)
     const errors = useSelector(selectAuthErrors)
 
     useEffect(() => {
-        if (isAuth && isAuth !== 'unauthorized')
+        if (isAuth !== 'unauthorized' && pathname.includes('auth'))
             history.push(`/profile/user/${isAuth}`)
         return () => {
             dispatch(authClearErrorsAction())
@@ -21,7 +23,7 @@ export const Login: React.FC = () => {
     }, [isAuth])
 
     const onRegClick = () => history.push('/auth/registration')
-    const onSubmit = (values: { username: string, password: string }) => dispatch(authLoginAction(values))
+    const onSubmit = (values: ILogin) => dispatch(authLoginAction(values))
 
     return  <LoginForm onSubmit={onSubmit} onRegClick={onRegClick} errors={errors}/>
 }

@@ -6,13 +6,12 @@ export const AuthLayout = styled.div`
   margin: 0 auto;
   padding-top: 5vh;
   box-sizing: border-box;
-  height: 100%;
 `
 export const AuthCard = styled.div<{error: boolean}>`
   width: 460px;
   margin: 0 auto;
   box-sizing: border-box;
-  border: ${props => props.error? `1px solid ${config.color}`: 'none'};
+  border: ${props => props.error? `1px solid ${config.RedColor}`: 'none'};
   position: relative;
   background-color: white;
   box-shadow: ${config.shadow};
@@ -42,18 +41,12 @@ export const RegistrationFormLayout = styled.div`
 
 export const AuthError = styled.div`
   text-align: center;
-  color: ${config.color}
+  color: ${config.RedColor}
 `
 
-export const ButtonContainer = styled.div`
+export const RegistrationButtonContainer = styled.div`
   align-self: end;
   grid-column: span 2;
   width: 60%;
   margin: 0 auto;
-`
-
-export const AuthBnt = styled.button`
-  width: 60%;
-  height: 2rem;
-  
 `

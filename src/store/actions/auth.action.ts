@@ -1,6 +1,6 @@
 import {AUTH_LOGIN, AUTH_ME, AUTH_REG} from "../saga.actionTypes";
 import {createAction} from "@reduxjs/toolkit";
-import {IError, ILogin, IReg} from "../../common/interfaces/index.interface";
+import {IError} from "../../common/interfaces/index.interface";
 import {
     AUTH_CLEAR_ERRORS,
     AUTH_ERROR,
@@ -9,14 +9,14 @@ import {
     AUTH_ME_FAILED,
     AUTH_ME_SUCCEED
 } from "../reducers/auth/auth.reducerActionTypes";
+import {ILogin, IRegistration} from "../../API/auth.api";
 
 ///// SAGA
 export const authMeAction = createAction<undefined>(AUTH_ME)
 export const authLoginAction = createAction<ILogin>(AUTH_LOGIN)
-export const authRegAction = createAction<IReg>(AUTH_REG)
+export const authRegAction = createAction<IRegistration>(AUTH_REG)
 
 ///// REDUCER
-
 export const authLogoutAction = createAction<undefined>(AUTH_LOGOUT)
 export const authLoadingAction = createAction<undefined>(AUTH_LOADING)
 export const authSucceedAction = createAction<string>(AUTH_ME_SUCCEED)

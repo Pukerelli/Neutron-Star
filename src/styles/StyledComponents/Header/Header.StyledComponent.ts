@@ -5,7 +5,8 @@ export const HeaderWrapper = styled.header`
   grid-area: header;
   display: grid;
   width: 100vw;
-  background-color: ${config.color};
+  min-height: 46px;
+  background-color: ${config.RedColor};
   align-items: center;
   padding: 0.3rem;
   font-size: 2rem;

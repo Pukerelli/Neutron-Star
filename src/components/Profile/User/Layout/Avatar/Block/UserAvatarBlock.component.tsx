@@ -1,22 +1,20 @@
 import React, {useMemo, useState} from 'react';
-import {getRandomInt} from "../../../../../common/functions";
-import {IUser} from "../../../../../common/interfaces/index.interface";
+import {getRandomInt} from "../../../../../../common/functions";
+import {IUser} from "../../../../../../common/interfaces/index.interface";
 import {UserProfileAvatar} from "./UserProfileAvatar.component";
-import {stockPhotos} from '../../../../../common/images/images';
-import {useAppDispatch} from "../../../../../store";
-import {useSelector} from "react-redux";
-import {selectAuthUser} from "../../../../../selectors/auth/auth.selector";
-import {userUpdatePhotoAction} from "../../../../../store/actions/user.action";
-import {IUpdateAvatar} from "../../../../../API/user.api";
-import {UserAvatarEdit} from "./Edit/UserAvatarEdit.component";
+import {stockPhotos} from '../../../../../../common/images/images';
+import {useAppDispatch} from "../../../../../../store";
+import {userUpdatePhotoAction} from "../../../../../../store/actions/user.action";
+import {IUpdateAvatar} from "../../../../../../API/user.api";
+import {UserAvatarEdit} from "../Edit/UserAvatarEdit.component";
 
 interface IProps {
     user: IUser
+    auth: string
 }
 
-export const UserAvatarBlock: React.FC<IProps> = ({user}) => {
+export const UserAvatarBlock: React.FC<IProps> = ({user, auth}) => {
     const [edit, toggleEdit] = useState(false)
-    const auth = useSelector(selectAuthUser)
     const dispatch = useAppDispatch()
     const randomPic = useMemo(() => getRandomInt(0, 9), [])
 
@@ -24,6 +22,7 @@ export const UserAvatarBlock: React.FC<IProps> = ({user}) => {
         dispatch(userUpdatePhotoAction(payload))
         toggleEdit(false)
     }
+
 
     if (edit && auth === user.username)
         return <UserAvatarEdit bg={user.backgroundPhoto || stockPhotos[randomPic]}

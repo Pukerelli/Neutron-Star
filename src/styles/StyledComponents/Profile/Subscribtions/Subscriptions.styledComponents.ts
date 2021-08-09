@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import config from "../../../../../common/config/config.json"
+import config from "../../../../common/config/config.json"
 
 export const UserSubscriptions = styled.div`
   display: grid;

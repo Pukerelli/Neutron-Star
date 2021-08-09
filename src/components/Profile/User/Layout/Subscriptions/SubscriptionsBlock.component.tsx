@@ -1,6 +1,9 @@
 import React from 'react';
-import {SubsTitle, UserSubscriptions } from '../../../../../styles/StyledComponents/Profile/Subscribtions/Subscriptions.styledComponents';
-import {Subscribers} from "../../../Subscriptions/SubscriptionsBlock/Subscribers.component";
+import {
+    SubsTitle,
+    UserSubscriptions
+} from '../../../../../styles/StyledComponents/Profile/Subscribtions/Subscriptions.styledComponents';
+import {Subscribers} from "../../../Subscriptions/Block/Subscribers.component";
 
 interface IProps{
     following: Array<string>
@@ -9,6 +12,7 @@ interface IProps{
 
 
 export const SubscriptionsBlock: React.FC<IProps> = ({following, link}) => {
+
     let pieceOfFollowing: Array<string> = []
     if (following.length>0)
         pieceOfFollowing = following.slice(0, (following.length > 6 ? 6 : following.length))

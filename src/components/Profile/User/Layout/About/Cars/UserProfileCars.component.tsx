@@ -14,12 +14,12 @@ interface IProps {
 export const UserProfileCars: React.FC<IProps> = ({cars, owner}) => {
     const history = useHistory()
     const onClick = () => history.push(`/profile/cars/garage/${owner}`)
-    if (!cars.length)
+    if (!cars?.length)
         return null
 
     return (
         <UserAboutCarsContainer>
-            <CommonBtn display={!!cars.length} fz='1.4rem' width='100%' height='40px' onClick={onClick}>
+            <CommonBtn hide={!(!!cars.length)} fz='1.4rem' width='100%' height='40px' onClick={onClick}>
                 Garage {cars.length} {cars.length > 1 ? 'Cars' : 'car'}
             </CommonBtn>
             <UserCars>

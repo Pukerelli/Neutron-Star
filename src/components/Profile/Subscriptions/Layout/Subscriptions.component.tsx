@@ -5,13 +5,10 @@ import {
     SubscriptionsColumn,
     UserAvatarColumn
 } from "../../../../styles/StyledComponents/Common/ProfileLayout.styledComponents";
-import {UserAvatarBlock} from "../../User/UserProfile/Avatar/UserAvatarBlock.component";
-import {
-    ListToggle,
-    ListToggleContainer
-} from "../../../../styles/StyledComponents/Common/List.styledComponent";
+import {UserAvatarBlock} from "../../User/Layout/Avatar/Block/UserAvatarBlock.component";
+import {ListToggle, ListToggleContainer} from "../../../../styles/StyledComponents/Common/List.styledComponent";
 import {Users} from '../../../Common/Cards/User/Users.components';
-import {Cars} from '../../../Common/Cards/Cars/Cars.component';
+import {ListCards} from "../../../Common/Cards/ListCards.component.";
 
 interface IProps {
     user: IUser
@@ -19,28 +16,30 @@ interface IProps {
     cars: Array<ICar>
     toggle: (target: 'users' | 'cars') => void
     subs: 'users' | 'cars'
+    auth: string
+
 }
 
-export const Subscriptions: React.FC<IProps> = ({user, users, cars, subs, toggle}) => {
+export const Subscriptions: React.FC<IProps> = (props) => {
     const onClick = (e: React.MouseEvent<HTMLDivElement>) => {
         if (e.currentTarget.innerHTML === 'Users')
-            toggle('users')
+            props.toggle('users')
         else
-            toggle('cars')
+            props.toggle('cars')
     }
     return (
         <ProfileLayout>
             <SubscriptionsColumn>
                 <ListToggleContainer>
-                    <ListToggle active={subs === 'users'} marginLeft={true}
+                    <ListToggle active={props.subs === 'users'} marginLeft={true}
                                 onClick={onClick}>Users</ListToggle>
-                    <ListToggle active={subs === 'cars'}
+                    <ListToggle active={props.subs === 'cars'}
                                 onClick={onClick}>Cars</ListToggle>
                 </ListToggleContainer>
-                {subs === 'cars' ? <Cars cars={cars}/> : <Users users={users}/>}
+                <ListCards cars={props.cars} users={props.users} toggle={props.subs}/>
             </SubscriptionsColumn>
             <UserAvatarColumn>
-                <UserAvatarBlock user={user}/>
+                <UserAvatarBlock auth={props.auth} user={props.user}/>
             </UserAvatarColumn>
         </ProfileLayout>
     );

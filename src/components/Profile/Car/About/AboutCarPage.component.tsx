@@ -5,9 +5,10 @@ import {selectCarError, selectCarIsFetching, selectCurrentCar} from "../../../..
 import {useHistory, useParams} from "react-router-dom";
 import {carCurrentAction, carUpdateAction} from "../../../../store/actions/car.action";
 import {selectAuthUser} from "../../../../selectors/auth/auth.selector";
-import {AboutCar} from "./AboutLayout/AboutCar.component";
+import {AboutCar} from "./Layout/AboutCar.component";
 import {AddCarForm} from "../Add/AddCarForm.component";
 import {IUpdateCar} from "../../../../API/car.api";
+import { CarFetching } from '../../../Common/Fetching/About.fetchingComponents';
 
 export const AboutCarPage = () => {
     const dispatch = useAppDispatch()
@@ -36,7 +37,7 @@ export const AboutCarPage = () => {
         history.push(`/profile/cars/add/note/${car?.name}`)
 
     if (isFetching || !car)
-        return <div></div>
+        return <CarFetching/>
 
     if(edit)
         return <AddCarForm car={car!} onSubmit={onSubmit} errors={errors} onCancel={onEditHandler}/>

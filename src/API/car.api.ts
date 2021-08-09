@@ -1,13 +1,13 @@
-import {ICar, ICurrentNote, INote} from "../common/interfaces/index.interface";
+import {ICar, ICurrentNote} from "../common/interfaces/index.interface";
 import {Requests} from "./API";
 
 const requests = new Requests('cars')
 
 export const Car = {
     ///// POST
-    postAddCar: (payload: INewCar) => requests.post<ICar, INewCar>('add', payload),
+    postAddCar: (payload: IUpdateCar) => requests.post<boolean, IUpdateCar>('add', payload),
     postFollowCar: (payload: { payload: string }) => requests.post<ICar, { payload: string }>('follow', payload),
-    postNoteCar: (payload: INewNote) => requests.post<INote, INewNote>('note', payload),
+    postNoteCar: (payload: INewNote) => requests.post<boolean, INewNote>('note', payload),
     ///// PUT
     deleteFollowCar: (payload: { payload: string }) => requests.put<ICar, { payload: string }>('unfollow', payload),
     putUpdateCarPhoto: (payload: IUploadPhoto) => requests.put<ICar, IUploadPhoto>('update/photo', payload),
@@ -33,28 +33,27 @@ export interface IPostFollow {
     carname: string
 }
 
-export interface INewCar {
-    name: string,
-    brand: string,
-    model: string,
-    generation: string
-}
-
 export interface IUploadPhoto {
     photo: string
     carName: string
 }
 
 export interface IUpdateCar {
-    generation?: string
-    year?: string
-    doors?: string
-    isStock?: boolean
-    engine?: string
-    hp?: string
-    rims?: string
-    ownTime?: string
-    carName: string
+    name: string
+    brand: string
+    model: string
+    generation: string
+    year: string
+    engine: string
+    hp: string
+    doors: string
+    mileage: string
+    ownTime: string
+    country: string
+    city: string
+    color: string
+    rims:string
+    photo: string
 }
 
 export interface INewNote {
