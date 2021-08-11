@@ -21,12 +21,10 @@ interface IProps {
 }
 
 export const LoginForm: React.FC<IProps> = ({onSubmit, onRegClick, errors}) => {
-
     const initialValues = {
         username: '',
         password: ''
     }
-
     return (
         <AuthLayout>
             <AuthCard error={'string' === typeof errors}>

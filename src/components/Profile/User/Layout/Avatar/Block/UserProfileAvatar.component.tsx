@@ -14,15 +14,12 @@ interface IProps {
     bg: string | undefined
 }
 
-export const UserProfileAvatar: React.FC<IProps> = ({photo, user, handler, bg}) => {
-
-    return (
-        <UserAvatarContainer image={bg || photo}>
-            <UserAvatarBlock>
-                <UserAvatar photo={photo} handler={handler}/>
-                <UserContacts user={user}/>
-            </UserAvatarBlock>
-        </UserAvatarContainer>
-    );
-}
+export const UserProfileAvatar: React.FC<IProps> = ({photo, user, handler, bg}) => (
+    <UserAvatarContainer image={bg || photo}>
+        <UserAvatarBlock>
+            <UserAvatar photo={photo} handler={handler}/>
+            <UserContacts user={user}/>
+        </UserAvatarBlock>
+    </UserAvatarContainer>
+)
 

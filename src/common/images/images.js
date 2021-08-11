@@ -13,7 +13,3 @@ export const stockPhotos = [
     'https://aczpix.b-cdn.net/wp-content/uploads/2013/04/foto-nissan-silvia_01.jpg',
     'https://s0.rbk.ru/v6_top_pics/ampresize/media/img/8/69/754788641641698.jpeg'
 ]
-
-
-export const userDefaultImage = 'https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png'
-export const carDefaultImage = 'https://media.istockphoto.com/vectors/car-flat-icon-vector-id1144092062?k=6&m=1144092062&s=612x612&w=0&h=KjHYZQoPokl3q-FtNHBx6Nbgy79vQ2BOpsTrgJzVNuA='

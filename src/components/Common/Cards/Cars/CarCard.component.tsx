@@ -15,7 +15,7 @@ import {
     Subtitle,
     Title
 } from "../../../../styles/StyledComponents/Common/Common.styledComponents";
-import {carDefaultImage} from "../../../../common/images/images";
+import carDefault from "../../../../common/images/carDefault.jpg";
 import {CardButton} from "../../Buttons/CardButtons/CardButton.component";
 
 export const CarCard: React.FC<{ car: ICar }> = ({car}) => {
@@ -28,6 +28,7 @@ export const CarCard: React.FC<{ car: ICar }> = ({car}) => {
         else
             history.push(`/profile/cars/about/${car.name}`)
     }
+
     return (
         <CarCardLayout>
             <CarCardDescription>
@@ -36,24 +37,25 @@ export const CarCard: React.FC<{ car: ICar }> = ({car}) => {
                     <NameDouble>{car.brand} {car.model}</NameDouble>
                 </TitleContainer>
                 <Title>Gen:</Title>
-                <Subtitle>{car.generation ? car.generation : 'unknown'}</Subtitle>
+                <Subtitle>{car.generation || 'unknown'}</Subtitle>
                 <Title>Year:</Title>
-                <Subtitle>{car.year ? car.year : 'unknown'}</Subtitle>
+                <Subtitle>{car.year || 'unknown'}</Subtitle>
                 <Title>Engine:</Title>
-                <Subtitle>{car.engine ? car.engine : 'unknown'}</Subtitle>
+                <Subtitle>{car.engine || 'unknown'}</Subtitle>
                 <Title>HP:</Title>
-                <Subtitle>{car.engine ? car.engine : 'unknown'}</Subtitle>
+                <Subtitle>{car.engine || 'unknown'}</Subtitle>
                 <Title>Owner:</Title>
                 <Subtitle>{car.owner}</Subtitle>
             </CarCardDescription>
             <CarCardAvatar>
                 <CarCardAvatarContainer>
                     <ImgCommon
-                        src={car.photo || carDefaultImage}/>
+                        src={car.photo || carDefault}/>
                 </CarCardAvatarContainer>
                 <Title>Mileage:</Title>
-                <Subtitle>{car.mileage ? car.mileage : 'unknown'}</Subtitle>
-                <CardButton followedBy={car.followedBy} payload={car.name} card={'car'} owner={car.owner}/>
+                <Subtitle>{car.mileage || 'unknown'}</Subtitle>
+                <CardButton followedBy={car.followedBy} payload={car.name}
+                            card={'car'} owner={car.owner}/>
             </CarCardAvatar>
         </CarCardLayout>
     );

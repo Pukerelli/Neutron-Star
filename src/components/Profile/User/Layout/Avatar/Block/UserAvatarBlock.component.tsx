@@ -23,13 +23,12 @@ export const UserAvatarBlock: React.FC<IProps> = ({user, auth}) => {
         toggleEdit(false)
     }
 
-
     if (edit && auth === user.username)
         return <UserAvatarEdit bg={user.backgroundPhoto || stockPhotos[randomPic]}
                                photo={user.photo || stockPhotos[randomPic]}
                                handler={updateUserPhoto} toggle={toggleEdit}/>
 
     return <UserProfileAvatar handler={toggleEdit} user={user} bg={user.backgroundPhoto}
-                              photo={user.photo ? user.photo : stockPhotos[randomPic]}/>
+                              photo={user.photo || stockPhotos[randomPic]}/>
 }
 

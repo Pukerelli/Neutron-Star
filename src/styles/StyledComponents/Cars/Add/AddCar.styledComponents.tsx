@@ -45,7 +45,7 @@ export const ErrorContainer = styled.div`
   align-items: center;
   justify-content: center;
   height: 60px;
-  color: ${config.RedColor}
+  color: ${config.redColor}
 `
 
 export const CarPhotoInputContainer = styled.div`

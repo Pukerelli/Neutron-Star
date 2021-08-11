@@ -1,36 +1,30 @@
 import React from 'react';
 import {CardBtn} from "../../../../styles/StyledComponents/Buttons/CommonButtons.styledComponent";
-import {useAppDispatch} from "../../../../store";
-import {IAction} from "../../../../common/interfaces/index.interface";
-import {useSelector} from "react-redux";
-import {selectAuthUser} from "../../../../selectors/auth/auth.selector";
 
 interface IProps {
     payload: string
     followedBy: Array<string>
-    followAction: IAction<{payload: string}>
-    unFollowAction: IAction<{payload: string}>
+    onFollowClick: () => void
+    onUnfollowClick: () => void
+    auth: string
 }
 
+export const ButtonFollow: React.FC<IProps> = (props) => {
 
-export const ButtonFollow: React.FC<IProps> = ({payload, followedBy, followAction, unFollowAction}) => {
-    const dispatch = useAppDispatch()
-    const auth = useSelector(selectAuthUser)
     const followHandler = ( e: React.SyntheticEvent, follow: boolean) => {
         e.stopPropagation()
         if (follow)
-            dispatch(followAction({payload}))
+            props.onFollowClick()
          else
-            dispatch(unFollowAction({payload}))
+            props.onUnfollowClick()
     }
     return (
         <>
             {
-                followedBy.includes(auth)
+                props.followedBy.includes(props.auth)
                     ? <CardBtn onClick={(e) => followHandler(e, false)}>unfollow</CardBtn>
                     : <CardBtn onClick={(e) => followHandler(e, true)}>follow</CardBtn>
             }
-
         </>
     );
 };

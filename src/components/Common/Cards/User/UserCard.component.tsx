@@ -9,7 +9,7 @@ import {
     Subtitle,
     Title
 } from "../../../../styles/StyledComponents/Common/Common.styledComponents";
-import {userDefaultImage} from "../../../../common/images/images";
+import userDefault from "../../../../common/images/userDefault.png";
 import {
     UserCardAvatar,
     UserCardAvatarContainer,
@@ -44,7 +44,7 @@ export const UserCard: React.FC<{ user: IUser }> = ({user}) => {
             <UserCardAvatar>
                 <UserCardAvatarContainer>
                     <ImgCommon
-                        src={user.photo || userDefaultImage}/>
+                        src={user.photo || userDefault}/>
                 </UserCardAvatarContainer>
                 <CardButton followedBy={user.followedBy} payload={user.username} card={'user'}/>
             </UserCardAvatar>

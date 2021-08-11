@@ -19,8 +19,10 @@ export const AddCar: React.FC = () => {
     useEffect(() => {
         if (errors)
            return setNewCar('')
+
         if (adding)
             history.push(`/profile/cars/about/${newCar}`)
+
         return () => {
             dispatch(carAddingAction(false))
         }

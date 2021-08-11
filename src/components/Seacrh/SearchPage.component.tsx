@@ -7,14 +7,14 @@ import {listUnmountAction, searchCarAction, searchUserAction} from "../../store/
 import {Search} from "./Layout/Search.component";
 import {userProfileAction} from "../../store/actions/user.action";
 import {selectUserIsFetching, selectUserProfile} from "../../selectors/user/user.selector";
-import { ListFetching } from "../Common/Fetching/List.fetchingComponents";
+import {ListFetching} from "../Common/Fetching/List.fetchingComponents";
 
 export const SearchPage: React.FC = () => {
     const [value, setValue] = useState('')
     const [search, setSearch] = useState<'cars' | 'users'>('users')
+    const dispatch = useAppDispatch()
     const userIsFetching = useSelector(selectUserIsFetching)
     const listIsFetching = useSelector(selectListIsFetching)
-    const dispatch = useAppDispatch()
     const cars = useSelector(selectListCars)
     const users = useSelector(selectListUsers)
     const auth = useSelector(selectAuthUser)
@@ -22,6 +22,7 @@ export const SearchPage: React.FC = () => {
 
     useEffect(() => {
         dispatch(userProfileAction(auth))
+
         return () => {
             dispatch(listUnmountAction())
         }
@@ -29,10 +30,12 @@ export const SearchPage: React.FC = () => {
 
     useEffect(() => {
         dispatch(listUnmountAction())
+
         if (search === 'users')
             dispatch(searchUserAction(value))
         else
             dispatch(searchCarAction(value))
+
     }, [search, value])
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) =>
@@ -45,10 +48,8 @@ export const SearchPage: React.FC = () => {
             setSearch('users')
     }
 
-    if (userIsFetching || listIsFetching)
-        return <ListFetching search={true}/>
-
     return <Search search={search} onChange={onChange} value={value} auth={auth}
+                   userIsFetching={userIsFetching} listIFetching={listIsFetching}
                    cars={cars} users={users} user={user} toggle={onClick}/>
 
 };

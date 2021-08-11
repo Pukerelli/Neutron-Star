@@ -15,7 +15,9 @@ export const GarageCars: React.FC<IProps> = ({cars, btnHide}) => {
     const onClick = () => history.push(`/profile/cars/add`)
     return (
         <GarageCarsColumn hideBtn={btnHide}>
-            <CommonBtn hide={btnHide} width='530px' height='40px' onClick={onClick}>ADD</CommonBtn>
+            <CommonBtn hide={btnHide} width='530px' height='40px' onClick={onClick}>
+                ADD
+            </CommonBtn>
             <Cars cars={cars}/>
         </GarageCarsColumn>
     )

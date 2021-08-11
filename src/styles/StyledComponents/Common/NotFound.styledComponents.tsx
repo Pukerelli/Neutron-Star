@@ -1,9 +1,10 @@
 import styled from "styled-components";
+import notFound from "../../../common/images/notFound.jpg";
 
 export const NotFoundLayout = styled.div`
   width: 100%;
   height: 100%;
-  background-image: url("https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/b61a6a53029897.59257dc5a0679.jpg");
+  background-image: url(${notFound});
   background-size: cover;
   display: flex;
   margin: 0 auto;
@@ -22,5 +23,5 @@ export const NotFoundInner = styled.h1`
   font-size: 200px;
   opacity: .8;
   color: white;
-  
+
 `

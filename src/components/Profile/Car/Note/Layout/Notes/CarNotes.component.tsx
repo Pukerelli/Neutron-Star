@@ -13,12 +13,16 @@ interface IProps {
 export const CarNotes: React.FC<IProps> = ({car}) => {
     const history = useHistory()
     const dispatch = useAppDispatch()
-    const onDeleteClick = (_id: string, car: string) => dispatch(carNotePullAction({_id, car}))
-    const onNoteClick = (id: string) => history.push(`/profile/cars/note/${id}`)
+
+    const onDeleteClick = (_id: string, car: string) =>
+        dispatch(carNotePullAction({_id, car}))
+
+    const onNoteClick = (id: string) =>
+        history.push(`/profile/cars/note/${id}`)
 
     return (
         <NotesLayout>
-            {car.notes.map((note, i) =>
+            {car.notes.map((note) =>
                 <CarNoteMini key={note!._id} carname={car._id} onDeleteNoteClick={onDeleteClick}
                              note={note} onNoteClick={onNoteClick}/>)}
         </NotesLayout>

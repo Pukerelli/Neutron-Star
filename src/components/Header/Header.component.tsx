@@ -29,9 +29,6 @@ export const Header: React.FC = () => {
         <HeaderWrapper>
             <HeaderItemContainer>
                 <HeaderItem>
-                    <NavLink to='/'>Home</NavLink>
-                </HeaderItem>
-                <HeaderItem>
                     <NavLink to={`/profile/user/${auth}`}>Profile</NavLink>
                 </HeaderItem>
                 <HeaderItem>

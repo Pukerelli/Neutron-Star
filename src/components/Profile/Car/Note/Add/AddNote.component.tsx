@@ -12,10 +12,10 @@ import {NoteCard, NoteLayout} from '../../../../../styles/StyledComponents/Cars/
 
 
 export const AddNote: React.FC = () => {
-    const history = useHistory()
     const dispatch = useAppDispatch()
-    const adding = useSelector(selectAdding)
+    const history = useHistory()
     const {carname} = useParams<{ carname: string }>()
+    const adding = useSelector(selectAdding)
     const car = useSelector(selectCurrentCar)
     const error = useSelector(selectCarError)
 
@@ -43,7 +43,7 @@ export const AddNote: React.FC = () => {
 
     return (
         <NoteLayout>
-            <NoteCard form={true}>
+            <NoteCard edit={true}>
                 <ButtonBack onBackClick={onBackClick}/>
                 <NoteForm onSubmit={onSubmit}/>
             </NoteCard>

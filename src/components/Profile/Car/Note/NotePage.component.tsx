@@ -6,11 +6,10 @@ import {selectAuthUser} from "../../../../selectors/auth/auth.selector";
 import {useAppDispatch} from "../../../../store";
 import {carCurrentNoteAction, carNoteReplaceAction} from "../../../../store/actions/car.action";
 import {CarNote} from "./Layout/CarNote.component";
-import { CarNoteFetching } from '../../../Common/Fetching/About.fetchingComponents';
+import {CarNoteFetching} from '../../../Common/Fetching/About.fetchingComponents';
 
 
 export const CarNotePage: React.FC = () => {
-
     const dispatch = useAppDispatch()
     const history = useHistory()
     const {note} = useParams<{ note: string }>()
@@ -23,16 +22,13 @@ export const CarNotePage: React.FC = () => {
     }, [note])
 
     const onBackClick = () =>
-        history.push(`/profile/cars/about/${currentNote?.owner}`)
+        history.push(`/profile/cars/about/${currentNote?.carname}`)
 
     const onSubmit = (values: { title: string, description: string }) =>
         dispatch(carNoteReplaceAction({...values, _id: note}))
 
-    if (isFetching)
+    if (isFetching || !currentNote)
         return <CarNoteFetching/>
-
-    if(!note || (!currentNote && !isFetching))
-        return <div>not found</div>
 
     return <CarNote currentNote={currentNote!} handler={onSubmit}
                     auth={auth} onBackClick={onBackClick} />

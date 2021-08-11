@@ -7,9 +7,7 @@ import {
 import {SocialIcon} from "react-social-icons";
 import {IUser} from '../../../../../../common/interfaces/index.interface';
 
-export const UserContacts: React.FC<{ user: IUser }> = ({user}) => {
-
-    return (
+export const UserContacts: React.FC<{ user: IUser }> = ({user}) => (
         <UserAvatarContacts>
             <UserAvatarContactsTitle>Contacts</UserAvatarContactsTitle>
             {
@@ -38,9 +36,6 @@ export const UserContacts: React.FC<{ user: IUser }> = ({user}) => {
                     </>
                     : null
             }
-
-
         </UserAvatarContacts>
-    );
-};
+    )
 

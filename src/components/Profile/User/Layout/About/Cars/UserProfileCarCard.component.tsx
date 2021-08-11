@@ -3,7 +3,7 @@ import {ICar} from "../../../../../../common/interfaces/index.interface";
 import {
     CarImgContainer,
     TitleContainer,
-        UserCarCard
+    UserCarCard
 } from "../../../../../../styles/StyledComponents/Profile/Cars/UserCars.styledComponents";
 import {
     ImgCommon,
@@ -13,7 +13,7 @@ import {
     Title
 } from "../../../../../../styles/StyledComponents/Common/Common.styledComponents";
 import {useHistory} from "react-router-dom";
-import { carDefaultImage } from "../../../../../../common/images/images";
+import carDefault from "../../../../../../common/images/carDefault.jpg"
 
 interface IProps {
     car: ICar
@@ -32,13 +32,13 @@ export const UserProfileCarCard: React.FC<IProps> = ({car}) => {
                     <NameDouble>{car.brand} {car.model}</NameDouble>
                 </TitleContainer>
                 <Title>Gen:</Title>
-                <Subtitle>{car.generation}</Subtitle>
+                <Subtitle>{car.generation || 'unknown'}</Subtitle>
                 <Title>Year:</Title>
-                <Subtitle>{car.year}</Subtitle>
+                <Subtitle>{car.year || 'unknown'}</Subtitle>
             </UserCarCard>
             <CarImgContainer>
                 <ImgCommon
-                    src={car.photo || carDefaultImage}/>
+                    src={car.photo || carDefault}/>
             </CarImgContainer>
         </>
     )

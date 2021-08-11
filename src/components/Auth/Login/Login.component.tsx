@@ -8,15 +8,16 @@ import {LoginForm} from "./LoginForm.component";
 import {ILogin} from "../../../API/auth.api";
 
 export const Login: React.FC = () => {
+    const dispatch = useAppDispatch()
     const history = useHistory()
     const {pathname} = useLocation()
-    const dispatch = useAppDispatch()
     const isAuth = useSelector(selectAuthUser)
     const errors = useSelector(selectAuthErrors)
 
     useEffect(() => {
         if (isAuth !== 'unauthorized' && pathname.includes('auth'))
             history.push(`/profile/user/${isAuth}`)
+
         return () => {
             dispatch(authClearErrorsAction())
         }

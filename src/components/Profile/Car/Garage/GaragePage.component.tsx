@@ -15,11 +15,11 @@ import {GarageFetching} from '../../../Common/Fetching/Garage.fetchingComponents
 
 export const GaragePage: React.FC = () => {
     const dispatch = useAppDispatch()
+    const {username} = useParams<{ username: string }>()
     const carIsFetching = useSelector(selectCarIsFetching)
     const userIsFetching = useSelector(selectUserIsFetching)
     const cars = useSelector(selectCars)
     const user = useSelector(selectUserProfile)
-    const {username} = useParams<{ username: string }>()
     const auth = useSelector(selectAuthUser)
 
     useEffect(() => {

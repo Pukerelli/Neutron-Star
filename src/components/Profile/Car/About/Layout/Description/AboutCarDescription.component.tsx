@@ -14,34 +14,32 @@ interface IProps {
     auth: string
 }
 
-export const AboutCarDescription: React.FC<IProps> = ({car, edit, auth, toggle}) => {
-    return (
-        <AboutCarColumn>
-            <AboutCarDescriptionContainer>
-                <CarNameContainer>
-                    <Name underline={true}>{car.name}</Name>
-                </CarNameContainer>
-                <EditBtn toggle={toggle} edit={edit} display={auth === car.owner}/>
-                <Title>Brand: </Title>
-                <Subtitle>{car.brand}</Subtitle>
-                <Title>Model: </Title>
-                <Subtitle>{car.model}</Subtitle>
-                <Title>Generation: </Title>
-                <Subtitle>{car.generation ? car.generation : 'unknown'}</Subtitle>
-                <Title>Year: </Title>
-                <Subtitle>{car.year ? car.year : 'unknown'}</Subtitle>
-                <Title>Engine: </Title>
-                <Subtitle>{car.engine ? car.engine : 'unknown'}</Subtitle>
-                <Title>HP: </Title>
-                <Subtitle>{car.hp ? car.hp : 'unknown'}</Subtitle>
-                <Title>Color: </Title>
-                <Subtitle>{car.color ? car.color : 'unknown'}</Subtitle>
-                <Title>Doors: </Title>
-                <Subtitle>{car.doors ? car.doors : 'unknown'}</Subtitle>
-                <Title>Rims: </Title>
-                <Subtitle>{car.rims ? car.rims : 'unknown'}</Subtitle>
-            </AboutCarDescriptionContainer>
-        </AboutCarColumn>
-    );
-};
+export const AboutCarDescription: React.FC<IProps> = ({car, edit, auth, toggle}) => (
+    <AboutCarColumn>
+        <AboutCarDescriptionContainer>
+            <CarNameContainer>
+                <Name underline={true}>{car.name}</Name>
+            </CarNameContainer>
+            <EditBtn toggle={toggle} edit={edit} display={auth === car.owner}/>
+            <Title>Brand: </Title>
+            <Subtitle>{car.brand}</Subtitle>
+            <Title>Model: </Title>
+            <Subtitle>{car.model}</Subtitle>
+            <Title>Generation: </Title>
+            <Subtitle>{car.generation || 'unknown'}</Subtitle>
+            <Title>Year: </Title>
+            <Subtitle>{car.year || 'unknown'}</Subtitle>
+            <Title>Engine: </Title>
+            <Subtitle>{car.engine || 'unknown'}</Subtitle>
+            <Title>HP: </Title>
+            <Subtitle>{car.hp || 'unknown'}</Subtitle>
+            <Title>Color: </Title>
+            <Subtitle>{car.color || 'unknown'}</Subtitle>
+            <Title>Doors: </Title>
+            <Subtitle>{car.doors || 'unknown'}</Subtitle>
+            <Title>Rims: </Title>
+            <Subtitle>{car.rims || 'unknown'}</Subtitle>
+        </AboutCarDescriptionContainer>
+    </AboutCarColumn>
+)
 

@@ -10,7 +10,6 @@ interface IProps {
 }
 
 export const EditBtn: React.FC<IProps> = ({toggle, edit, display}) => {
-
     if(!display)
         return null
 

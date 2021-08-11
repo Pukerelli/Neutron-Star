@@ -12,12 +12,10 @@ interface IProps {
     auth: string
 }
 
-export const UserAbout: React.FC<IProps> = (props) => {
-    return (
+export const UserAbout: React.FC<IProps> = (props) => (
         <UserAboutColumn>
             <UserProfileDescription user={props.user}
                                     toggle={props.toggle} auth={props.auth} edit={props.edit}/>
             <UserProfileCars cars={props.cars} owner={props.user.username}/>
         </UserAboutColumn>
-    );
-};
+    )

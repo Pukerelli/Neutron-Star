@@ -1,6 +1,5 @@
 import React from 'react';
 import {Route, Switch} from "react-router-dom";
-import {Home} from "./components/Home/Home";
 import {SearchPage} from "./components/Seacrh/SearchPage.component";
 import {NotFound} from './components/Common/NotFound/NotFound.component';
 import {UserProfilePage} from "./components/Profile/User/UserProfilePage.component";
@@ -20,10 +19,7 @@ interface IProps {
 export const Routes: React.FC<IProps> = ({notFoundHandler}) => {
     return (
         <Switch>
-            <Route exact path='/'>
-                <Home/>
-            </Route>
-            <Route path={'/profile/user/:username?'}>
+            <Route exact path={['/profile/user/:username?', '/']}>
                 <UserProfilePage/>
             </Route>
             <Route path='/profile/cars/garage/:username?'>

@@ -7,12 +7,12 @@ import {selectListCars, selectListIsFetching, selectListUsers} from "../../../se
 import {selectUserIsFetching, selectUserProfile} from "../../../selectors/user/user.selector";
 import {userProfileAction} from "../../../store/actions/user.action";
 import {Subscriptions} from './Layout/Subscriptions.component';
-import { ListFetching } from '../../Common/Fetching/List.fetchingComponents';
-import { Login } from '../../Auth/Login/Login.component';
+import {ListFetching} from '../../Common/Fetching/List.fetchingComponents';
+import {Login} from '../../Auth/Login/Login.component';
 
 export const SubscriptionsPage = () => {
-    const dispatch = useAppDispatch()
     const [subs, setSubs] = useState<'cars' | 'users'>('users')
+    const dispatch = useAppDispatch()
     const listIsFetching = useSelector(selectListIsFetching)
     const auth = useSelector(selectAuthUser)
     const user = useSelector(selectUserProfile)
@@ -30,10 +30,10 @@ export const SubscriptionsPage = () => {
         }
     }, [auth])
 
+    const toggleTarget = (target: 'users' | 'cars') => setSubs(target)
+
     if (auth === 'unauthorized')
         return <Login/>
-
-    const toggleTarget = (target: 'users' | 'cars') => setSubs(target)
 
     if (userIsFetching || listIsFetching)
         return <ListFetching/>

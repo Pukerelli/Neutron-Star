@@ -1,6 +1,5 @@
 import {Form, Formik} from 'formik';
 import React from 'react';
-import * as Yup from 'yup';
 import {InputForm} from "../../Common/Forms/Forms.component";
 import {IError} from "../../../common/interfaces/index.interface";
 import {
@@ -23,14 +22,12 @@ interface IProps {
 }
 
 export const RegistrationForm: React.FC<IProps> = ({onSubmit, onLoginClick, errors}) => {
-
     const initialValues = {
         username: '',
         password: '',
         repeatPassword: '',
         email: ''
     }
-
     return (
         <AuthLayout>
             <AuthCard error={'string' === typeof errors}>

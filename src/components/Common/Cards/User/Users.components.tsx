@@ -6,7 +6,7 @@ import {UserCard} from "./UserCard.component";
 export const Users: React.FC<{ users: Array<IUser> }> = ({users}) => {
     return (
         <>
-            {users.map((user, i) => <UserCard key={user.id / i} user={user}/> )}
+            {users.map((user) => <UserCard key={user.id} user={user}/> )}
         </>
     )
 }

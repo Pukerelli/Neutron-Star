@@ -22,7 +22,7 @@ export const CarNote: React.FC<IProps> = ({currentNote, onBackClick, handler, au
     }
     return (
         <NoteLayout>
-            <NoteCard form={edit}>
+            <NoteCard edit={edit}>
                 <ButtonBack onBackClick={onBackClick}/>
                 <EditBtn toggle={onEditClick} edit={edit} display={auth === currentNote.owner}/>
                 {

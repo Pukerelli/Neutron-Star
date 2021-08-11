@@ -1,6 +1,7 @@
 import {all, takeEvery} from "redux-saga/effects";
 import {
-    carAddAction, carAddingAction,
+    carAddAction,
+    carAddingAction,
     carCarsSucceedAction,
     carCurrentAction,
     carCurrentNoteAction,
@@ -17,7 +18,7 @@ import {
     carReplaceSucceedAction,
     carUpdateAction
 } from "../actions/car.action";
-import {ICar, ICurrentNote, INote} from "../../common/interfaces/index.interface";
+import {ICar, ICurrentNote} from "../../common/interfaces/index.interface";
 import {Car, INewNote, IUpdateCar, IUpdateNote, IUploadPhoto} from "../../API/car.api";
 import * as type from '../saga.actionTypes'
 import {carHelper} from "./saga.helpers";

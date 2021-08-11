@@ -13,15 +13,17 @@ import { ProfileFetching } from '../../Common/Fetching/Profile.fetchingComponent
 
 export const UserProfilePage = () => {
     const [edit, toggleEdit] = useState(false)
-    const {username} = useParams<{ username: string }>();
     const dispatch = useAppDispatch()
     const history = useHistory()
+    const {username} = useParams<{ username: string }>();
     const auth = useSelector(selectAuthUser)
     const error = useSelector(selectUserErrors)
     const user = useSelector(selectUserProfile)
     const cars = useSelector(selectCars)
     const userIsFetching = useSelector(selectUserIsFetching)
     const carIsFetching = useSelector(selectCarIsFetching)
+
+    const onEditClick = () => toggleEdit(!edit)
 
     useEffect(() => {
         if (!username || (username === 'unauthorized' && auth !== 'unauthorized'))
@@ -38,11 +40,8 @@ export const UserProfilePage = () => {
     if (username === 'unauthorized' && auth === 'unauthorized')
         return <Login/>
 
-    const onEditClick = () => toggleEdit(!edit)
-
     if (error)
         history.push('/404')
-
 
     if (userIsFetching || carIsFetching)
         return <ProfileFetching/>

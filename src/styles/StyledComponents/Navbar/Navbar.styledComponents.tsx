@@ -6,34 +6,38 @@ interface IProps {
 }
 
 export const NavBarContainer = styled.div<{hide: boolean}>`
-  height: 230px;
+  height: fit-content;
   width: 160px;
   margin-left: auto;
   padding: 0.8rem;
-  display: ${props => props.hide? 'none': 'block'};
+  display: ${props => props.hide? 'none': 'flex'};
+  flex-direction: column;
   transition-duration: 0.7s;
   border-radius: 6px;
   border: 1px solid ${config.linkColor};
+  background-color: #fff;
   a{
-    color: ${config.linkColor}
+    color: ${config.linkColor};
   }
 `
 
 export const NavLinkStyled = styled.div`
   font-size: 24px;
-  padding: 0.2rem;
+  border-bottom: 2px solid transparent;
+  display: inline-block;
+  width: fit-content;
 
   &:hover {
-    background-color: ${config.RedColor};
+    border-bottom: 2px solid ${config.linkColor};
   }
 
   transition: .4ms linear;
   cursor: pointer;
-  margin-bottom: 0.2rem;
+  margin-bottom: 5px;
 `
 
 export const NavDisplayBtn = styled.button<IProps>`
-  background-color: ${config.RedColor};
+  background-color: ${config.redColor};
   height: 40px;
   width: 30px;
   display: flex;
@@ -51,7 +55,7 @@ export const NavDisplayBtn = styled.button<IProps>`
 
 `
 export const NavHideBtn = styled.button`
-  background-color: ${config.RedColor};
+  background-color: ${config.redColor};
   height: 40px;
   width: 16px;
   display: flex;

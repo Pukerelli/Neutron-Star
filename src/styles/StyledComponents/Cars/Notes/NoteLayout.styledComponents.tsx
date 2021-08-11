@@ -6,10 +6,10 @@ export const NoteLayout = styled.div`
   margin: 0 auto;
 `
 
-export const NoteCard = styled.div<{ form: boolean }>`
+export const NoteCard = styled.div<{ edit: boolean }>`
   position: relative;
   display: grid;
-  grid-template-rows: ${props => props.form ? '' : 'auto auto 30px'};
+  grid-template-rows: ${props => props.edit ? '' : 'auto auto 30px'};
   grid-gap: 20px;
   width: 600px;
   height: fit-content;

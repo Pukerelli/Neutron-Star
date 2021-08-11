@@ -19,15 +19,16 @@ interface IProps {
 export const UserAvatarEdit: React.FC<IProps> = ({photo, bg, handler, toggle}) => {
     const [newPhoto, setNewPhoto] = useState(photo)
     const [newBg, setNewBg] = useState(bg)
-    const onChangeBg = (e: React.FormEvent<HTMLInputElement>) => {
+
+    const onChangeBg = (e: React.FormEvent<HTMLInputElement>) =>
         setNewBg(e.currentTarget.value)
-    }
-    const onChangePhoto = (e: React.FormEvent<HTMLInputElement>) => {
+
+    const onChangePhoto = (e: React.FormEvent<HTMLInputElement>) =>
         setNewPhoto(e.currentTarget.value)
-    }
-    const onSubmit = () => {
+
+    const onSubmit = () =>
         handler({photo: newPhoto, backgroundPhoto: newBg})
-    }
+
 
     return (
         <UserAvatarContainer image={newBg}>

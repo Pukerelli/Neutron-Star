@@ -12,7 +12,7 @@ import {
     CarPhotoInputContainer,
     ErrorContainer
 } from "../../../../styles/StyledComponents/Cars/Add/AddCar.styledComponents";
-import {carDefaultImage} from "../../../../common/images/images";
+import carDefault from "../../../../common/images/carDefault.jpg";
 import {ICar, IError} from "../../../../common/interfaces/index.interface";
 import {ImgCommon, Name} from "../../../../styles/StyledComponents/Common/Common.styledComponents";
 
@@ -72,7 +72,7 @@ export const AddCarForm: React.FC<IProps> = ({onSubmit, errors, car, onCancel}) 
                             </AddCarLeftColumn>
                             <AddCarRightColumn>
                                 <CarPhotoContainer>
-                                    <ImgCommon src={values.photo || carDefaultImage}/>
+                                    <ImgCommon src={values.photo || carDefault}/>
                                 </CarPhotoContainer>
                                 <CarPhotoInputContainer>
                                     <InputForm label='photo' name='photo' type='photo' placeholder='Image url'/>

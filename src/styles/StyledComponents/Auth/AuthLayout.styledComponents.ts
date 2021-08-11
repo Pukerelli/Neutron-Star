@@ -11,7 +11,7 @@ export const AuthCard = styled.div<{error: boolean}>`
   width: 460px;
   margin: 0 auto;
   box-sizing: border-box;
-  border: ${props => props.error? `1px solid ${config.RedColor}`: 'none'};
+  border: ${props => props.error? `1px solid ${config.redColor}`: 'none'};
   position: relative;
   background-color: white;
   box-shadow: ${config.shadow};
@@ -41,7 +41,7 @@ export const RegistrationFormLayout = styled.div`
 
 export const AuthError = styled.div`
   text-align: center;
-  color: ${config.RedColor}
+  color: ${config.redColor}
 `
 
 export const RegistrationButtonContainer = styled.div`

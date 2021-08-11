@@ -7,7 +7,7 @@ import {useSelector} from "react-redux";
 import {selectAuthLoading} from "./selectors/auth/auth.selector";
 import {authLogoutAction, authMeAction} from "./store/actions/auth.action";
 import {Routes} from "./Routes";
-import {Layout} from './styles/StyledComponents/Layout/Layout.styledComponent';
+import {Main} from './styles/StyledComponents/Layout/Layout.styledComponent';
 import {Navbar} from "./components/Common/Navbar/Navbar.component";
 import {Spinner} from "./components/Common/Fetching/Spinner.fetchingComponents";
 
@@ -21,7 +21,7 @@ const App: React.FC = () => {
         () => {
             if (loading === 'idle')
                 dispatch(authLogoutAction())
-        }, 20000)
+        }, 13000)
 
     useEffect(() => {
         dispatch(authMeAction())
@@ -34,10 +34,10 @@ const App: React.FC = () => {
         <Router>
             <AppWrapper>
                 <Header/>
-                <Layout hideScroll={notFound}>
+                <Main hideScroll={notFound}>
                     <Navbar hide={notFound}/>
                         <Routes notFoundHandler={notFoundHandler}/>
-                </Layout>
+                </Main>
             </AppWrapper>
         </Router>
     )

@@ -14,8 +14,7 @@ interface IProps {
     auth: string
 }
 
-export const Garage: React.FC<IProps> = ({cars, user, auth}) => {
-    return (
+export const Garage: React.FC<IProps> = ({cars, user, auth}) => (
         <ProfileLayout>
             <GarageCars btnHide={auth !== user.username} cars={cars}/>
             <UserAvatarColumn>
@@ -24,6 +23,5 @@ export const Garage: React.FC<IProps> = ({cars, user, auth}) => {
                                     following={user.followingCars}/>
             </UserAvatarColumn>
         </ProfileLayout>
-    );
-};
+    )
 

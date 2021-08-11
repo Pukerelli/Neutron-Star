@@ -1,8 +1,9 @@
 {
-  "RedColor": "#EB3649",
+  "redColor": "#EB3649",
   "background": "#E8F1E7",
   "linkColor": "#4A8A98",
   "shadow": "0 0 4px 0 rgba(34, 60, 80, 0.2)",
   "commonColor": "#6F848F",
-  "MainColor": "#fff"
+  "mainColor": "#fff",
+  "wrapperColor" : "#1F5A82"
 }

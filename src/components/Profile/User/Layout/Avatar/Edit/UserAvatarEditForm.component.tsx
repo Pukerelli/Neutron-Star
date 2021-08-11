@@ -12,14 +12,14 @@ interface IProps {
     handler: () => void
 }
 
-export const UserAvatarEditForm: React.FC<IProps> = ({photo, bg, onChangePhoto, onChangeBg, handler}) => {
-    return (
+export const UserAvatarEditForm: React.FC<IProps> = (props) => (
         <UserAvatarEditFormContainer>
             <Title>Photo: </Title>
-            <InputText value={photo} onChange={onChangePhoto}/>
+            <InputText value={props.photo} onChange={props.onChangePhoto}/>
             <Title>Background: </Title>
-            <InputText value={bg} onChange={onChangeBg}/>
-            <CommonBtn width='100%' height='100%' onClick={handler}>Confirm</CommonBtn>
+            <InputText value={props.bg} onChange={props.onChangeBg}/>
+            <CommonBtn width='100%' height='100%' onClick={props.handler}>
+                Confirm
+            </CommonBtn>
         </UserAvatarEditFormContainer>
-    );
-};
+    )

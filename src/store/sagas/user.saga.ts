@@ -27,7 +27,7 @@ function* watchUserUpdate() {
 }
 
 function* userUpdate({payload}: ReturnType<typeof userUpdateAction>) {
-    yield userHelper<IUpdateUser, IUser>(User.putUpdateUser, payload, userProfileSucceedAction)
+    yield userHelper<IUpdateUser, IUser>(User.putUpdateUser, payload, userProfileSucceedAction, false)
 }
 
 ///// UPDATE USER PHOTO

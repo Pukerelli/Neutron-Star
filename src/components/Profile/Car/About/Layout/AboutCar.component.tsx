@@ -19,19 +19,16 @@ interface IProps {
     toggle: () => void
 }
 
-export const AboutCar: React.FC<IProps> = ({car, onNewNoteHandler, auth, edit, toggle}) => {
-
-    return (
-        <AboutLayout>
-            <AboutCarDescription car={car} auth={auth} edit={edit} toggle={toggle}/>
-            <CarAvatar car={car}/>
-            <AboutCarBtnContainer>
-                <CommonBtn onClick={onNewNoteHandler} width='800px'
-                           hide={car.owner !== auth} height='40px' grid='span 2'>
-                    Add Note
-                </CommonBtn>
-            </AboutCarBtnContainer>
-            <CarNotes car={car}/>
-        </AboutLayout>
-    );
-}
+export const AboutCar: React.FC<IProps> = ({car, onNewNoteHandler, auth, edit, toggle}) => (
+    <AboutLayout>
+        <AboutCarDescription car={car} auth={auth} edit={edit} toggle={toggle}/>
+        <CarAvatar car={car}/>
+        <AboutCarBtnContainer>
+            <CommonBtn width='800px' height='40px' grid='span 2'
+                       onClick={onNewNoteHandler} hide={car.owner !== auth}>
+                Add Note
+            </CommonBtn>
+        </AboutCarBtnContainer>
+        <CarNotes car={car}/>
+    </AboutLayout>
+)

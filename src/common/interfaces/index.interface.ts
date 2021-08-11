@@ -58,6 +58,7 @@ export interface INote {
     date: string
     description: string
     _id: string
+    carname: string
 }
 
 export interface ICurrentNote extends INote {

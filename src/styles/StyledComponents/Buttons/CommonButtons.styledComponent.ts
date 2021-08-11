@@ -21,8 +21,8 @@ export const CardBtn = styled.button<ICardBtn>`
   outline: none;
   border-radius: 6px;
   background-color: #fff;
-  border: 2px solid ${props => props.delete ? config.RedColor : config.linkColor};
-  color: ${props => props.delete ? config.RedColor : config.linkColor};
+  border: 2px solid ${props => props.delete ? config.redColor : config.linkColor};
+  color: ${props => props.delete ? config.redColor : config.linkColor};
   height: 2rem;
   width: 80px;
   transition: .5s linear;
@@ -30,13 +30,13 @@ export const CardBtn = styled.button<ICardBtn>`
 
   :hover {
     color: white;
-    background-color: ${props => props.delete ? config.RedColor : config.linkColor};
+    background-color: ${props => props.delete ? config.redColor : config.linkColor};
 
   }
 
   :active {
     color: white;
-    background-color: ${props => props.delete ? config.RedColor : config.linkColor};
+    background-color: ${props => props.delete ? config.redColor : config.linkColor};
     border: 2px solid white;
   }
 `
@@ -53,17 +53,17 @@ export const CommonBtn = styled.button<ICommonBtn>`
     color: white;
   }
   :disabled {
-    background-color: ${config.RedColor};
+    background-color: ${config.redColor};
   }
 `
 
 export const CancelBtn = styled.button<ICommonBtn>`
   ${buttonLayout};
-  border: 2px solid ${config.RedColor};
-  color: ${config.RedColor};
+  border: 2px solid ${config.redColor};
+  color: ${config.redColor};
   transition: .5s linear;
   :hover {
-    background-color: ${config.RedColor};
+    background-color: ${config.redColor};
     border: none;
     color: white;
   }

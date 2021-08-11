@@ -13,14 +13,12 @@ interface IProps {
     toggle: () => void
 }
 
-export const UserProfileDescription: React.FC<IProps> = ({user, auth, edit, toggle}) => {
-    return (
+export const UserProfileDescription: React.FC<IProps> = ({user, auth, edit, toggle}) => (
         <UserDescription>
             <Name underline={true}>{user.username}</Name>
             <EditBtn toggle={toggle} edit={edit} display={auth === user.username}/>
-            {edit ? <UserProfileEdit user={user}/> : <UserProfileInfo user={user}/>}
+            {edit ? <UserProfileEdit user={user} toggle={toggle}/> : <UserProfileInfo user={user}/>}
         </UserDescription>
-    );
-}
+    )
 
 

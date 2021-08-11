@@ -17,17 +17,14 @@ interface IProps {
 
 }
 
+export const UserProfile: React.FC<IProps> = (props) => (
+    <ProfileLayout>
+        <UserAbout {...props}/>
+        <UserAvatarColumn>
+            <UserAvatarBlock user={props.user}
+                             auth={props.auth}/>
+            <SubscriptionsBlock link='user' following={props.user.following}/>
+        </UserAvatarColumn>
+    </ProfileLayout>
+);
 
-export const UserProfile: React.FC<IProps> = (props) => {
-    return (
-        <ProfileLayout>
-            <UserAbout {...props}/>
-            <UserAvatarColumn>
-                <UserAvatarBlock user={props.user}
-                                 auth={props.auth}/>
-                <SubscriptionsBlock link='user'
-                                    following={props.user.following}/>
-            </UserAvatarColumn>
-        </ProfileLayout>
-    );
-}
