@@ -5,7 +5,7 @@ export const ListToggleContainer = styled.div`
   height: 55px;
   box-shadow: ${config.shadow};
   background-color: #fff;
-  width: 530px;
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 20px;

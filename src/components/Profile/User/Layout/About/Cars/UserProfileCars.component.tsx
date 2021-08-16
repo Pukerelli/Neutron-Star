@@ -4,26 +4,29 @@ import {UserCars} from "../../../../../../styles/StyledComponents/Profile/Cars/U
 import {UserProfileCarCard} from './UserProfileCarCard.component';
 import {CommonBtn} from "../../../../../../styles/StyledComponents/Buttons/CommonButtons.styledComponent";
 import {UserAboutCarsContainer} from "../../../../../../styles/StyledComponents/Common/ProfileLayout.styledComponents";
-import {useHistory} from "react-router-dom";
 
 interface IProps {
     cars: Array<ICar>
     owner: string
+    onGarageClick: () => void
+    onCarClick: (car: string) => void
 }
 
-export const UserProfileCars: React.FC<IProps> = ({cars, owner}) => {
-    const history = useHistory()
-    const onClick = () => history.push(`/profile/cars/garage/${owner}`)
-    if (!cars?.length)
+export const UserProfileCars: React.FC<IProps> = (props) => {
+    if (!props.cars?.length)
         return null
 
     return (
         <UserAboutCarsContainer>
-            <CommonBtn hide={!(!!cars.length)} fz='1.4rem' width='100%' height='40px' onClick={onClick}>
-                Garage {cars.length} {cars.length > 1 ? 'Cars' : 'car'}
-            </CommonBtn>
+            <div>
+                <CommonBtn hide={!(!!props.cars.length)} fz='1.4rem' width='100%'
+                           height='40px' onClick={props.onGarageClick}>
+                    Garage {props.cars.length} {props.cars.length > 1 ? 'Cars' : 'car'}
+                </CommonBtn>
+            </div>
             <UserCars>
-                {cars.map((car, i) => <UserProfileCarCard car={car} key={car.id / i}/>)}
+                {props.cars.map(car => <UserProfileCarCard onCarClick={props.onCarClick}
+                                                           car={car} key={car.id}/>)}
             </UserCars>
         </UserAboutCarsContainer>
     )

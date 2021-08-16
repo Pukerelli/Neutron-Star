@@ -21,7 +21,7 @@ export const AddCar: React.FC = () => {
            return setNewCar('')
 
         if (adding)
-            history.push(`/profile/cars/about/${newCar}`)
+            history.push(`/cars/about/${newCar}`)
 
         return () => {
             dispatch(carAddingAction(false))
@@ -35,7 +35,7 @@ export const AddCar: React.FC = () => {
     }
 
     const onCancel = () =>
-        history.push(`/profile/cars/garage/${auth}`)
+        history.push(`/cars/garage/${auth}`)
 
     if (auth === 'unauthorized')
         history.push('/auth/login')

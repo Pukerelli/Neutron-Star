@@ -12,19 +12,20 @@ interface IProps{
     carname: string
     onNoteClick: (noteId: string) => void
     onDeleteNoteClick: (id: string, car: string) => void
+    auth: string
+    owner: string
 }
 
-export const CarNoteMini: React.FC<IProps> = ({note, carname, onNoteClick, onDeleteNoteClick}) => {
+export const CarNoteMini: React.FC<IProps> = (props) => {
     const onDeleteClick = (e: React.SyntheticEvent) => {
         e.stopPropagation()
-        onDeleteNoteClick(note!._id, carname)
+        props.onDeleteNoteClick(props.note!._id, props.carname)
     }
     return (
-        <NoteCard onClick={() => onNoteClick(note!._id)}>
-            <div></div>
-            <NotesTitle>{note!.title}</NotesTitle>
-            <Subtitle>{note!.date}</Subtitle>
-            <NoteDeleteBtn onClick={onDeleteClick}>x</NoteDeleteBtn>
+        <NoteCard onClick={() => props.onNoteClick(props.note!._id)}>
+            <NotesTitle>{props.note!.title}</NotesTitle>
+            <Subtitle>{props.note!.date}</Subtitle>
+            <NoteDeleteBtn onClick={onDeleteClick}>{props.auth === props.owner? 'x' : ''}</NoteDeleteBtn>
         </NoteCard>
 
     );

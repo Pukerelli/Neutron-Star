@@ -8,7 +8,6 @@ import {selectAuthLoading} from "./selectors/auth/auth.selector";
 import {authLogoutAction, authMeAction} from "./store/actions/auth.action";
 import {Routes} from "./Routes";
 import {Main} from './styles/StyledComponents/Layout/Layout.styledComponent';
-import {Navbar} from "./components/Common/Navbar/Navbar.component";
 import {Spinner} from "./components/Common/Fetching/Spinner.fetchingComponents";
 
 const App: React.FC = () => {
@@ -31,12 +30,11 @@ const App: React.FC = () => {
         return <Spinner/>
 
     return (
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
             <AppWrapper>
                 <Header/>
                 <Main hideScroll={notFound}>
-                    <Navbar hide={notFound}/>
-                        <Routes notFoundHandler={notFoundHandler}/>
+                    <Routes notFoundHandler={notFoundHandler}/>
                 </Main>
             </AppWrapper>
         </Router>

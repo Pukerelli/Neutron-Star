@@ -23,5 +23,8 @@ export const NotFoundInner = styled.h1`
   font-size: 200px;
   opacity: .8;
   color: white;
+  @media(max-width: 767px){
+    font-size: 150px;
+  }
 
 `

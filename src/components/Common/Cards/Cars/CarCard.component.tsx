@@ -3,8 +3,10 @@ import {ICar} from "../../../../common/interfaces/index.interface";
 import {useHistory, useLocation} from "react-router-dom";
 import {
     CarCardAvatar,
-    CarCardAvatarContainer,
+    CarCardAvatarSubtitle,
+    CarCardButtonContainer,
     CarCardDescription,
+    CarCardImgContainer,
     CarCardLayout
 } from "../../../../styles/StyledComponents/Cards/Cars/CarCard.styledComponent";
 import {TitleContainer} from "../../../../styles/StyledComponents/Profile/Cars/UserCars.styledComponents";
@@ -23,10 +25,10 @@ export const CarCard: React.FC<{ car: ICar }> = ({car}) => {
     const location = useLocation()
 
     const onClick = () => {
-        if (location.pathname.includes('/add/note'))
-            history.push(`/profile/cars/add/note/${car.name}`)
+        if (location.pathname.includes('note/add'))
+            history.push(`/cars/add/note/${car.name}`)
         else
-            history.push(`/profile/cars/about/${car.name}`)
+            history.push(`/cars/about/${car.name}`)
     }
 
     return (
@@ -48,14 +50,18 @@ export const CarCard: React.FC<{ car: ICar }> = ({car}) => {
                 <Subtitle>{car.owner}</Subtitle>
             </CarCardDescription>
             <CarCardAvatar>
-                <CarCardAvatarContainer>
+                <CarCardImgContainer>
                     <ImgCommon
                         src={car.photo || carDefault}/>
-                </CarCardAvatarContainer>
-                <Title>Mileage:</Title>
-                <Subtitle>{car.mileage || 'unknown'}</Subtitle>
-                <CardButton followedBy={car.followedBy} payload={car.name}
-                            card={'car'} owner={car.owner}/>
+                </CarCardImgContainer>
+                <CarCardAvatarSubtitle>
+                    <Title>Mileage:</Title>
+                    <Subtitle>{car.mileage || 'unknown'}</Subtitle>
+                    <CarCardButtonContainer>
+                        <CardButton followedBy={car.followedBy} payload={car.name}
+                                    card={'car'} owner={car.owner}/>
+                    </CarCardButtonContainer>
+                </CarCardAvatarSubtitle>
             </CarCardAvatar>
         </CarCardLayout>
     );

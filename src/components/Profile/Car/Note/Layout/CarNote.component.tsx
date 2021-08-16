@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {NoteCard, NoteLayout} from "../../../../../styles/StyledComponents/Cars/Notes/NoteLayout.styledComponents";
 import {ICurrentNote} from "../../../../../common/interfaces/index.interface";
 import {NoteTextInner} from "./NoteInner/NoteTextInnter.component";
@@ -10,27 +10,22 @@ interface IProps {
     onBackClick: () => void
     auth: string
     currentNote: ICurrentNote
-    handler: (values: { title: string, description: string }) => void
+    onSubmit: (values: { title: string, description: string }) => void
+    toggleEdit: () => void
+    edit: boolean
 }
 
-export const CarNote: React.FC<IProps> = ({currentNote, onBackClick, handler, auth}) => {
-    const [edit, toggleEdit] = useState(false)
-    const onEditClick = () => toggleEdit(!edit)
-    const onSubmit = (values: { title: string, description: string }) =>{
-        handler(values)
-        toggleEdit(false)
-    }
-    return (
-        <NoteLayout>
-            <NoteCard edit={edit}>
-                <ButtonBack onBackClick={onBackClick}/>
-                <EditBtn toggle={onEditClick} edit={edit} display={auth === currentNote.owner}/>
-                {
-                    edit
-                        ? <NoteForm note={currentNote} onSubmit={onSubmit}/>
-                        : <NoteTextInner note={currentNote}/>
-                }
-            </NoteCard>
-        </NoteLayout>
-    );
-};
+export const CarNote: React.FC<IProps> = (props) => (
+    <NoteLayout>
+        <NoteCard edit={props.edit}>
+            <ButtonBack onBackClick={props.onBackClick}/>
+            <EditBtn toggle={props.toggleEdit} edit={props.edit}
+                     display={props.auth === props.currentNote.owner}/>
+            {
+                props.edit
+                    ? <NoteForm note={props.currentNote} onSubmit={props.onSubmit}/>
+                    : <NoteTextInner note={props.currentNote}/>
+            }
+        </NoteCard>
+    </NoteLayout>
+)

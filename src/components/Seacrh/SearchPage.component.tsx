@@ -7,7 +7,6 @@ import {listUnmountAction, searchCarAction, searchUserAction} from "../../store/
 import {Search} from "./Layout/Search.component";
 import {userProfileAction} from "../../store/actions/user.action";
 import {selectUserIsFetching, selectUserProfile} from "../../selectors/user/user.selector";
-import {ListFetching} from "../Common/Fetching/List.fetchingComponents";
 
 export const SearchPage: React.FC = () => {
     const [value, setValue] = useState('')

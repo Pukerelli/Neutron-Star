@@ -1,11 +1,10 @@
 import React from "react";
 import {
     AboutCarAvatarColumn,
-    AboutCarBtnContainer, AboutCarColumn,
+    AboutCarColumn,
     AboutLayout
 } from "../../../styles/StyledComponents/Cars/AboutCar/AboutCarLayout.styledComponent";
 import {NotesLayout} from "../../../styles/StyledComponents/Cars/AboutCar/NotesLayout.styledComponents";
-import {CommonFetching} from "./Common.fetchingComponents";
 import ContentLoader from "react-content-loader";
 import {WhiteCard} from "../../../styles/StyledComponents/Common/Common.styledComponents";
 import {NoteLayout} from "../../../styles/StyledComponents/Cars/Notes/NoteLayout.styledComponents";
@@ -14,9 +13,6 @@ export const CarFetching: React.FC = () => (
     <AboutLayout>
         <CarDescriptionFetching/>
         <CarAvatarFetching/>
-        <AboutCarBtnContainer>
-            <CommonFetching width='100%' height='40px'/>
-        </AboutCarBtnContainer>
         <NotesLayout>
             <CarNotesFetching/>
         </NotesLayout>

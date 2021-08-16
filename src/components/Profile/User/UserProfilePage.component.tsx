@@ -9,7 +9,7 @@ import {carGarageAction} from "../../../store/actions/car.action";
 import {userProfileAction} from "../../../store/actions/user.action";
 import {selectCarIsFetching, selectCars} from "../../../selectors/cars/car.selector";
 import {Login} from '../../Auth/Login/Login.component';
-import { ProfileFetching } from '../../Common/Fetching/Profile.fetchingComponents';
+import {ProfileFetching} from '../../Common/Fetching/Profile.fetchingComponents';
 
 export const UserProfilePage = () => {
     const [edit, toggleEdit] = useState(false)
@@ -23,11 +23,9 @@ export const UserProfilePage = () => {
     const userIsFetching = useSelector(selectUserIsFetching)
     const carIsFetching = useSelector(selectCarIsFetching)
 
-    const onEditClick = () => toggleEdit(!edit)
-
     useEffect(() => {
         if (!username || (username === 'unauthorized' && auth !== 'unauthorized'))
-            return history.push(`/profile/user/${auth}`)
+            return history.push(`/user/${auth}`)
 
         if (username !== 'unauthorized') {
             dispatch(userProfileAction(username))
@@ -36,6 +34,10 @@ export const UserProfilePage = () => {
         }
 
     }, [username])
+
+    const onEditClick = () => toggleEdit(!edit)
+    const onGarageClick = () => history.push(`/cars/garage/${username || auth}`)
+    const onCarClick = (car: string) => history.push(`/cars/about/${car}`)
 
     if (username === 'unauthorized' && auth === 'unauthorized')
         return <Login/>
@@ -47,6 +49,7 @@ export const UserProfilePage = () => {
         return <ProfileFetching/>
 
     return <UserProfile cars={cars} user={user} edit={edit} auth={auth}
-                        toggle={onEditClick}/>
+                        toggle={onEditClick} onCarClick={onCarClick}
+                        onGarageClick={onGarageClick}/>
 }
 

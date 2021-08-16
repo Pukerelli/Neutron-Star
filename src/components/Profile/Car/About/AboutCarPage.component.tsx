@@ -33,16 +33,24 @@ export const AboutCarPage = () => {
         toggleEdit(!edit)
 
     const onNewNoteHandler = () =>
-        history.push(`/profile/cars/add/note/${car?.name}`)
+        history.push(`/notes/add/${car?.name}`)
+
+    const onOwnerClick = () =>
+        history.push(`/user/${car!.owner}`)
+
+    if (!isFetching && errors === 'car not found')
+        history.push('/404')
+
 
     if (isFetching || !car)
         return <CarFetching/>
 
     if (edit)
         return <AddCarForm car={car!} onCancel={onEditHandler}
-                           onSubmit={onSubmit} errors={errors} />
+                           onSubmit={onSubmit} errors={errors}/>
 
     return <AboutCar car={car!} edit={edit} toggle={onEditHandler}
-                     onNewNoteHandler={onNewNoteHandler} auth={auth}/>
+                     onOwnerClick={onOwnerClick} auth={auth}
+                     onNewNoteHandler={onNewNoteHandler}/>
 };
 

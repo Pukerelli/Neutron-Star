@@ -10,12 +10,15 @@ interface IProps {
     toggle: () => void
     edit: boolean
     auth: string
+    onGarageClick: () => void
+    onCarClick: (car: string) => void
 }
 
 export const UserAbout: React.FC<IProps> = (props) => (
-        <UserAboutColumn>
-            <UserProfileDescription user={props.user}
-                                    toggle={props.toggle} auth={props.auth} edit={props.edit}/>
-            <UserProfileCars cars={props.cars} owner={props.user.username}/>
-        </UserAboutColumn>
-    )
+    <UserAboutColumn>
+        <UserProfileDescription user={props.user}
+                                toggle={props.toggle} auth={props.auth} edit={props.edit}/>
+        <UserProfileCars owner={props.user.username} onGarageClick={props.onGarageClick}
+                         cars={props.cars} onCarClick={props.onCarClick}/>
+    </UserAboutColumn>
+)

@@ -14,6 +14,8 @@ interface IProps {
     edit: boolean
     toggle: () => void
     auth: string
+    onGarageClick: () => void
+    onCarClick: (car: string) => void
 
 }
 

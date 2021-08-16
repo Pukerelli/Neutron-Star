@@ -4,35 +4,47 @@ import config from "../../../common/config/config.json"
 
 export const Name = styled.h1<IName>`
   color: #333234;
-  font-size: 1.7rem;
   text-align: ${props => props.textAlign ? props.textAlign : 'normal'};
-
+  font-size: 28px;
   &::after {
-    margin-top: .2rem;
     content: '';
+    margin-top: 5px;
     display: ${props => props.underline ? 'block' : 'none'};
     width: 100%;
     height: 1px;
     background-color: rgba(0, 0, 0, 0.14);
   }
+  @media(min-width: 1649px){
+    font-size: 35px;
+  }
 `
 export const NameMini = styled.h3`
   color: #333234;
-  font-size: 1.4rem;
+  font-size: 24px;
+  @media(min-width: 1650px){
+    font-size: 30px;
+  }
 `
 export const NameDouble = styled.p<ICarModel>`
   color: ${props => props.color ? props.color : '#6F848F'};
-  font-size: ${props => props.font ? props.font : '1.2rem'};
+  font-size: ${props => props.font ? props.font : '20px'};
+  @media(min-width: 1650px){
+    font-size: 26px;
+  }
 `
 export const Title = styled.p`
   color: ${config.commonColor};
-  font-size: 1.2rem;
+  @media(min-width: 1649px){
+    font-size: 24px;
+  }
 `
 export const Subtitle = styled.p`
   color: ${config.linkColor};
-  font-size: 1.2rem;
+  @media(min-width: 1649px){
+    font-size: 24px;
+  }
 `
-export const EditProfileIcon = styled.div`
+export const EditIconContainer = styled.div`
   position: absolute;
   top: 1rem;
   right: 1.5rem;
@@ -52,10 +64,16 @@ export const ImgCommon = styled.img`
 export const SearchSelf = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
   color: ${config.commonColor};
   height: 2rem;
   width: 80px;
-  grid-column: 2;
+  @media(max-width: 767px){
+    width: 100%;
+  }
+  @media(min-width: 1650px){
+    font-size: 20px;
+  }
 `
 
 export const SearchInput = styled.input`
@@ -81,6 +99,20 @@ export const WhiteCard = styled.div<ICard>`
   height: ${props => props.height};
   padding: ${props => props.padding};
   margin: ${props => props.margin? props.margin : 0}
+`
+
+export const BtnBack = styled.div`
+  position: absolute;
+  z-index: 300;
+  color: ${config.linkColor};
+  cursor: pointer;
+  top: 0;
+  left: -10%;
+  @media(max-width: 767px){
+    width: 100%;
+    display: none;
+  }
+  
 `
 
 

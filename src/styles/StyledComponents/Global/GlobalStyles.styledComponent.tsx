@@ -21,3 +21,14 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 `
+
+
+///// wrapper
+
+export const container = () => `
+max-width: 1200px;
+margin: 0 auto;
+padding: 15px;
+display: grid;
+box-sizing: border-box;
+`

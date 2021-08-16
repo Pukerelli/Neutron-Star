@@ -12,16 +12,16 @@ import {
 import userDefault from "../../../../common/images/userDefault.png";
 import {
     UserCardAvatar,
-    UserCardAvatarContainer,
     UserCardDescription,
     UserCardLayout
 } from "../../../../styles/StyledComponents/Cards/User/UserCard.styledComponents";
 import {CardButton} from "../../Buttons/CardButtons/CardButton.component";
+import {CarCardButtonContainer} from '../../../../styles/StyledComponents/Cards/Cars/CarCard.styledComponent';
 
 export const UserCard: React.FC<{ user: IUser }> = ({user}) => {
     const history = useHistory()
     const onClick = () => {
-        history.push(`/profile/user/${user.username}`)
+        history.push(`/user/${user.username}`)
     }
     return (
         <UserCardLayout>
@@ -42,12 +42,12 @@ export const UserCard: React.FC<{ user: IUser }> = ({user}) => {
                 <Subtitle>{user.drivingExperience ? user.drivingExperience : 'unknown'}</Subtitle>
             </UserCardDescription>
             <UserCardAvatar>
-                <UserCardAvatarContainer>
-                    <ImgCommon
-                        src={user.photo || userDefault}/>
-                </UserCardAvatarContainer>
-                <CardButton followedBy={user.followedBy} payload={user.username} card={'user'}/>
+                <ImgCommon
+                    src={user.photo || userDefault}/>
             </UserCardAvatar>
+            <CarCardButtonContainer>
+                <CardButton followedBy={user.followedBy} payload={user.username} card={'user'}/>
+            </CarCardButtonContainer>
         </UserCardLayout>
     );
 };

@@ -29,14 +29,14 @@ export const AddNote: React.FC = () => {
 
     useEffect(() => {
         if (adding)
-            history.push(`/profile/cars/about/${carname}`)
+            history.push(`/cars/about/${carname}`)
     }, [adding])
 
     const onSubmit = (values: { title: string, description: string }) => {
         const now = date.format(new Date(), 'MMM DD YYYY')
         dispatch(carNotePushAction({...values, date: now, _id: car!._id}))
     }
-    const onBackClick = () => history.push(`/profile/cars/about/${carname}`)
+    const onBackClick = () => history.push(`/cars/about/${carname}`)
 
     if ((!carname || error))
         return <SelectCar/>

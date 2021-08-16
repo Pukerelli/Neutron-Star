@@ -49,7 +49,6 @@ export interface IUpdateCar {
     doors: string
     mileage: string
     ownTime: string
-    country: string
     city: string
     color: string
     rims:string

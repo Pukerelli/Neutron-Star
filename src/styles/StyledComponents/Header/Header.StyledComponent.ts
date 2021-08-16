@@ -5,24 +5,24 @@ export const HeaderWrapper = styled.header`
   grid-area: header;
   display: grid;
   width: 100vw;
-  min-height: 46px;
+  height: 100%;
   background-color: ${config.wrapperColor};
   align-items: center;
-  padding: 0.3rem;
+  padding: 5px;
   font-size: 2rem;
   position: relative;
   box-shadow: ${config.shadow};
   
 `
 export const HeaderItemContainer = styled.div`
-  display: flex;
-  margin: 0 auto;
-  justify-content: space-between;
-  width: 380px;
-  
+  display: grid;
+  grid-template-columns: repeat(4, max-content);
+  grid-column-gap: 20px;
+  width: 100%;
+  justify-content: center;
 `
 
-export const HeaderItem = styled.div`
+export const HeaderItem = styled.div<{selected: boolean}>`
   height: inherit;
   text-align: center;
   color: ${config.mainColor};
@@ -39,6 +39,10 @@ export const HeaderItem = styled.div`
   }
   &:last-child{
     position: absolute;
-    right: 2%;
+    right: 10px;
+  }
+  @media(max-width: 767px){
+    padding: 0;
+    border-bottom: ${props=> props.selected? '2px solid white': '2px solid transparent'};
   }
 `

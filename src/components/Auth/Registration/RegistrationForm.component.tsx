@@ -12,8 +12,8 @@ import {
 import {Name} from "../../../styles/StyledComponents/Common/Common.styledComponents";
 import {CommonBtn} from '../../../styles/StyledComponents/Buttons/CommonButtons.styledComponent';
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-import {NoteBtnBack} from "../../../styles/StyledComponents/Cars/Notes/NoteLayout.styledComponents";
 import {registrationValidation} from '../../../common/validations';
+import {ButtonBack} from "../../Common/Buttons/BackButton/ButtonBack.component";
 
 interface IProps {
     onSubmit: (values: { username: string, password: string, email: string }) => void
@@ -41,15 +41,15 @@ export const RegistrationForm: React.FC<IProps> = ({onSubmit, onLoginClick, erro
                             <InputForm label='password' name='password' type='password' placeholder='enter password'/>
                             <InputForm label='Repeat password' name='repeatPassword' type='password'
                                        placeholder='enter password'/>
-                            <RegistrationButtonContainer>
-                                <CommonBtn width='100%' height='2rem' type="submit">Confirm</CommonBtn>
+                            <RegistrationButtonContainer col={true}>
+                                <CommonBtn width='100%' height='40px' type="submit">Confirm</CommonBtn>
                             </RegistrationButtonContainer>
                         </RegistrationFormLayout>
                     </Form>
                 </Formik>
-                <NoteBtnBack onClick={onLoginClick}>
+                <ButtonBack onBackClick={onLoginClick}>
                     <ArrowBackIcon fontSize='large'/>
-                </NoteBtnBack>
+                </ButtonBack>
             </AuthCard>
         </AuthLayout>
     );

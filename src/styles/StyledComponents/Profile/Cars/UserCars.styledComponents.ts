@@ -1,23 +1,32 @@
 import styled from "styled-components";
+import config from "../../../../common/config/config.json"
 
 export const UserCars = styled.div`
   display: grid;
-  width: 530px;
+  width: 100%;
   grid-template-columns: 3fr 2fr;
   grid-column-gap: .3rem;
-  grid-row-gap: 1rem;
+  grid-template-rows: repeat(auto-fill, auto) ;
+  grid-row-gap: 15px;
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+    grid-row-gap: 0;
+  }
 `
 export const UserCarCard = styled.div`
-  padding: 1rem;
-  grid-column-gap: 1.3rem;
-  grid-row-gap: .5rem;
+  padding: 15px;
+  grid-column-gap: 15px;
+  grid-row-gap: 5px;
   border-radius: 6px;
-  box-shadow: 0 0 4px 0 rgba(34, 60, 80, 0.2);
+  box-shadow: ${config.shadow};
   background-color: #fff;
   display: grid;
   grid-template-columns: 1fr 2fr;
-  grid-template-rows: 1fr 3fr;
-  height: 120px;
+  grid-template-rows: .5fr auto;
+  height: 100%;
+  @media(max-width: 767px){
+    border-radius: 6px 6px 0 0;
+  }
 `
 export const TitleContainer = styled.div`
   cursor: pointer;
@@ -39,7 +48,22 @@ export const TitleContainer = styled.div`
   }
 `
 export const CarImgContainer = styled.div`
-  height: 120px;
+  height: 170px;
+  cursor: pointer;
+  @media (max-width: 767px) {
+    margin-bottom: 15px;
+  }
+`
+export const CarImg = styled.img`
+  box-shadow: ${config.shadow};
+  border-radius: 6px;
+  width: 100%;
+  height: inherit;
+  object-fit: cover;
+  @media(max-width: 767px){
+    border-radius: 0 0 6px 6px;
+    box-shadow: none;
+  }
 `
 
 

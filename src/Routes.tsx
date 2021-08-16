@@ -6,7 +6,7 @@ import {UserProfilePage} from "./components/Profile/User/UserProfilePage.compone
 import {SubscriptionsPage} from "./components/Profile/Subscriptions/SubscriptionsPage.component";
 import {GaragePage} from "./components/Profile/Car/Garage/GaragePage.component";
 import {AboutCarPage} from "./components/Profile/Car/About/AboutCarPage.component";
-import {CarNotePage} from "./components/Profile/Car/Note/NotePage.component";
+import {NotePage} from "./components/Profile/Car/Note/NotePage.component";
 import {AddNote} from "./components/Profile/Car/Note/Add/AddNote.component";
 import {AddCar} from "./components/Profile/Car/Add/AddCar.component";
 import {Login} from "./components/Auth/Login/Login.component";
@@ -19,25 +19,25 @@ interface IProps {
 export const Routes: React.FC<IProps> = ({notFoundHandler}) => {
     return (
         <Switch>
-            <Route exact path={['/profile/user/:username?', '/']}>
+            <Route exact path={['/user/:username?', '/']}>
                 <UserProfilePage/>
             </Route>
-            <Route path='/profile/cars/garage/:username?'>
+            <Route path='/cars/garage/:username?'>
                 <GaragePage/>
             </Route>
-            <Route path='/profile/cars/about/:carname'>
+            <Route path='/cars/about/:carname'>
                 <AboutCarPage/>
             </Route>
-            <Route path='/profile/cars/note/:note?'>
-                <CarNotePage/>
+            <Route exact path='/notes/note/:note?'>
+                <NotePage/>
             </Route>
-            <Route path='/profile/cars/add/note/:carname?'>
+            <Route path='/notes/add/:carname?'>
                 <AddNote/>
             </Route>
-            <Route path='/profile/cars/add'>
+            <Route path='/cars/add'>
                 <AddCar/>
             </Route>
-            <Route path={'/profile/subscriptions'}>
+            <Route path={'/subscriptions'}>
                 <SubscriptionsPage/>
             </Route>
             <Route path='/search'>

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import config from "../../../common/config/config.json";
 
 const inputStyle = (props: { error?: boolean }) => `
-width: 100%;
+  width: 100%;
   height: 100%;
   border-radius: 2px;
   box-shadow: ${config.shadow};
@@ -28,7 +28,10 @@ export const FieldInputContainer = styled.div`
   display: grid;
   width: 100%;
   grid-row-gap: 5px;
-  grid-template-rows: 10px 35px 10px;
+  grid-template-rows: 10px 35px 12px;
+  @media(min-width: 1440px){
+    grid-template-rows: 14px 35px 16px;
+  }
 `
 
 export const FieldAreaContainer = styled.div`
@@ -41,10 +44,14 @@ export const FieldAreaContainer = styled.div`
 export const LabelForm = styled.label`
   color: ${config.linkColor};
   font-size: 10px;
+  @media(min-width: 1440px){
+    font-size: 14px;
+  }
 `
 
 export const InputText = styled.input<{ error?: boolean }>`
-  ${inputStyle}
+  ${inputStyle};
+  
 `
 
 export const InputArea = styled.textarea<{ error?: boolean }>`
@@ -52,12 +59,15 @@ export const InputArea = styled.textarea<{ error?: boolean }>`
   height: 250px;
   resize: none;
   overflow-y: scroll;
+
   &::-webkit-scrollbar {
     width: 8px;
   }
+
   &::-webkit-scrollbar-track {
     display: none;
   }
+
   &::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background-color: ${config.linkColor};
@@ -69,4 +79,7 @@ export const ValidErrors = styled.div`
   color: ${config.redColor};
   font-size: 12px;
   margin-left: auto;
+  @media(min-width: 1440px){
+    font-size: 16px;
+  }
 `

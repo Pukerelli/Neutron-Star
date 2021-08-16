@@ -20,8 +20,8 @@ interface IProps {
 export const Subscriptions: React.FC<IProps> = (props) => (
     <ProfileLayout>
         <SubscriptionsColumn>
-            <ListToggleCard toggle={props.toggle} subs={props.subs}/>
-            <ListCards cars={props.cars} users={props.users} toggle={props.subs}/>
+            <ListToggleCard toggle={props.toggle} target={props.subs}/>
+            <ListCards cars={props.cars} users={props.users} target={props.subs}/>
         </SubscriptionsColumn>
         <UserAvatarColumn>
             <UserAvatarBlock auth={props.auth} user={props.user}/>

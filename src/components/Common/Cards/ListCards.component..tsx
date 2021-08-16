@@ -7,16 +7,16 @@ import {ListToggle, ListToggleContainer} from "../../../styles/StyledComponents/
 interface ICards {
     cars: Array<ICar>
     users: Array<IUser>
-    toggle: 'users' | 'cars'
+    target: 'users' | 'cars'
 }
 
 interface IToggle {
     toggle: (target: 'users' | 'cars' ) => void
-    subs: 'users' | 'cars'
+    target: 'users' | 'cars'
 }
 
 export const ListCards: React.FC<ICards> = (props) => {
-    if (props.toggle === 'cars')
+    if (props.target === 'cars')
         return <Cars cars={props.cars}/>
 
     return <Users users={props.users}/>
@@ -32,9 +32,9 @@ export const ListToggleCard: React.FC<IToggle> = (props) => {
 
  return (
     <ListToggleContainer>
-        <ListToggle active={props.subs === 'users'} marginLeft={true}
+        <ListToggle active={props.target === 'users'} marginLeft={true}
                     onClick={onClick}>Users</ListToggle>
-        <ListToggle active={props.subs === 'cars'}
+        <ListToggle active={props.target === 'cars'}
                     onClick={onClick}>Cars</ListToggle>
     </ListToggleContainer>
 )

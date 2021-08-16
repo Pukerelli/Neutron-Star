@@ -1,4 +1,4 @@
-import {useEffect, useRef} from "react";
+import {useEffect, useRef, useState} from "react";
 
 export const useClickOutside = (handler: () => void) => {
     const ref = useRef<Event>();
@@ -17,3 +17,19 @@ export const useClickOutside = (handler: () => void) => {
     return ref;
 };
 
+export const useDisplayWidth = () => {
+    const [width, setWidth] = useState(window.innerWidth)
+    useEffect(() => {
+        const widthHasChanged = () =>
+            setWidth(window.innerWidth)
+
+        window.addEventListener('resize', widthHasChanged)
+
+        return () => {
+            window.removeEventListener('resize', widthHasChanged)
+        }
+
+    })
+
+    return width
+}

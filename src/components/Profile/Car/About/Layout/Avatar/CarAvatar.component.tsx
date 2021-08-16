@@ -9,7 +9,13 @@ import {
 import carDefault from "../../../../../../common/images/carDefault.jpg";
 import {ImgCommon, Subtitle, Title} from "../../../../../../styles/StyledComponents/Common/Common.styledComponents";
 
-export const CarAvatar: React.FC<{ car: ICar }> = ({car}) => (
+interface IProps {
+    car: ICar
+    onOwnerClick: () => void
+
+}
+
+export const CarAvatar: React.FC<IProps> = ({car, onOwnerClick}) => (
     <AboutCarAvatarColumn>
         <AboutCarAvatarContainer>
             <ImgCommon src={car.photo ? car.photo : carDefault}/>
@@ -17,9 +23,10 @@ export const CarAvatar: React.FC<{ car: ICar }> = ({car}) => (
         <AboutCarAvatarSubtitle>
             <AvatarSubtitle>
                 <Title>Location: </Title>
-                <Subtitle>{car.address ? car.address.city : 'unknown'}</Subtitle>
+                <Subtitle>{car.address?.city || 'unknown'}</Subtitle>
                 <Title>Owner: </Title>
-                <Subtitle>{car.owner}</Subtitle>
+                <Subtitle style={{cursor: 'pointer'}}
+                          onClick={onOwnerClick}>{car.owner}</Subtitle>
                 <Title>Mileage: </Title>
                 <Subtitle>{car.mileage ? car.mileage : 'unknown'}</Subtitle>
             </AvatarSubtitle>

@@ -7,7 +7,7 @@ export const UserProfileInfo: React.FC<{user: IUser}> = ({user}) => {
     return (
         <UserInfo>
             <Title>Name:</Title>
-            <Subtitle>{user.fullName}</Subtitle>
+            <Subtitle>{user.fullName || 'unknown'}</Subtitle>
             <Title>Country: </Title>
             <Subtitle>{user.address?.country? user.address.country: 'unknown'}</Subtitle>
             <Title>City: </Title>

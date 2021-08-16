@@ -8,10 +8,8 @@ export const UserDescription = styled.div`
   background-color: white;
   padding: 15px 22px;
   border-radius: 6px;
-  width: 530px;
-  min-height: 230px;
+  width: 100%;
   height: fit-content;
-  max-height: 350px;
 
   &::after {
     content: '';
@@ -20,27 +18,31 @@ export const UserDescription = styled.div`
     height: 1px;
     background: rgba(0, 0, 0, 0.14);
   }
-
-  h1, h2, h3, h4 {
-    color: #333234
-  }
+  
 `
 export const UserInfo = styled.div`
   display: grid;
   grid-row-gap: .3rem;
   padding: 15px;
   width: 80%;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
+  @media(max-width: 767px){
+    width: 100%;
+  }
+  
 `
 
 export const UserEditFormContainer = styled.div`
   display: grid;
-  width: 360px;
-  margin: 20px auto 0;
+  width: 70%;
+  margin: 20px auto;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 40px;
   grid-template-rows: repeat(4, 65px);
   align-items: center;
-  height: 265px;
+  height: fit-content;
+  @media(max-width: 767px){
+    grid-template-columns: 1fr;
+  }
 `
 

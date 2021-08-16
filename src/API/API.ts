@@ -8,7 +8,7 @@ class API {
     constructor(serviceUrl: string) {
         this.serviceUrl = serviceUrl
         this.instance = () => axios.create({
-            baseURL: 'http://localhost:5000/api',
+            baseURL: 'https://frozen-garden-45485.herokuapp.com/api',
             headers: {authorization: `Bearer ${localStorage.getItem('token')}`}
         })
     }

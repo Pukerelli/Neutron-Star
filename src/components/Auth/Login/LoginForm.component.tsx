@@ -6,7 +6,8 @@ import {
     AuthCard,
     AuthError,
     AuthLayout,
-    LoginFormLayout
+    LoginFormLayout,
+    RegistrationButtonContainer
 } from '../../../styles/StyledComponents/Auth/AuthLayout.styledComponents';
 import {Name} from '../../../styles/StyledComponents/Common/Common.styledComponents';
 import {CommonBtn} from "../../../styles/StyledComponents/Buttons/CommonButtons.styledComponent";
@@ -36,13 +37,15 @@ export const LoginForm: React.FC<IProps> = ({onSubmit, onRegClick, errors}) => {
                             <InputForm type='text' name='username' label='username' placeholder='enter your username'/>
                             <InputForm type='password' name='password' label='password'
                                        placeholder='enter your password'/>
-                            <CommonBtn width='100%' height='2rem' type="submit">Confirm</CommonBtn>
+                            <CommonBtn width='100%' height='40px' type="submit">Confirm</CommonBtn>
                         </LoginFormLayout>
                     </Form>
                 </Formik>
-                <CommonBtn margin='0 auto' width='60%' height='2rem' onClick={onRegClick}>
-                    Registration
-                </CommonBtn>
+                <RegistrationButtonContainer col={false}>
+                    <CommonBtn margin='0 auto' width='100%' height='40px' onClick={onRegClick}>
+                        Registration
+                    </CommonBtn>
+                </RegistrationButtonContainer>
             </AuthCard>
         </AuthLayout>
     );

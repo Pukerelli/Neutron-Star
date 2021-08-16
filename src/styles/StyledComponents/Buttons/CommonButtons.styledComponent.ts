@@ -23,21 +23,24 @@ export const CardBtn = styled.button<ICardBtn>`
   background-color: #fff;
   border: 2px solid ${props => props.delete ? config.redColor : config.linkColor};
   color: ${props => props.delete ? config.redColor : config.linkColor};
-  height: 2rem;
-  width: 80px;
+  height: 30px;
+  width: 100%;
   transition: .5s linear;
   grid-column: 2;
 
   :hover {
     color: white;
     background-color: ${props => props.delete ? config.redColor : config.linkColor};
-
   }
 
   :active {
     color: white;
     background-color: ${props => props.delete ? config.redColor : config.linkColor};
     border: 2px solid white;
+  }
+  
+  @media(min-width: 1650px){
+    font-size: 20px;
   }
 `
 

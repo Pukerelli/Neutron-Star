@@ -5,6 +5,8 @@ import {useSelector} from "react-redux";
 import {selectAuthErrors, selectAuthUser} from "../../../selectors/auth/auth.selector";
 import {authClearErrorsAction, authRegAction} from "../../../store/actions/auth.action";
 import {RegistrationForm} from './RegistrationForm.component';
+import { useState } from 'react';
+import {ProfileFetching} from "../../Common/Fetching/Profile.fetchingComponents";
 
 
 interface IValues {
@@ -16,20 +18,25 @@ interface IValues {
 
 export const Registration: React.FC = () => {
     const dispatch = useAppDispatch()
+    const [isComplete, setComplete] = useState(false)
     const history = useHistory()
-    const isAuth = useSelector(selectAuthUser)
+    const auth = useSelector(selectAuthUser)
     const errors = useSelector(selectAuthErrors)
 
     useEffect(() => {
-        if (isAuth && isAuth !== 'unauthorized')
-            history.push(`/profile/user/${isAuth}`)
+        if (auth && auth !== 'unauthorized'){
+            setComplete(true)
+            setTimeout(() => history.push(`/user/${auth}`), 3000 )
+        }
         return () => {
             dispatch(authClearErrorsAction())
         }
-    }, [isAuth])
+    }, [auth])
 
     const onSubmit = (values: IValues) => dispatch(authRegAction(values))
     const onLoginClick = () => history.push('/auth/login')
+    if(isComplete)
+        return <ProfileFetching/>
 
     return <RegistrationForm onSubmit={onSubmit} onLoginClick={onLoginClick} errors={errors}/>
 }

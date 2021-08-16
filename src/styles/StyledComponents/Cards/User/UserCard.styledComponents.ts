@@ -2,15 +2,24 @@ import styled from "styled-components";
 import config from "../../../../common/config/config.json";
 
 export const UserCardLayout = styled.div`
+  position: relative;
   box-shadow: ${config.shadow};
   display: grid;
-  padding: 0.5rem 0.5rem 0.5rem 1rem;
+  padding: 7px 7px 7px 15px;
   width: 100%;
-  height: 215px;
+  height: fit-content;
   grid-template-columns: 3fr 2fr;
   background-color: white;
   border-radius: 6px;
   grid-column-gap: 1rem;
+  @media (min-width: 1650px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (max-width: 550px) {
+    grid-template-columns: 1fr;
+    grid-row-gap: 10px;
+    padding: 7px;
+  }
 `
 
 export const UserCardDescription = styled.div`
@@ -21,14 +30,19 @@ export const UserCardDescription = styled.div`
   grid-template-columns: 1fr 1fr;
 `
 export const UserCardAvatar = styled.div`
-  display: grid;
-  grid-template-rows: 150px auto;
-  grid-row-gap: 10px;
-  grid-template-columns: 1fr 1fr;
+  height: 130px;
+  margin-bottom: 50px;
+  @media(min-width: 1650px){
+    height: 250px;
+    margin-bottom: 80px;
+  }
+  @media(max-width: 767px){
+    height: 200px;
+  }
 `
 
 export const UserCardAvatarContainer = styled.div`
-  height: 150px;
+  height: 130px;
   grid-column: span 2;
 `
 

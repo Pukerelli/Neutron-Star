@@ -85,8 +85,8 @@ export const addCarValidation = Yup.object({
         .matches(/^[aA-zZ/-]+$/, "Only letters")
         .required('this field is required'),
     model: Yup.string()
-        .min(3, 'must be 3-15 characters')
-        .max(15, 'must be 3-15 characters')
+        .min(1, 'must be 1-15 characters')
+        .max(15, 'must be 1-15 characters')
         .matches(/^[aA-zZ\d\s/-]+$/, "Only letters and number")
         .required('this field is required'),
     generation: Yup.string()

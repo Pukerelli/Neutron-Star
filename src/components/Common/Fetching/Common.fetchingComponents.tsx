@@ -12,8 +12,8 @@ export const CommonFetching: React.FC<IFetchBlock> = ({width, height, x, y}) => 
 
 export const AvatarBlockFetching: React.FC = () => (
     <UserAvatarColumn>
-        <CommonFetching width='250' height='350'/>
-        <CommonFetching width='250' height='120'/>
+        <CommonFetching width='100%' height='350'/>
+        <CommonFetching width='100%' height='120'/>
     </UserAvatarColumn>
 )
 
@@ -27,16 +27,16 @@ export const CardsFetching: React.FC = () => (
 )
 
 export const CardFetching: React.FC = () => (
-    <WhiteCard height='215px' width='530px' padding='7px 7px 7px 15px'>
-        <ContentLoader height='215' width='530'>
-            <rect x="10" y="10" rx="6" ry="6" width='250' height='35'/>
-            <rect x="300" y="5" rx="6" ry="6" width='200' height='120'/>
-            <rect x="300" y="130" rx="5" ry="5" width="200" height='20'/>
-            <rect x="15" y="55" rx="5" ry="5" width="200" height='20'/>
-            <rect x="15" y="85" rx="5" ry="5" width="200" height='20'/>
-            <rect x="15" y="115" rx="5" ry="5" width="200" height='20'/>
-            <rect x="15" y="145" rx="5" ry="5" width="200" height='20'/>
-            <rect x="15" y="175" rx="5" ry="5" width="200" height='20'/>
+    <WhiteCard height='220px' width='100%' padding='7px 7px 7px 15px'>
+        <ContentLoader height='100%' width='100%'>
+            <rect x="10" y="10" rx="6" ry="6" width='45%' height='35'/>
+            <rect x="70%" y="5" rx="6" ry="6" width='30%' height='120'/>
+            <rect x="70%" y="150" rx="5" ry="5" width="30%" height='20'/>
+            <rect x="15" y="55" rx="5" ry="5" width="30%" height='20'/>
+            <rect x="15" y="85" rx="5" ry="5" width="30%" height='20'/>
+            <rect x="15" y="115" rx="5" ry="5" width="30%" height='20'/>
+            <rect x="15" y="145" rx="5" ry="5" width="30%" height='20'/>
+            <rect x="15" y="175" rx="5" ry="5" width="30%" height='20'/>
         </ContentLoader>
     </WhiteCard>
 )

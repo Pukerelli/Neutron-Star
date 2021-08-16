@@ -12,10 +12,10 @@ interface IProps {
 
 export const GarageCars: React.FC<IProps> = ({cars, btnHide}) => {
     const history = useHistory()
-    const onClick = () => history.push(`/profile/cars/add`)
+    const onClick = () => history.push(`/cars/add`)
     return (
         <GarageCarsColumn hideBtn={btnHide}>
-            <CommonBtn hide={btnHide} width='530px' height='40px' onClick={onClick}>
+            <CommonBtn hide={btnHide} width='100%' height='40px' onClick={onClick}>
                 ADD
             </CommonBtn>
             <Cars cars={cars}/>

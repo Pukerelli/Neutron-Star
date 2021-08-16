@@ -6,18 +6,22 @@ export const UserAvatarContainer = styled.div<{ image: string }>`
   background-size: cover;
   background-position: center;
   display: grid;
-  grid-template-rows: 190px minmax(160px, auto);
-  height: fit-content;
+  grid-template-rows: 240px minmax(160px, auto);
   border-radius: 6px;
   box-shadow: 0 0 4px 0 rgba(34, 60, 80, 0.2);
-  width: 250px;
+  width: 100%;
+  @media(max-width: 767px){
+    grid-template-rows: 170px minmax(160px, auto);
+  }
+  @media(min-width: 1650px){
+    grid-template-rows: 290px minmax(160px, auto);
+  }
 `
 
 export const UserAvatarBlock = styled.div`
   grid-row-start: 2;
   position: relative;
   width: 100%;
-  height: 100%;
   background-color: white;
   opacity: .9;
   border-radius: 0 0 6px 6px;
@@ -38,10 +42,17 @@ export const UserAvatarContacts = styled.div`
   width: 70%;
   align-items: center;
   grid-row-gap: 10px;
+  justify-content: center;
   display: grid;
-  grid-template-columns: 20% 80%;
+  grid-template-columns: 30px auto;
   grid-template-rows: 20px 30px 30px;
-  margin: 2rem auto 0;
+  margin: 35px auto 0;
+  a{
+    text-transform: none;
+  }
+  @media(min-width: 1650px){
+    font-size: 20px;
+  }
 `
 export const UserAvatarContactsTitle = styled.p`
   color: rgb(130, 130, 130);
