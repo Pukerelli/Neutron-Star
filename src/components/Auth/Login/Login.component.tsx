@@ -23,7 +23,10 @@ export const Login: React.FC = () => {
     }, [auth])
 
     const onRegClick = () => history.push('/auth/registration')
-    const onSubmit = (values: ILogin) => dispatch(authLoginAction(values))
+    const onSubmit = (values: ILogin) => {
+        dispatch(authClearErrorsAction())
+        dispatch(authLoginAction(values))
+    }
 
     return  <LoginForm onSubmit={onSubmit} onRegClick={onRegClick} errors={errors}/>
 }

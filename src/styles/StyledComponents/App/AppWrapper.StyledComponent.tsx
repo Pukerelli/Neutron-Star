@@ -11,7 +11,7 @@ export const AppWrapper = styled.div`
   grid-template-areas: 
   'header'
   'content';
-  @media(max-width: 767px){
+  @media(max-width: 768px){
     grid-template-rows: auto 53px;
     grid-template-areas: 
   'content'

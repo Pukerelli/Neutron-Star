@@ -12,7 +12,6 @@ export const HeaderWrapper = styled.header`
   font-size: 2rem;
   position: relative;
   box-shadow: ${config.shadow};
-  
 `
 export const HeaderItemContainer = styled.div`
   display: grid;
@@ -41,7 +40,7 @@ export const HeaderItem = styled.div<{selected: boolean}>`
     position: absolute;
     right: 10px;
   }
-  @media(max-width: 767px){
+  @media(max-width: 768px){
     padding: 0;
     border-bottom: ${props=> props.selected? '2px solid white': '2px solid transparent'};
   }

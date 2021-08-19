@@ -40,22 +40,22 @@ export const Header: React.FC = () => {
             <HeaderItemContainer>
                 <HeaderItem selected={pathname.includes('user')}>
                     <NavLink to={`/user/${auth}`}>
-                        {width > 767 ? 'Profile' : <PersonIcon fontSize='large'/>}
+                        {width > 768 ? 'Profile' : <PersonIcon fontSize='large'/>}
                     </NavLink>
                 </HeaderItem>
                 <HeaderItem selected={pathname.includes('cars') || pathname.includes('notes')}>
                     <NavLink to='/cars/garage'>
-                        {width > 767 ? 'Garage' : <DirectionsCarIcon fontSize='large'/>}
+                        {width > 768 ? 'Garage' : <DirectionsCarIcon fontSize='large'/>}
                     </NavLink>
                 </HeaderItem>
                 <HeaderItem selected={pathname.includes('subscriptions')}>
                     <NavLink to='/subscriptions'>
-                        {width > 767 ? 'Subscriptions' : <GroupIcon fontSize='large'/>}
+                        {width > 768 ? 'Subscriptions' : <GroupIcon fontSize='large'/>}
                     </NavLink>
                 </HeaderItem>
                 <HeaderItem selected={pathname.includes('search')}>
                     <NavLink to='/search'>
-                        {width > 767 ? 'Search' : <SearchIcon fontSize='large'/>}
+                        {width > 768 ? 'Search' : <SearchIcon fontSize='large'/>}
                     </NavLink>
                 </HeaderItem>
                 <HeaderItem selected={false} onClick={onClick} style={{cursor: 'pointer'}}>
@@ -68,7 +68,7 @@ export const Header: React.FC = () => {
 
 const LogoutBtn: React.FC<ILoginBtn> = ({width, auth}) => {
 
-    if (width < 767) {
+    if (width < 769) {
         if (auth && auth !== 'unauthorized')
             return <ExitToAppIcon/>
         else

@@ -33,7 +33,10 @@ export const Registration: React.FC = () => {
         }
     }, [auth])
 
-    const onSubmit = (values: IValues) => dispatch(authRegAction(values))
+    const onSubmit = (values: IValues) => {
+        dispatch(authClearErrorsAction())
+        dispatch(authRegAction(values))
+    }
     const onLoginClick = () => history.push('/auth/login')
     if(isComplete)
         return <ProfileFetching/>
