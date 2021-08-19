@@ -25,7 +25,10 @@ export const AboutCarPage = () => {
     }, [carname])
 
     const onSubmit = (values: IUpdateCar) => {
-        dispatch(carUpdateAction(values))
+        dispatch(carUpdateAction({
+            ...values,
+            name: values.name.toLowerCase()
+        }))
         toggleEdit(!edit)
     }
 
@@ -46,7 +49,7 @@ export const AboutCarPage = () => {
         return <CarFetching/>
 
     if (edit)
-        return <AddCarForm car={car!} onCancel={onEditHandler}
+        return <AddCarForm car={car || undefined} onCancel={onEditHandler}
                            onSubmit={onSubmit} errors={errors}/>
 
     return <AboutCar car={car!} edit={edit} toggle={onEditHandler}
