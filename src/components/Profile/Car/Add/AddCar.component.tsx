@@ -31,7 +31,7 @@ export const AddCar: React.FC = () => {
     const onSubmit = (values: IUpdateCar) =>{
         dispatch(carAddAction(values))
         dispatch(carClearErrors())
-        setNewCar(values.name)
+        setNewCar(values.name.toLowerCase())
     }
 
     const onCancel = () =>
