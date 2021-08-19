@@ -33,7 +33,7 @@ export const UserProfilePage = () => {
             return
         }
 
-    }, [username])
+    }, [username, auth])
 
     const onEditClick = () => toggleEdit(!edit)
     const onGarageClick = () => history.push(`/cars/garage/${username || auth}`)
