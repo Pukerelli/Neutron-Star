@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/neutron-star/static/js/main.2a96e1bf.chunk.js",
-    "main.js.map": "/neutron-star/static/js/main.2a96e1bf.chunk.js.map",
+    "main.js": "/neutron-star/static/js/main.2de558cb.chunk.js",
+    "main.js.map": "/neutron-star/static/js/main.2de558cb.chunk.js.map",
     "runtime-main.js": "/neutron-star/static/js/runtime-main.d9798390.js",
     "runtime-main.js.map": "/neutron-star/static/js/runtime-main.d9798390.js.map",
-    "static/js/2.e1ecbe3a.chunk.js": "/neutron-star/static/js/2.e1ecbe3a.chunk.js",
-    "static/js/2.e1ecbe3a.chunk.js.map": "/neutron-star/static/js/2.e1ecbe3a.chunk.js.map",
+    "static/js/2.6b9c780d.chunk.js": "/neutron-star/static/js/2.6b9c780d.chunk.js",
+    "static/js/2.6b9c780d.chunk.js.map": "/neutron-star/static/js/2.6b9c780d.chunk.js.map",
     "index.html": "/neutron-star/index.html",
-    "static/js/2.e1ecbe3a.chunk.js.LICENSE.txt": "/neutron-star/static/js/2.e1ecbe3a.chunk.js.LICENSE.txt",
+    "static/js/2.6b9c780d.chunk.js.LICENSE.txt": "/neutron-star/static/js/2.6b9c780d.chunk.js.LICENSE.txt",
     "static/media/carDefault.49ed0429.jpg": "/neutron-star/static/media/carDefault.49ed0429.jpg",
     "static/media/notFound.c3c97d1d.jpg": "/neutron-star/static/media/notFound.c3c97d1d.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.d9798390.js",
-    "static/js/2.e1ecbe3a.chunk.js",
-    "static/js/main.2a96e1bf.chunk.js"
+    "static/js/2.6b9c780d.chunk.js",
+    "static/js/main.2de558cb.chunk.js"
   ]
 }
