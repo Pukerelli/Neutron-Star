@@ -23,9 +23,12 @@ export const UserCarCard = styled.div`
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-template-rows: .5fr auto;
-  height: 100%;
+  height: 170px;
   @media(max-width: 767px){
     border-radius: 6px 6px 0 0;
+  }
+  @media(min-width: 1650px){
+    height: 200px ;
   }
 `
 export const TitleContainer = styled.div`
@@ -52,6 +55,9 @@ export const CarImgContainer = styled.div`
   cursor: pointer;
   @media (max-width: 767px) {
     margin-bottom: 15px;
+  }
+  @media(min-width: 1650px){
+    height: 200px ;
   }
 `
 export const CarImg = styled.img`
