@@ -64,7 +64,8 @@ export const userInfoValidation = Yup.object({
         .min(2, 'must be 2-20 characters')
         .max(20, 'must be 2-20 characters'),
     whatsapp: Yup.string()
-        .length(11,'number is no valid')
+        .min(11, 'number is no valid')
+        .max(13, 'number is no valid')
         .matches(/^[0-9]+$/, 'Only numbers'),
     telegram: Yup.string()
         .min(2, 'must be 3-15 characters')

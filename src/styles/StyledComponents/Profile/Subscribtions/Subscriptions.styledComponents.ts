@@ -30,7 +30,9 @@ export const SubscribersCard = styled.div`
   grid-template-columns: 30px auto;
   grid-auto-flow: column;
   overflow: hidden;
+  
   p {
+    
     align-content: center;
     cursor: pointer;
     color: ${config.linkColor};
