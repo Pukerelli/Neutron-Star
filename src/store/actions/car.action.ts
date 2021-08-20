@@ -14,7 +14,7 @@ import {
 import {INewNote, IUpdateCar, IUpdateNote, IUploadPhoto} from "../../API/car.api";
 import {
     CAR_ADDING_SUCCEED,
-    CAR_CARS_SUCCEED,
+    CAR_CARS_SUCCEED, CAR_CLEAR,
     CAR_CLEAR_ERRORS,
     CAR_CURRENT_NOTE_SUCCEED,
     CAR_CURRENT_SUCCEED,
@@ -48,6 +48,7 @@ export const carReplaceSucceedAction = createAction<ICar>(CAR_REPLACE_SUCCEED)
 export const carCurrentNoteSucceedAction = createAction<ICurrentNote>(CAR_CURRENT_NOTE_SUCCEED)
 export const carNotesPullSucceedAction = createAction<string>(CAR_NOTE_PULL_SUCCEED)
 export const carErrorAction = createAction<IError>(CAR_ERROR)
+export const carClearAction = createAction<IError>(CAR_CLEAR)
 export const carClearErrors = createAction<undefined>(CAR_CLEAR_ERRORS)
 
 

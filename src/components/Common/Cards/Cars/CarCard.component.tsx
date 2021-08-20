@@ -26,10 +26,12 @@ export const CarCard: React.FC<{ car: ICar }> = ({car}) => {
 
     const onClick = () => {
         if (location.pathname.includes('note/add'))
-            history.push(`/cars/add/note/${car.name}`)
+            history.push(`/notes/add/${car.name}`)
         else
             history.push(`/cars/about/${car.name}`)
     }
+    const onOwnerClick = () =>
+        history.push(`/user/${car.owner}`)
 
     return (
         <CarCardLayout>
@@ -47,7 +49,9 @@ export const CarCard: React.FC<{ car: ICar }> = ({car}) => {
                 <Title>HP:</Title>
                 <Subtitle>{car.engine || 'unknown'}</Subtitle>
                 <Title>Owner:</Title>
-                <Subtitle>{car.owner}</Subtitle>
+                <Subtitle onClick={onOwnerClick} cursor='pointer'>
+                    {car.owner}
+                </Subtitle>
             </CarCardDescription>
             <CarCardAvatar>
                 <CarCardImgContainer>

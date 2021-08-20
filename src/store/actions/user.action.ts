@@ -5,7 +5,7 @@ import {
     USER_ERROR,
     USER_FETCHING,
     USER_UPDATE_PHOTO_SUCCEED,
-    USER_PROFILE_SUCCEED
+    USER_PROFILE_SUCCEED, USER_CLEAR
 } from "../reducers/user/user.reducerActionTypes";
 import {IError, IUser} from "../../common/interfaces/index.interface";
 
@@ -18,6 +18,7 @@ export const userUpdatePhotoAction = createAction<IUpdateAvatar>(USER_UPDATE_PHO
 export const userProfileSucceedAction = createAction<IUser>(USER_PROFILE_SUCCEED)
 export const userUpdatePhotoSucceedAction = createAction<IUpdateAvatar>(USER_UPDATE_PHOTO_SUCCEED)
 export const userFetchingAction = createAction<undefined>(USER_FETCHING)
+export const userClearAction = createAction<undefined>(USER_CLEAR)
 export const userErrorAction = createAction<IError>(USER_ERROR)
 
 

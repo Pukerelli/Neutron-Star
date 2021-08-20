@@ -7,7 +7,6 @@ import {
     UserCarCard
 } from "../../../../../../styles/StyledComponents/Profile/Cars/UserCars.styledComponents";
 import {
-    ImgCommon,
     NameDouble,
     NameMini,
     Subtitle,

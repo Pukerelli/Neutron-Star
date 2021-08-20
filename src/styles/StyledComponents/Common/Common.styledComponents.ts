@@ -38,8 +38,9 @@ export const Title = styled.p`
     font-size: 24px;
   }
 `
-export const Subtitle = styled.p`
+export const Subtitle = styled.p<ISubtitle>`
   color: ${config.linkColor};
+  cursor: ${props => props.cursor? props.cursor : 'auto'};
   @media(min-width: 1649px){
     font-size: 24px;
   }
@@ -131,4 +132,7 @@ interface ICarModel {
     color?: string
 }
 
+interface ISubtitle {
+    cursor?: string
+}
 

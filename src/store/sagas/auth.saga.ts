@@ -13,7 +13,7 @@ import {
 } from "../actions/auth.action";
 import {setStorage} from "../../common/functions";
 import {userProfileSucceedAction} from "../actions/user.action";
-import { authHelper } from "./saga.helpers";
+import {authHelper} from "./saga.helpers";
 
 ///// AUTH ME
 function* watchAuthMe() {
@@ -28,9 +28,9 @@ function* authMe() {
                 setStorage('token', response.token)
             yield put(authSucceedAction(response.data.username))
             yield put(userProfileSucceedAction(response.data))
-        }else{
-            if(response.error === 'auth error')
-            yield put(authFailedAction())
+        } else {
+            if (response.error === 'auth error')
+                yield put(authFailedAction())
         }
     } catch (e) {
         yield put(authErrorAction(e))

@@ -16,15 +16,16 @@ const App: React.FC = () => {
     const loading = useSelector(selectAuthLoading)
     const notFoundHandler = (toggle: boolean) => toggleNotFound(toggle)
 
+    useEffect(() => {
+        dispatch(authMeAction())
+    }, [])
+
     setTimeout(() =>
         () => {
             if (loading === 'idle')
                 dispatch(authLogoutAction())
         }, 13000)
 
-    useEffect(() => {
-        dispatch(authMeAction())
-    }, [])
 
     if (loading === 'idle')
         return <Spinner/>

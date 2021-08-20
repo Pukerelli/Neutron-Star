@@ -20,11 +20,8 @@ export const SearchPage: React.FC = () => {
     const user = useSelector(selectUserProfile)
 
     useEffect(() => {
-        dispatch(userProfileAction(auth))
-
-        return () => {
-            dispatch(listUnmountAction())
-        }
+        if (auth !== 'unauthorized')
+            dispatch(userProfileAction(auth))
     }, [auth])
 
     useEffect(() => {
@@ -34,6 +31,10 @@ export const SearchPage: React.FC = () => {
             dispatch(searchUserAction(value))
         else
             dispatch(searchCarAction(value))
+
+        return () => {
+            dispatch(listUnmountAction())
+        }
 
     }, [search, value])
 

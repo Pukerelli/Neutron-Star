@@ -1,17 +1,14 @@
 import React from 'react';
 import {NavLink, useHistory, useLocation} from "react-router-dom";
 import {
-    HeaderWrapper,
     HeaderItem,
-    HeaderItemContainer
+    HeaderItemContainer,
+    HeaderWrapper
 } from "../../styles/StyledComponents/Header/Header.StyledComponent";
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import {useSelector} from "react-redux";
 import {selectAuthUser} from "../../selectors/auth/auth.selector";
-import {useAppDispatch} from "../../store";
-import {authLogoutAction} from "../../store/actions/auth.action";
-import {clearStorage} from "../../common/functions";
-import {useDisplayWidth} from "../../common/Hooks";
+import {useDisplayWidth, useLogout} from "../../common/Hooks";
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import MeetingRoomIcon from '@material-ui/icons/MeetingRoom';
 import PersonIcon from '@material-ui/icons/Person';
@@ -21,18 +18,15 @@ import SearchIcon from '@material-ui/icons/Search';
 
 export const Header: React.FC = () => {
     const auth = useSelector(selectAuthUser)
-    const dispatch = useAppDispatch()
     const history = useHistory()
     const width = useDisplayWidth()
+    const logout = useLogout()
     const {pathname} = useLocation()
 
     const onClick = () => {
-        if (auth && auth !== 'unauthorized') {
-            clearStorage()
-            dispatch(authLogoutAction())
+        if (auth && auth !== 'unauthorized')
+            return logout()
 
-            return
-        }
         history.push('/auth/login')
     }
     return (

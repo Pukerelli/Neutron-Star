@@ -20,9 +20,8 @@ import {CarCardButtonContainer} from '../../../../styles/StyledComponents/Cards/
 
 export const UserCard: React.FC<{ user: IUser }> = ({user}) => {
     const history = useHistory()
-    const onClick = () => {
-        history.push(`/user/${user.username}`)
-    }
+    const onClick = () => history.push(`/user/${user.username}`)
+
     return (
         <UserCardLayout>
             <UserCardDescription>
