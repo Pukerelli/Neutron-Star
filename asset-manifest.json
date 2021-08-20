@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/neutron-star/static/js/main.ea6f0b87.chunk.js",
-    "main.js.map": "/neutron-star/static/js/main.ea6f0b87.chunk.js.map",
+    "main.js": "/neutron-star/static/js/main.ff00d55f.chunk.js",
+    "main.js.map": "/neutron-star/static/js/main.ff00d55f.chunk.js.map",
     "runtime-main.js": "/neutron-star/static/js/runtime-main.d9798390.js",
     "runtime-main.js.map": "/neutron-star/static/js/runtime-main.d9798390.js.map",
     "static/js/2.6b9c780d.chunk.js": "/neutron-star/static/js/2.6b9c780d.chunk.js",
@@ -14,6 +14,6 @@
   "entrypoints": [
     "static/js/runtime-main.d9798390.js",
     "static/js/2.6b9c780d.chunk.js",
-    "static/js/main.ea6f0b87.chunk.js"
+    "static/js/main.ff00d55f.chunk.js"
   ]
 }
