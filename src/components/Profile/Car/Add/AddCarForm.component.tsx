@@ -39,7 +39,7 @@ export const AddCarForm: React.FC<IProps> = ({onSubmit, errors, car, onCancel}) 
         doors: car?.doors || '',
         mileage: car?.mileage || '',
         ownTime: car?.ownTime || '',
-        city: car?.address?.city || '',
+        location: car?.location || '',
         color: car?.color || '',
         rims: car?.rims || '',
         photo: car?.photo || ''
@@ -81,7 +81,7 @@ export const AddCarForm: React.FC<IProps> = ({onSubmit, errors, car, onCancel}) 
                                 <CarPhotoInputContainer>
                                     <InputForm label='photo' name='photo' type='photo' placeholder='Image url'/>
                                 </CarPhotoInputContainer>
-                                <InputForm label='city' name='city' type='text' placeholder='car location'/>
+                                <InputForm label='location' name='location' type='text' placeholder='car location'/>
                                 <InputForm label='mileage' name='mileage' type='text'
                                            placeholder='mileage in kilometers'/>
                             </AddCarRightColumn>

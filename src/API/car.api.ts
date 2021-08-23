@@ -49,7 +49,7 @@ export interface IUpdateCar {
     doors: string
     mileage: string
     ownTime: string
-    city: string
+    location: string
     color: string
     rims:string
     photo: string

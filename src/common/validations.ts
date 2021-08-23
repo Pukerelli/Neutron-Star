@@ -86,8 +86,8 @@ export const addCarValidation = Yup.object({
         .matches(/^[aA-zZ/-]+$/, "Only letters")
         .required('this field is required'),
     model: Yup.string()
-        .min(1, 'must be 1-15 characters')
-        .max(15, 'must be 1-15 characters')
+        .min(1, 'must be 1-20 characters')
+        .max(20, 'must be 1-20 characters')
         .matches(/^[aA-zZ\d\s/-]+$/, "Only letters and number")
         .required('this field is required'),
     generation: Yup.string()
@@ -100,11 +100,11 @@ export const addCarValidation = Yup.object({
     engine: Yup.string()
         .min(3, 'must be 3-10 characters')
         .max(10, 'must be 3-10 characters')
-        .matches(/^[aA-zZ\d]+$/, "Only letters and numbers"),
+        .matches(/^[aA-zZ\d\s/-]+$/, "Only letters and numbers"),
     hp: Yup.string()
+        .matches(/\d+$/, "Only numbers")
         .min(2, 'so slowly?')
-        .max(4, 'so fast?')
-        .matches(/\d+$/, "Only numbers"),
+        .max(4, 'so fast?'),
     doors: Yup.string()
         .length(1, 'it\'s a bus?')
         .matches(/\d+$/, "Only numbers"),

@@ -18,17 +18,17 @@ interface IProps {
 export const CarAvatar: React.FC<IProps> = ({car, onOwnerClick}) => (
     <AboutCarAvatarColumn>
         <AboutCarAvatarContainer>
-            <ImgCommon src={car.photo ? car.photo : carDefault}/>
+            <ImgCommon src={car.photo || carDefault}/>
         </AboutCarAvatarContainer>
         <AboutCarAvatarSubtitle>
             <AvatarSubtitle>
                 <Title>Location: </Title>
-                <Subtitle>{car.address?.city || 'unknown'}</Subtitle>
+                <Subtitle>{car.location || 'unknown'}</Subtitle>
                 <Title>Owner: </Title>
                 <Subtitle style={{cursor: 'pointer'}}
                           onClick={onOwnerClick}>{car.owner}</Subtitle>
                 <Title>Mileage: </Title>
-                <Subtitle>{car.mileage ? car.mileage : 'unknown'}</Subtitle>
+                <Subtitle>{car.mileage || 'unknown'}</Subtitle>
             </AvatarSubtitle>
         </AboutCarAvatarSubtitle>
     </AboutCarAvatarColumn>

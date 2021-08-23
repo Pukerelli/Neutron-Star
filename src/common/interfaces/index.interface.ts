@@ -39,10 +39,7 @@ export interface ICar {
     doors?: string
     engine?: string
     hp?: string
-    address?: {
-        country?: string
-        city?: string
-    }
+    location?: string
     rims?: string
     ownTime?: string
     photo?: string

@@ -21,11 +21,11 @@ export const CarFetching: React.FC = () => (
 
 export const CarNoteFetching: React.FC = () => (
     <NoteLayout>
-        <WhiteCard padding='15px' width='600px' height='450px' margin='0 auto'>
+        <WhiteCard padding='15px' width='100%' height='450px' margin='0 auto'>
             <ContentLoader height='100%' width='100%'>
-                <rect x="50" y="2" rx="5" ry="5" width="470" height='35'/>
+                <rect x="10%" y="2" rx="5" ry="5" width="80%" height='35'/>
                 <rect x="0" y="70" rx="5" ry="5" width="100%" height='300'/>
-                <rect x="450" y="390" rx="5" ry="5" width="120" height='20'/>
+                <rect x="75%" y="390" rx="5" ry="5" width="20%" height='20'/>
             </ContentLoader>
         </WhiteCard>
     </NoteLayout>
