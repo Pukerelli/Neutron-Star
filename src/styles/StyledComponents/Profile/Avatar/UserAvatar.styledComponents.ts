@@ -22,8 +22,7 @@ export const UserAvatarBlock = styled.div`
   grid-row-start: 2;
   position: relative;
   width: 100%;
-  background-color: white;
-  opacity: .9;
+  background-color: rgba(255, 255, 255 , .80);
   border-radius: 0 0 6px 6px;
 `
 export const UserAvatarImageContainer = styled.div`
