@@ -50,11 +50,6 @@ const carSlice = createSlice({
             state.isFetching = false
             state.error = null
         },
-        clear: (state) => {
-            state.cars = initialState.cars
-            state.currentCar = initialState.currentCar
-            state.error = null
-        },
         error: (state, action: PayloadAction<IError>) => {
             state.error = action.payload
             state.isFetching = false

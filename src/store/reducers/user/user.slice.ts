@@ -27,10 +27,6 @@ const userSlice = createSlice({
             state.isFetching = false
             state.error = null
         },
-        clear: (state) => {
-            state.user = initialState.user
-            state.error = null
-        },
         error: (state, action: PayloadAction<IError>) => {
             state.error = action.payload
             state.isFetching = false

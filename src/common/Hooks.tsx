@@ -1,9 +1,8 @@
 import {useEffect, useRef, useState} from "react";
 import {useAppDispatch} from "../store";
-import {userClearAction} from "../store/actions/user.action";
 import {authLogoutAction} from "../store/actions/auth.action";
-import {carClearAction} from "../store/actions/car.action";
 import {clearStorage} from "./functions";
+import {useHistory} from "react-router-dom";
 
 export const useClickOutside = (handler: () => void) => {
     const ref = useRef<Event>();
@@ -44,7 +43,5 @@ export const useLogout = () => {
     return () => {
         clearStorage()
         dispatch(authLogoutAction())
-        dispatch(userClearAction())
-        dispatch(carClearAction())
     }
 }

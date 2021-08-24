@@ -17,6 +17,9 @@ export const SubscriptionsBlock: React.FC<IProps> = ({following, link}) => {
     const onSubClick = (name: string) =>
         history.push(`/${link}/${name}`)
 
+    if(!following.length)
+        return null
+
     return (
         <UserSubscriptions>
             <SubsTitle>Subscriptions</SubsTitle>
