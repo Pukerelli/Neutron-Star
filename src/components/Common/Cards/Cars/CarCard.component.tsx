@@ -47,7 +47,7 @@ export const CarCard: React.FC<{ car: ICar }> = ({car}) => {
                 <Title>Engine:</Title>
                 <Subtitle>{car.engine || 'unknown'}</Subtitle>
                 <Title>HP:</Title>
-                <Subtitle>{car.engine || 'unknown'}</Subtitle>
+                <Subtitle>{car.hp || 'unknown'}</Subtitle>
                 <Title>Owner:</Title>
                 <Subtitle onClick={onOwnerClick} cursor='pointer'>
                     {car.owner}
