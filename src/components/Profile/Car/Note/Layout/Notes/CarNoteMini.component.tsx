@@ -11,7 +11,7 @@ interface IProps{
     note: INote | null
     carname: string
     onNoteClick: (noteId: string) => void
-    onDeleteNoteClick: (id: string, car: string) => void
+    onDeleteNoteClick: (id: string, car: string, owner: string) => void
     auth: string
     owner: string
 }
@@ -19,7 +19,7 @@ interface IProps{
 export const CarNoteMini: React.FC<IProps> = (props) => {
     const onDeleteClick = (e: React.SyntheticEvent) => {
         e.stopPropagation()
-        props.onDeleteNoteClick(props.note!._id, props.carname)
+        props.onDeleteNoteClick(props.note!._id, props.carname, props.owner)
     }
     return (
         <NoteCard onClick={() => props.onNoteClick(props.note!._id)}>

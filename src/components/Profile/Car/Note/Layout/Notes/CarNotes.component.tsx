@@ -17,8 +17,10 @@ export const CarNotes: React.FC<IProps> = ({car}) => {
     const dispatch = useAppDispatch()
     const auth = useSelector(selectAuthUser)
 
-    const onDeleteClick = (_id: string, car: string) =>
+    const onDeleteClick = (_id: string, car: string, owner: string) => {
+        if(auth === owner)
         dispatch(carNotePullAction({_id, car}))
+    }
 
     const onNoteClick = (id: string) =>
         history.push(`/notes/note/${id}`)
